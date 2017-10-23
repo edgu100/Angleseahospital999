@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeefff">
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:layout_marginTop="100dp"
+        android:id="@+id/ema">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:lines="1"
+            android:padding="1dp"
+            android:text="Email"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="1dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:background="#EEEFFF" />
+
+        <EditText
+            android:id="@+id/phonenumber"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/view1"
+            android:background="#ffffff"
+            android:ems="19"
+            android:hint="Enter your email address,please"
+            android:inputType="textEmailAddress"
+            android:padding="1dp"
+            android:textSize="12sp" >
+            <requestFocus />
+        </EditText>
+
+        <ImageView
+            android:id="@+id/del_email"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/delete"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:layout_marginTop="180dp"
+        android:id="@+id/pas">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:lines="1"
+            android:padding="1dp"
+            android:text="Password"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1dip"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_toRightOf="@+id/textView2"
+            android:background="#EEEFFF" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/view2"
+            android:background="#ffffff"
+            android:ems="19"
+            android:hint="Enter your password,please"
+            android:inputType="textEmailAddress"
+            android:padding="1dp"
+            android:textSize="12sp"
+            android:password="true">
+            <requestFocus />
+        </EditText>
+
+        <ImageView
+            android:id="@+id/del_password"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="3dp"
+            android:src="@drawable/delete"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/Signin"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pas"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttonshape"
+        android:text="Sign in"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/Register"
+        android:layout_toRightOf="@+id/Signin"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pas"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/buttonshape"
+        android:text="Register"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/findoutpasswoed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Signin"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="65dp"
+        android:onClick="findoutpasswoed"/>
+
+</RelativeLayout>
