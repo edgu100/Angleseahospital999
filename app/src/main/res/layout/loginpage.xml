@@ -142,7 +142,8 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/buttonshape"
         android:text="Register"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:onClick="Register"/>
 
     <TextView
         android:id="@+id/findoutpasswoed"
