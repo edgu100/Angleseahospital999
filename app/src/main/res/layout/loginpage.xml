@@ -36,7 +36,7 @@
             android:background="#EEEFFF" />
 
         <EditText
-            android:id="@+id/phonenumber"
+            android:id="@+id/Email"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
@@ -107,7 +107,7 @@
             android:padding="1dp"
             android:textSize="12sp"
             android:password="true">
-            <requestFocus />
+
         </EditText>
 
         <ImageView
