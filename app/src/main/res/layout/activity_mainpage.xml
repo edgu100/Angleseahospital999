@@ -40,5 +40,5 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/notice"
         android:layout_marginTop="10dp"/>
-<<<<<>>>>>
+
 </RelativeLayout>
