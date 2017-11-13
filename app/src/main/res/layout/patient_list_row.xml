@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:id="@+id/Name_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:text="@string/name"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/Patient_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/Name_p"
+        android:text="@string/textview1"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/Age_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Name_p"
+        android:text="@string/age"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Patient_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        android:textSize="18sp"
+        android:layout_below="@+id/Name_p"
+        android:layout_toEndOf="@+id/Age_p" />
+
+    <TextView
+        android:id="@+id/Wight_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wight"
+        android:textSize="18sp"
+        android:layout_below="@+id/Patient_name"
+        android:layout_toEndOf="@+id/Patient_ID"
+        android:layout_marginStart="55dp" />
+
+    <TextView
+        android:id="@+id/Patient_wight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Wight_p"
+        android:layout_toEndOf="@+id/Wight_p"
+        android:text="@string/textview2"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/NHI_No_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/Age_p"
+        android:text="@string/nhi_no"
+        android:layout_marginStart="10dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Patient_ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/NHI_No_p"
+        android:layout_toEndOf="@+id/NHI_No_p"
+        android:text="@string/textview3"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/Room_No_p"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/roomno"
+        android:textSize="18sp"
+        android:layout_below="@+id/Wight_p"
+        android:layout_alignStart="@+id/Wight_p" />
+
+    <TextView
+        android:id="@+id/Patient_No"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Room_No_p"
+        android:layout_toEndOf="@+id/Room_No_p"
+        android:text="@string/textview4"
+        android:textSize="18sp" />
+</RelativeLayout>
