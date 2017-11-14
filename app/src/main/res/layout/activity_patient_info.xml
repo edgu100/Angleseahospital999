@@ -131,17 +131,6 @@
             android:layout_alignBaseline="@+id/DrugName"
             android:layout_alignBottom="@+id/DrugName"
             android:layout_toEndOf="@+id/DrugName" />
-        <TextView
-            android:id="@+id/DrugEditView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drug Name"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignBaseline="@+id/DrugName"
-            android:layout_alignBottom="@+id/DrugName"
-            android:layout_toEndOf="@+id/DrugName" />
-
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
