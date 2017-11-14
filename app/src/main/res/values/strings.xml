@@ -11,4 +11,7 @@
     <string name="textview3">TextView3</string>
     <string name="textview4">TextView4</string>
     <string name="patient_add">ADD</string>
+    <string name="agreement">I agree the terms and conditions.</string>
+    <string name="clear_pad">Clear Pad</string>
+    <string name="save_signature">Save Signature</string>
 </resources>
