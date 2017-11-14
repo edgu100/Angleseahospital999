@@ -13,7 +13,7 @@ public class Patient implements Serializable {
     private String name;
     private String roomNo;
     private String NHINo;
-    private Date birthDay;
+    private String birthDay;
     private Double weight;
 
     public Integer getId() {
@@ -32,7 +32,7 @@ public class Patient implements Serializable {
         return NHINo;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
@@ -56,7 +56,7 @@ public class Patient implements Serializable {
         this.NHINo = NHINo;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
