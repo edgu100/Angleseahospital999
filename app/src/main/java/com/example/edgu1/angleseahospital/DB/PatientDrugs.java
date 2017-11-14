@@ -17,6 +17,7 @@ public class PatientDrugs implements Serializable {
     private Double frequency;
     private String timeStamp;
     private String signTime;
+    private String signImg;
 
     public Integer getId() {
         return id;
@@ -50,6 +51,10 @@ public class PatientDrugs implements Serializable {
         return signTime;
     }
 
+    public String getSignImg() {
+        return signImg;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -80,5 +85,9 @@ public class PatientDrugs implements Serializable {
 
     public void setSignTime(String signTime) {
         this.signTime = signTime;
+    }
+
+    public void setSignImg(String signImg) {
+        this.signImg = signImg;
     }
 }
