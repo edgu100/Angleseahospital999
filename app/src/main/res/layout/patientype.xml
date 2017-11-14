@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="389dp"
+        android:layout_height="513dp"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/relativeLayout">
+
+        <ImageView
+            android:id="@+id/patientinfobackbroundcolor"
+            android:layout_width="385dp"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent" />
+
+        <TextView
+            android:id="@+id/PatientInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Patient Information"
+            android:textColor="@android:color/background_light"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/NameTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PatientInfo"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Patient Name:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/NameEditview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PatientInfo"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/NameTextview"
+            android:text="Name"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/RoomTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameEditview"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Room Number:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/RoomEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/NameEditview"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/RoomTextView"
+            android:text="NameTextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/NHITextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RoomTextView"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="NHI NUMBER:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/NHIEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/RoomEditView"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/NHITextView"
+            android:text="NHI number"
+            android:textSize="20sp" />
+
+
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
