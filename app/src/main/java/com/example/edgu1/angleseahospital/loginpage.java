@@ -1,6 +1,7 @@
 package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -39,12 +40,15 @@ public class loginpage extends Activity {
     private Button regi;
     private Context context = null;
     private SQLiteHelper sqLiteHelper=null;
+    private ProgressDialog progressDialog;
 
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginpage);
         context = this;
         sqLiteHelper = new SQLiteHelper(this);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Send email...");
 
         //Find out password
         fpas=(TextView)findViewById(R.id.findoutpasswoed);
@@ -62,6 +66,7 @@ public class loginpage extends Activity {
                     if(user == null){
                         Toast.makeText(context,"Please register first!", Toast.LENGTH_LONG).show();
                     }else{
+                        progressDialog.show();
                         pwd = randomPwd();
                         user.setPassword(pwd);
                         sqLiteHelper.updateUser(user);
@@ -138,9 +143,8 @@ public class loginpage extends Activity {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(context,"Please check your email!", Toast.LENGTH_LONG).show();
+            progressDialog.cancel();
         }
     }
-
-
 
 }
