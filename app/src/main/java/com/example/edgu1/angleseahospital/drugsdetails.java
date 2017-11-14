@@ -1,4 +1,4 @@
-package com.example.edgu1.angleseahospital.DB;
+package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
 import android.os.Bundle;
