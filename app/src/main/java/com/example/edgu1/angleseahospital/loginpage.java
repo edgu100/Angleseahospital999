@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
+import com.example.edgu1.angleseahospital.DB.User;
+
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -35,11 +38,13 @@ public class loginpage extends Activity {
     private TextView fpas;
     private Button regi;
     private Context context = null;
+    private SQLiteHelper sqLiteHelper=null;
 
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loginpage);
         context = this;
+        sqLiteHelper = new SQLiteHelper(this);
 
         //Find out password
         fpas=(TextView)findViewById(R.id.findoutpasswoed);
@@ -53,8 +58,15 @@ public class loginpage extends Activity {
                 EditText emailText=(EditText)findViewById(R.id.Email);
                 email = emailText.getText().toString().trim();
                 if(!"".equals(email)){
-                    pwd = randomPwd();
-                    sendEmail();
+                    User user = sqLiteHelper.getUserByEmail(email);
+                    if(user == null){
+                        Toast.makeText(context,"Please register first!", Toast.LENGTH_LONG).show();
+                    }else{
+                        pwd = randomPwd();
+                        user.setPassword(pwd);
+                        sqLiteHelper.updateUser(user);
+                        sendEmail();
+                    }
                 }else{
                     Toast.makeText(context,"Please enter your email!", Toast.LENGTH_LONG).show();
                 }
