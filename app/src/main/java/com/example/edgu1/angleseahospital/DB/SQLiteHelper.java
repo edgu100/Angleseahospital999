@@ -35,6 +35,24 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return user;
     }
 
+    public User getUserByEmail(String email) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        User user = null;
+        db = getReadableDatabase();
+        cursor = db.query("USERS", new String[] {"id","name","email","password"}, "email=?",new String[] {email}, null, null, null);
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                user = new User();
+                user.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+            }
+        }
+        return user;
+    }
+
     public List<User> getUsersByName(String name){
         SQLiteDatabase db = null;
         Cursor cursor = null;
@@ -72,8 +90,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     public void addUser(User user){
         ContentValues values = new ContentValues();
         values.put("name",user.getName());
-        values.put("email",user.getName());
-        values.put("password",user.getName());
+        values.put("email",user.getEmail());
+        values.put("password",user.getPassword());
         SQLiteDatabase db = getWritableDatabase();
         db.insert("USERS", null, values);
         db.close();
@@ -102,8 +120,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             db = getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put("name",user.getName());
-            values.put("email",user.getName());
-            values.put("password",user.getName());
+            values.put("email",user.getEmail());
+            values.put("password",user.getPassword());
             db.update("USERS",values,"id="+user.getId(),null);
         } catch (Exception e) {
             e.printStackTrace();
