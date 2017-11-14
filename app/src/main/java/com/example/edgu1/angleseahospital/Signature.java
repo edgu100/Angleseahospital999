@@ -119,7 +119,8 @@ public class Signature extends Activity {
     public boolean addJpgSignatureToGallery(Bitmap signature) {
         boolean result = false;
         try {
-            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature.jpg", System.currentTimeMillis()));
+            String pname = String.format("Signature_%d.jpg", System.currentTimeMillis());
+            File photo = new File(getAlbumStorageDir("SignaturePad"), pname);
             saveBitmapToJPG(signature, photo);
             scanMediaFile(photo);
             result = true;
