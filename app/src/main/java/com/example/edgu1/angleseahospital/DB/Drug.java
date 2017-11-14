@@ -13,8 +13,8 @@ public class Drug implements Serializable {
     private String name;
     private String manufacturer;
     private String specification;
-    private Date productionDate;
-    private Date shelfLife;
+    private String productionDate;
+    private String shelfLife;
 
     public Integer getId() {
         return id;
@@ -32,11 +32,11 @@ public class Drug implements Serializable {
         return specification;
     }
 
-    public Date getProductionDate() {
+    public String getProductionDate() {
         return productionDate;
     }
 
-    public Date getShelfLife() {
+    public String getShelfLife() {
         return shelfLife;
     }
 
@@ -56,11 +56,11 @@ public class Drug implements Serializable {
         this.specification = specification;
     }
 
-    public void setProductionDate(Date productionDate) {
+    public void setProductionDate(String productionDate) {
         this.productionDate = productionDate;
     }
 
-    public void setShelfLife(Date shelfLife) {
+    public void setShelfLife(String shelfLife) {
         this.shelfLife = shelfLife;
     }
 }

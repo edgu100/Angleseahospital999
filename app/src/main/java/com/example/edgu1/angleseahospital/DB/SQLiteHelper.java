@@ -17,6 +17,11 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
+    ////////////////////////////////////
+    //      User Database Query       //
+    ////////////////////////////////////
+
     public User getUserById(Integer uId) {
         SQLiteDatabase db = null;
         Cursor cursor = null;
@@ -132,6 +137,41 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 
+    ////////////////////////////////////
+    //      Patient Database Query    //
+    ////////////////////////////////////
+
+    public Patient getPatientById(Integer pId) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        Patient patient = null;
+        db = getReadableDatabase();
+        cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, "id" + " = "+pId , null, null, null, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                patient = new Patient();
+                patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                patient.setName(cursor.getString(cursor.getColumnIndex("name")));
+                patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
+                patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
+                patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
+                patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+            }
+        }
+        return patient;
+    }
+
+
+
+
+
+
+
+    ////////////////////////////////////
+    //             Database           //
+    ////////////////////////////////////
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table if not exists USERS(" +
@@ -146,7 +186,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "name text NOT NULL," +
                 "roomNo text NOT NULL," +
                 "NHINo text NOT NULL," +
-                "birthDay DATE NOT NULL," +
+                "birthDay text NOT NULL," +
                 "weight double" +
                 ")";
         db.execSQL(sql);
@@ -154,8 +194,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "id integer primary key AUTOINCREMENT," +
                 "name text NOT NULL," +
                 "manufacturer text NOT NULL," +
-                "productionDate DATE NOT NULL," +
-                "shelfLife DATE NOT NULL," +
+                "productionDate text NOT NULL," +
+                "shelfLife text NOT NULL," +
                 "specification text NOT NULL" +
                 ")";
         db.execSQL(sql);
@@ -166,8 +206,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "dosageStart text," +
                 "dosageEnd text," +
                 "frequency double," +
-                "timeStamp DATE," +
-                "signTime DATE," +
+                "timeStamp text," +
+                "signTime text," +
                 "CONSTRAINT fk_patient FOREIGN KEY (patientId) REFERENCES PATIENT(id)," +
                 "CONSTRAINT fk_drugs FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
                 ")";
