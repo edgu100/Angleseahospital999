@@ -19,7 +19,8 @@
         android:layout_marginTop="10dp"
         android:text=""
         android:textSize="18dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:id="@+id/DrugName"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +37,8 @@
         android:layout_below="@+id/n1"
         android:textSize="18dp"
         android:text=""
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:id="@+id/DrugproductionDate"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +54,8 @@
         android:layout_below="@+id/n2"
         android:textSize="18dp"
         android:text=""
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:id="@+id/DrugshelfLife"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +71,8 @@
         android:layout_below="@+id/n3"
         android:textSize="18dp"
         android:text=""
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:id="@+id/Drugspecification"/>
 
 
 </RelativeLayout>

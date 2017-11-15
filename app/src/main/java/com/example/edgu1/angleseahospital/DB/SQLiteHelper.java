@@ -203,6 +203,18 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return users;
     }
 
+    public void addDrug(Drug drug){
+        ContentValues values = new ContentValues();
+        values.put("name",drug.getName());
+        values.put("manufacturer",drug.getManufacturer());
+        values.put("specification",drug.getSpecification());
+        values.put("productionDate",drug.getProductionDate());
+        values.put("shelfLife",drug.getShelfLife());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("DRUGS", null, values);
+        db.close();
+    }
+
 
     ////////////////////////////////////
     //             Database           //
