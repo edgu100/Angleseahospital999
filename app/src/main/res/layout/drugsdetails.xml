@@ -1,6 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/patientinfobackbroundcolor"
+        android:layout_width="385dp"
+        android:layout_height="40dp"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/DrugsInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Drugs details"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/DrugsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DrugsInformation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Name："
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Drugname01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DrugsInformation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/DrugsName"
+        android:text=""
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/manufacturer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DrugsName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Manufacturer:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Manufacturer01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Drugname01"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/manufacturer"
+        android:text=""
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/specification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/manufacturer"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Specification:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/specification01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/manufacturer"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/specification"
+        android:text=""
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/productionDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/specification"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="ProductionDate:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/productionDate01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/specification"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/productionDate"
+        android:text=""
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/shelfLife"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productionDate"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="ShelfLife:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/shelfLife01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/productionDate"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/shelfLife"
+        android:text=""
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/DrugUpdate"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shelfLife"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/buttonshape"
+        android:text="Update"
+        android:textColor="@android:color/white"
+        android:onClick="DrugUpdate"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/DrugsDelete"
+        android:layout_toRightOf="@+id/DrugUpdate"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shelfLife"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/buttonshape"
+        android:text="DELETE"
+        android:textColor="@android:color/white"
+        android:onClick="DrugsDelete"/>
+</RelativeLayout>
