@@ -162,6 +162,46 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return patient;
     }
 
+    public List<Patient> getPatientsByName(String name){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Patient> patients = new ArrayList<Patient>();
+        String whereClause=null;
+        if(name!=null && !"".equals(name)){
+            whereClause=" name like '%"+name+"%'";
+        }
+        try{
+            db = getReadableDatabase();
+            cursor = db.query("USERS", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, whereClause , null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Patient patient = new Patient();
+                    patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    patient.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
+                    patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
+                    patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
+                    patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+                    patients.add(patient);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return patients;
+    }
+
+
+
+
+
     ////////////////////////////////////
     //      Drugs Database Query       //
     ////////////////////////////////////
@@ -214,6 +254,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.insert("DRUGS", null, values);
         db.close();
     }
+
 
 
     ////////////////////////////////////

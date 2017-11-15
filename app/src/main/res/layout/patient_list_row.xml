@@ -92,7 +92,7 @@
         android:layout_alignStart="@+id/Wight_p" />
 
     <TextView
-        android:id="@+id/Patient_No"
+        android:id="@+id/Patient_RoomNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Room_No_p"
