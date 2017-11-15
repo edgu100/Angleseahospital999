@@ -244,6 +244,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "frequency double," +
                 "timeStamp text," +
                 "signTime text," +
+                "signImg text," +
                 "CONSTRAINT fk_patient FOREIGN KEY (patientId) REFERENCES PATIENT(id)," +
                 "CONSTRAINT fk_drugs FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
                 ")";

@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.edgu1.angleseahospital.Patient_info">
-
-
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
-        android:layout_width="400dp"
-        android:layout_height="508dp">
+        android:layout_width="389dp"
+        android:layout_height="513dp"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/relativeLayout">
+
         <ImageView
             android:id="@+id/patientinfobackbroundcolor"
             android:layout_width="385dp"
@@ -33,12 +31,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/PatientInfo"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Patient Name："
+            android:layout_marginTop="20dp"
+            android:text="Patient Name:"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/NameEditview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,12 +53,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/NameEditview"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Room Number:"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/RoomEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -77,60 +75,27 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/RoomTextView"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="NHI NUMBER"
+            android:layout_marginTop="20dp"
+            android:text="NHI NUMBER:"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <TextView
+        <EditText
             android:id="@+id/NHIEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/RoomEditView"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/NHITextView"
             android:text="NHI number"
             android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/DrugImView"
-            android:layout_width="385dp"
-            android:layout_height="40dp"
-            android:layout_below="@+id/NHITextView"
-            android:layout_marginTop="11dp"
-            android:background="@color/colorAccent"/>
 
-        <TextView
-            android:id="@+id/DrugInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/DrugImView"
-            android:layout_marginStart="10dp"
-            android:text="Drug Details"
-            android:textColor="@android:color/background_light"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/DrugName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drug Name: "
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/DrugImView"
-            android:layout_alignStart="@+id/DrugInfo"
-            android:layout_marginTop="10dp" />
-        <TextView
-            android:id="@+id/DrugEditView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drug Name"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignBaseline="@+id/DrugName"
-            android:layout_alignBottom="@+id/DrugName"
-            android:layout_toEndOf="@+id/DrugName" />
+
+
+
 
     </RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
