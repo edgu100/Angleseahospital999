@@ -84,7 +84,7 @@ public class loginpage extends Activity {
 
     //Register
     public void Register(View v){
-        Intent i= new Intent(loginpage.this,DrugsInformation.class);
+        Intent i= new Intent(loginpage.this,registerpage.class);
         startActivity(i);
     }
 
