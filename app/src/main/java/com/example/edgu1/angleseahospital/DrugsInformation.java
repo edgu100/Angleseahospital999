@@ -31,21 +31,6 @@ public class DrugsInformation extends Activity {
         setContentView(R.layout.drugsinfotmation);
         dbHandler = new SQLiteHelper(this);
         drugs = dbHandler.getDrugsByName(null);
-
-
-//Drug d=new Drug();
-//d.setName("A1");
-//d.setManufacturer("a2");
-//d.setSpecification("5ML");
-//d.setProductionDate("21/2/1561");
-//d.setShelfLife("21/2/1811");
-//        dbHandler.addDrug(d);
-
-
-
-        Toast.makeText(this,dbHandler.getDrugsByName(null).size()+"", Toast.LENGTH_LONG).show();
-
-
         try{
             ProductListAdapter productListAdapter=new ProductListAdapter();
             ListView productList =(ListView) findViewById(R.id.DrugsDetails);
@@ -64,16 +49,10 @@ public class DrugsInformation extends Activity {
             e.printStackTrace();
         }
     }
-//
-//    public void searchProduct(View v){
-//        EditText searchText = (EditText) findViewById(R.id.searchText);
-//        products = dbHandler.queryAllProducts(searchText.getText().toString());
-//        ProductListAdapter productListAdapter=new ProductListAdapter();
-//        ListView productList =(ListView)findViewById(R.id.productList);
-//        productList.setAdapter(productListAdapter);
-//        productList.deferNotifyDataSetChanged();
-//    }
 
+    /////////////////////////////
+    /////////Show Drugslist///////
+    ////////////////////////////
     class ProductListAdapter extends BaseAdapter {
 
         @Override
@@ -106,5 +85,15 @@ public class DrugsInformation extends Activity {
             return view;
         }
     }
-
+    /////////////////////////////
+    /////////Search/////////////
+    ////////////////////////////
+    public void searchProduct(View v){
+        EditText searchText = (EditText) findViewById(R.id.searchText);
+        drugs = dbHandler.getDrugsByName(searchText.getText().toString());
+        ProductListAdapter productListAdapter=new ProductListAdapter();
+        ListView productList =(ListView)findViewById(R.id.DrugsDetails);
+        productList.setAdapter(productListAdapter);
+        productList.deferNotifyDataSetChanged();
+    }
 }

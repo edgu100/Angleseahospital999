@@ -16,12 +16,9 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
-
     ////////////////////////////////////
     //      User Database Query       //
     ////////////////////////////////////
-
     public User getUserById(Integer uId) {
         SQLiteDatabase db = null;
         Cursor cursor = null;
