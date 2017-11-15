@@ -162,10 +162,46 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return patient;
     }
 
+    ////////////////////////////////////
+    //      Drugs Database Query       //
+    ////////////////////////////////////
 
 
-
-
+    public List<Drug> getDrugsByName(String name){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Drug> users = new ArrayList<Drug>();
+        String whereClause=null;
+        if(name!=null && !"".equals(name)){
+            whereClause=" name like '%"+name+"%'";
+        }
+        try{
+            db = getReadableDatabase();
+            cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","specification"}, whereClause , null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Drug drugs = new Drug();
+                    drugs.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    drugs.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    drugs.setManufacturer(cursor.getString(cursor.getColumnIndex("manufacturer")));
+                    drugs.setProductionDate(cursor.getString(cursor.getColumnIndex("productionDate")));
+                    drugs.setShelfLife(cursor.getString(cursor.getColumnIndex("shelfLife")));
+                    drugs.setSpecification(cursor.getString(cursor.getColumnIndex("specification")));
+                    users.add(drugs);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return users;
+    }
 
 
     ////////////////////////////////////

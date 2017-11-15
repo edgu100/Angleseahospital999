@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.edgu1.angleseahospital.DB.Drug;
+import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 import java.util.List;
 
@@ -14,14 +18,23 @@ import java.util.List;
  */
 
 public class DrugsInformation extends Activity {
+    private SQLiteHelper dbHandler=null;
+    private List<Drug> drugs;
+
     @Override
     protected void onCreate(  Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsinfotmation);
+        //drugs = dbHandler
 
-        String[] drugs={};
-        ListAdapter drugsAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,drugs);
-        ListView drugsListView=(ListView)findViewById(R.id.DrugsDetails);
-        drugsListView.setAdapter(drugsAdapter);
+        ListView DrugslistView = (ListView) findViewById(R.id.DrugsDetails);
+        //创建数据适配器
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_drugs_list, databaseList());
+        //给ListView添加数据
+        DrugslistView.setAdapter(adapter);
     }
+
+
+
 }
+
