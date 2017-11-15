@@ -3,13 +3,63 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="42dp"
+        android:text="Drug:"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/searchText"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="31dp"
+        android:layout_toEndOf="@+id/textView2"/>
+
+    <ImageView
+        android:src="@drawable/ic_search_black_24dp"
+        android:id="@+id/imageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="253dp"
+        android:onClick="searchProduct"/>
+
     <ListView
         android:id="@+id/DrugsDetails"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="350dp"
         android:layout_marginTop="100dp"
         android:layout_alignParentStart="true"
         android:descendantFocusability="beforeDescendants"/>
+    <Button
+        android:layout_width="90dp"
+        android:id="@+id/ADD"
+        android:layout_height="50dp"
+        android:layout_below="@+id/DrugsDetails"
+        android:layout_marginLeft="80dp"
+        android:background="@drawable/buttonshape"
+        android:text="Add"
+        android:textColor="@android:color/white" />
+    <Button
+        android:layout_width="90dp"
+        android:id="@+id/DELETE"
+        android:layout_height="50dp"
+        android:layout_below="@+id/DrugsDetails"
+        android:layout_toRightOf="@+id/ADD"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/buttonshape"
+        android:text="DELETE"
+        android:textColor="@android:color/white" />
+
 
 
 </RelativeLayout>
