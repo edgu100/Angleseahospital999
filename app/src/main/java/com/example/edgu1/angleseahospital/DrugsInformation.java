@@ -39,9 +39,9 @@ public class DrugsInformation extends Activity {
             productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Drug product = drugs.get(position);
-                    Intent intent=new Intent(getApplicationContext(),Drug.class);
-                    intent.putExtra("product",product);
+                    Drug drug = drugs.get(position);
+                    Intent intent=new Intent(getApplicationContext(),drugsdetails.class);
+                    intent.putExtra("name",drug);
                     startActivity(intent);
                 }
             });

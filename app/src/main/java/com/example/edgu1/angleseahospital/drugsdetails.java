@@ -24,29 +24,44 @@ public class drugsdetails extends Activity {
 
     private SQLiteHelper dbHandler=null;
     private List<Drug> drugs;
+    private Drug drug = null;
 
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsdetails);
         dbHandler = new SQLiteHelper(this);
 
+        //get product
+        String name = getIntent().getStringExtra("name");
+        if(name!=null&&!"".equals(name)){
+            oldProduct = dbHandler.getProduct(resultCode);
+        }else{
+            oldProduct = (Product) getIntent().getSerializableExtra("product");
+        }
+        EditText barCodeEdit= (EditText)findViewById(R.id.barCodeEdit);
+        if(oldProduct != null){
+            EditText nameEdit= (EditText)findViewById(R.id.nameEdit);
+            nameEdit.setText(oldProduct.getProduct());
 
+            EditText priceEdit= (EditText)findViewById(R.id.priceEdit);
+            priceEdit.setText(String.valueOf(oldProduct.getPrice()));
+
+            EditText quantityEdit= (EditText)findViewById(R.id.quantityEdit);
+            quantityEdit.setText(String.valueOf(oldProduct.getQuantity()));
+
+            barCodeEdit.setText(String.valueOf(oldProduct.getBarcode()));
+
+            EditText descriptionEdit= (EditText)findViewById(R.id.descriptionEdit);
+            descriptionEdit.setText(String.valueOf(oldProduct.getDescription()));
+
+            ImageView photoView= (ImageView)findViewById(R.id.photoView);
+            photoView.setImageBitmap(loadImageFromStorage(oldProduct.getImage()));
+        }else{
+            barCodeEdit.setText(resultCode);
+        }
     }
 
-    public View getView(int position, View view, ViewGroup viewGroup) {
-        Drug drug = drugs.get(position);
-        TextView drugName = (TextView) findViewById(R.id.Drugname01);
-        TextView drugproductionDate = (TextView) findViewById(R.id.productionDate01);
-        TextView drugshelfLife = (TextView) findViewById(R.id.shelfLife01);
-        TextView drugspecification = (TextView) findViewById(R.id.specification01);
-        TextView drugsmanufacturer = (TextView) findViewById(R.id.Manufacturer01);
 
-        drugName.setText(drug.getName());
-        drugproductionDate.setText(String.valueOf(drug.getProductionDate()));
-        drugshelfLife.setText(String.valueOf(drug.getShelfLife()));
-        drugspecification.setText(String.valueOf(drug.getSpecification()));
-        return view;
-    }
 
 }
 
