@@ -41,7 +41,7 @@ public class DrugsInformation extends Activity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Drug drug = drugs.get(position);
                     Intent intent=new Intent(getApplicationContext(),drugsdetails.class);
-                    intent.putExtra("name",drug);
+                    intent.putExtra("drug",drug);
                     startActivity(intent);
                 }
             });

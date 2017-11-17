@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
@@ -30,35 +32,25 @@ public class drugsdetails extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsdetails);
         dbHandler = new SQLiteHelper(this);
+        drugs = dbHandler.getDrugsByName(null);
 
-        //get product
-        String name = getIntent().getStringExtra("name");
-        if(name!=null&&!"".equals(name)){
-            oldProduct = dbHandler.getProduct(resultCode);
-        }else{
-            oldProduct = (Product) getIntent().getSerializableExtra("product");
-        }
-        EditText barCodeEdit= (EditText)findViewById(R.id.barCodeEdit);
-        if(oldProduct != null){
-            EditText nameEdit= (EditText)findViewById(R.id.nameEdit);
-            nameEdit.setText(oldProduct.getProduct());
+        Bundle drugsname=getIntent().getExtras();
 
-            EditText priceEdit= (EditText)findViewById(R.id.priceEdit);
-            priceEdit.setText(String.valueOf(oldProduct.getPrice()));
+        if(drugsname==null){return;}
+        Toast.makeText(this,""+drugsname ,Toast.LENGTH_LONG).show();
 
-            EditText quantityEdit= (EditText)findViewById(R.id.quantityEdit);
-            quantityEdit.setText(String.valueOf(oldProduct.getQuantity()));
 
-            barCodeEdit.setText(String.valueOf(oldProduct.getBarcode()));
-
-            EditText descriptionEdit= (EditText)findViewById(R.id.descriptionEdit);
-            descriptionEdit.setText(String.valueOf(oldProduct.getDescription()));
-
-            ImageView photoView= (ImageView)findViewById(R.id.photoView);
-            photoView.setImageBitmap(loadImageFromStorage(oldProduct.getImage()));
-        }else{
-            barCodeEdit.setText(resultCode);
-        }
+        drugs = dbHandler.getDrugsByName(drugsname.toString());
+        TextView drugName = (TextView)findViewById(R.id.Drugname01);
+        TextView drugproductionDate = (TextView)findViewById(R.id.productionDate01);
+        TextView drugshelfLife = (TextView)findViewById(R.id.shelfLife01);
+        TextView drugspecification = (TextView)findViewById(R.id.specification01);
+        TextView drugsManufacturer = (TextView)findViewById(R.id.Manufacturer01);
+        drugName.setText(drug.getName());
+        drugproductionDate.setText(String.valueOf(drug.getProductionDate()));
+        drugshelfLife.setText(String.valueOf(drug.getShelfLife()));
+        drugspecification.setText(String.valueOf(drug.getSpecification()));
+        drugsManufacturer.setText(String.valueOf(drug.getManufacturer()));
     }
 
 
