@@ -17,9 +17,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
@@ -28,7 +29,7 @@ import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 import java.text.SimpleDateFormat;
-import 	java.util.Calendar;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +37,13 @@ public class PatientListPage extends Activity {
 
     private SQLiteHelper patientsdb = null;
     private List<Patient> patients;
+    private Patient patients2;
+    private Patient patients3;
+
+    //Define spinner
+    Spinner sp;
+    String spname [] = {"Name", "NHI-No", "Room-No"};
+    ArrayAdapter <String> spadapter;
 
     ///////////////////////----ListView Function----/////////////////////////////////
     @Override
@@ -45,10 +53,12 @@ public class PatientListPage extends Activity {
 
         patientsdb = new SQLiteHelper(this);
         patients = patientsdb.getPatientsByName(null);
+        patients2 = patientsdb.getPatientByNHINo(null);
+        patients3 = patientsdb.getPatientByRoomNo(null);
 
         try{
             PatientListAdapter patientListAdapter = new PatientListAdapter();
-            ListView patientList =(ListView)findViewById(R.id.Patient_List);
+            ListView patientList = (ListView)findViewById(R.id.Patient_List);
             patientList.setAdapter(patientListAdapter);
 
 //            patientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,9 +73,35 @@ public class PatientListPage extends Activity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+
+        //Set Spinner Function
+        sp = (Spinner)findViewById(R.id.Patient_spinner);
+        spadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, spname);
+        sp.setAdapter(spadapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position) {
+                    case 0://Search by Name
+                        break;
+
+                    case 1://Search by NHI-No
+                        break;
+
+                    case 2://Search by Room-No
+                        break;
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
     }
 
 
+    //Patient CustomAdapter
     class PatientListAdapter extends BaseAdapter {
 
         @Override
@@ -131,6 +167,36 @@ public class PatientListPage extends Activity {
 
 
     ///////////////////////----Search Function----/////////////////////////////////
+
+    //Search by Name
+    public void searchName(View v){
+        EditText searchText = (EditText) findViewById(R.id.Patient_enter);
+        patients = patientsdb.getPatientsByName(searchText.getText().toString());
+        PatientListAdapter patientListAdapter = new PatientListAdapter();
+        ListView patientList = (ListView)findViewById(R.id.Patient_List);
+        patientList.setAdapter(patientListAdapter);
+        patientList.deferNotifyDataSetChanged();
+    }
+
+    //Search by NHI-No
+    public void searchNHINo(View v){
+        EditText searchText = (EditText) findViewById(R.id.Patient_enter);
+        patients2 = patientsdb.getPatientByNHINo(searchText.getText().toString());
+        PatientListAdapter patientListAdapter = new PatientListAdapter();
+        ListView patientList = (ListView)findViewById(R.id.Patient_List);
+        patientList.setAdapter(patientListAdapter);
+        patientList.deferNotifyDataSetChanged();
+    }
+
+    //Search by Room-No
+    public void searchRoomNo(View v){
+        EditText searchText = (EditText) findViewById(R.id.Patient_enter);
+        patients3 = patientsdb.getPatientByRoomNo(searchText.getText().toString());
+        PatientListAdapter patientListAdapter = new PatientListAdapter();
+        ListView patientList = (ListView)findViewById(R.id.Patient_List);
+        patientList.setAdapter(patientListAdapter);
+        patientList.deferNotifyDataSetChanged();
+    }
 
 }
 

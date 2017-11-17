@@ -35,8 +35,9 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/Patient_enter"
-            app:srcCompat="@drawable/ic_search_black_24dp"
             android:contentDescription=""
+            android:onClick="Search_The_Patient"
+            app:srcCompat="@drawable/ic_search_black_24dp"
             tools:ignore="ContentDescription" />
 
     </RelativeLayout>
