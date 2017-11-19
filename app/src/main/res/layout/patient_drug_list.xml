@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/patientinfobackbroundcolor"
+        android:layout_width="385dp"
+        android:layout_height="40dp"
+        android:background="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignBottom="@+id/patientinfobackbroundcolor"
+        android:text="Drugs"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/background_light"
+        android:layout_marginStart="17dp"
+        android:textSize="27sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/pdd_add"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="61dp"
+        android:background="@drawable/buttonshape"
+        android:text="Add"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/pdd_cancel"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="56dp"
+        android:layout_toEndOf="@+id/pdd_add"
+        android:background="@drawable/buttonshape"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/pdd_ListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/patientinfobackbroundcolor"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/pdd_add" />
+
+</RelativeLayout>
