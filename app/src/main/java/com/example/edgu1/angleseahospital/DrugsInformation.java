@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.edgu1.angleseahospital.DB.Add_drugs;
 import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
@@ -96,4 +97,11 @@ public class DrugsInformation extends Activity {
         productList.setAdapter(productListAdapter);
         productList.deferNotifyDataSetChanged();
     }
+
+    //Register
+    public void ADD(View v){
+        Intent i= new Intent(this,Add_drugs.class);
+        startActivity(i);
+    }
+
 }

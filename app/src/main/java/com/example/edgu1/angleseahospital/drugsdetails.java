@@ -31,16 +31,17 @@ public class drugsdetails extends Activity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsdetails);
+
+
+
+
+
         dbHandler = new SQLiteHelper(this);
-        drugs = dbHandler.getDrugsByName(null);
-
-        Bundle drugsname=getIntent().getExtras();
-
-        if(drugsname==null){return;}
-        Toast.makeText(this,""+drugsname ,Toast.LENGTH_LONG).show();
+        drug =(Drug)getIntent().getSerializableExtra("drug");
 
 
-        drugs = dbHandler.getDrugsByName(drugsname.toString());
+
+
         TextView drugName = (TextView)findViewById(R.id.Drugname01);
         TextView drugproductionDate = (TextView)findViewById(R.id.productionDate01);
         TextView drugshelfLife = (TextView)findViewById(R.id.shelfLife01);

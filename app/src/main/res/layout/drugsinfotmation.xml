@@ -46,6 +46,7 @@
         android:descendantFocusability="beforeDescendants"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp" />
+
     <Button
         android:layout_width="90dp"
         android:id="@+id/ADD"
