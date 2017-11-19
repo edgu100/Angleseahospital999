@@ -361,6 +361,47 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.close();
     }
 
+    ////////////////////////////////////
+    //      Patient Drugs Database Query       //
+    ////////////////////////////////////
+
+
+    public List<PatientDrugs> getTasks(){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<PatientDrugs> tasks = new ArrayList<PatientDrugs>();
+        String whereClause=null;
+        whereClause=" signTime is Null";
+        try{
+            db = getReadableDatabase();
+            cursor = db.query("DRUGS", new String[] {"id","patientId","drugsId","dosageStart","dosageEnd","frequency","timeStamp","signTime","signImg"}, whereClause , null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    PatientDrugs dr = new PatientDrugs();
+                    dr.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    dr.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+                    dr.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+                    dr.setDosageStart(cursor.getString(cursor.getColumnIndex("dosageStart")));
+                    dr.setDosageEnd(cursor.getString(cursor.getColumnIndex("dosageEnd")));
+                    dr.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
+                    dr.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
+                    dr.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
+                    dr.setSignImg(cursor.getString(cursor.getColumnIndex("signImg")));
+                    tasks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tasks;
+    }
 
 
     ////////////////////////////////////
