@@ -6,7 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 public class SQLiteHelper extends SQLiteOpenHelper{
 
@@ -366,28 +369,22 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     ////////////////////////////////////
 
 
-    public List<PatientDrugs> getTasks(){
+    public List<Map<String,String>> getTasks(){
         SQLiteDatabase db = null;
         Cursor cursor = null;
-        List<PatientDrugs> tasks = new ArrayList<PatientDrugs>();
+        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
         try{
             db = getReadableDatabase();
-            cursor = getWritableDatabase().rawQuery("select p.name, d.name" +
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
                     "from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
                     "left join DRUGS d on pd.drugsId = d.id" +
                     "where signTime is null",null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
-                    PatientDrugs dr = new PatientDrugs();
-                    dr.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                    dr.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
-                    dr.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
-                    dr.setDosageStart(cursor.getString(cursor.getColumnIndex("dosageStart")));
-                    dr.setDosageEnd(cursor.getString(cursor.getColumnIndex("dosageEnd")));
-                    dr.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
-                    dr.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
-                    dr.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
-                    dr.setSignImg(cursor.getString(cursor.getColumnIndex("signImg")));
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("dname")));
                     tasks.add(dr);
                 }
             }
