@@ -29,7 +29,7 @@
         android:layout_below="@+id/patientdetails"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Messages!"
+        android:text=""
         android:textColor="@android:color/holo_red_dark" />
 
     <ImageView

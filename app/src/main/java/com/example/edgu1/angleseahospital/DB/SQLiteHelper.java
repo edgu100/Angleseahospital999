@@ -6,7 +6,10 @@ import android.content.Context;
 import android.database.Cursor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 public class SQLiteHelper extends SQLiteOpenHelper{
 
@@ -361,6 +364,57 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.close();
     }
 
+    ////////////////////////////////////
+    //      Patient Drugs Database Query       //
+    ////////////////////////////////////
+
+
+    public List<Map<String,String>> getTasks(){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
+                    "from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    "left join DRUGS d on pd.drugsId = d.id" +
+                    "where signTime is null",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("dname")));
+                    tasks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tasks;
+    }
+
+    public void addPatientDrugs(PatientDrugs patientDrugs){
+        ContentValues values = new ContentValues();
+        values.put("patientId",patientDrugs.getPatientId());
+        values.put("drugsId",patientDrugs.getDrugsId());
+        values.put("dosageStart",patientDrugs.getDosageStart());
+        values.put("dosageEnd",patientDrugs.getDosageEnd());
+        values.put("frequency",patientDrugs.getFrequency());
+        values.put("timeStamp",patientDrugs.getTimeStamp());
+        values.put("signTime",patientDrugs.getSignTime());
+        values.put("signImg",patientDrugs.getSignImg());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("PATIENTDRUGS", null, values);
+        db.close();
+    }
 
 
     ////////////////////////////////////
