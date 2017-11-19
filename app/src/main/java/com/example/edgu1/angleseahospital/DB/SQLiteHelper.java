@@ -16,6 +16,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     public SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     ////////////////////////////////////
     //      User Database Query       //
     ////////////////////////////////////
@@ -161,47 +162,77 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
 
     //Search patient by NHI-No
-    public Patient getPatientByNHINo(String NHINo) {
+    public List<Patient> getPatientByNHINo(String NHINo) {
         SQLiteDatabase db = null;
         Cursor cursor = null;
-        Patient patient = null;
-        db = getReadableDatabase();
-        cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, "NHINo=?" , new String[] {NHINo}, null, null, null);
-
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                patient = new Patient();
-                patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                patient.setName(cursor.getString(cursor.getColumnIndex("name")));
-                patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
-                patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
-                patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
-                patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+        List<Patient> patients = new ArrayList<Patient>();
+        String whereClause=null;
+        if(NHINo!=null && !"".equals(NHINo)){
+            whereClause=" NHINo like '%"+NHINo+"%'";
+        }
+        try{
+            db = getReadableDatabase();
+            cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, whereClause , null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Patient patient = new Patient();
+                    patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    patient.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
+                    patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
+                    patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
+                    patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+                    patients.add(patient);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
             }
         }
-        return patient;
+        return patients;
     }
 
     //Search patient by Room-No
-    public Patient getPatientByRoomNo(String RoomNo) {
+    public List<Patient> getPatientByRoomNo(String RoomNo) {
         SQLiteDatabase db = null;
         Cursor cursor = null;
-        Patient patient = null;
-        db = getReadableDatabase();
-        cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, "roomNo=?" , new String[] {RoomNo}, null, null, null);
-
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                patient = new Patient();
-                patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                patient.setName(cursor.getString(cursor.getColumnIndex("name")));
-                patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
-                patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
-                patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
-                patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+        List<Patient> patients = new ArrayList<Patient>();
+        String whereClause=null;
+        if(RoomNo!=null && !"".equals(RoomNo)){
+            whereClause=" roomNo like '%"+RoomNo+"%'";
+        }
+        try{
+            db = getReadableDatabase();
+            cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, whereClause , null, null, null, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Patient patient = new Patient();
+                    patient.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    patient.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    patient.setRoomNo(cursor.getString(cursor.getColumnIndex("roomNo")));
+                    patient.setNHINo(cursor.getString(cursor.getColumnIndex("NHINo")));
+                    patient.setBirthDay(cursor.getString(cursor.getColumnIndex("birthDay")));
+                    patient.setWeight(cursor.getDouble(cursor.getColumnIndex("weight")));
+                    patients.add(patient);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
             }
         }
-        return patient;
+        return patients;
     }
 
     
@@ -216,7 +247,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
         try{
             db = getReadableDatabase();
-            cursor = db.query("USERS", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, whereClause , null, null, null, null);
+            cursor = db.query("PATIENT", new String[] {"id","name","roomNo","NHINo","birthDay","weight"}, whereClause , null, null, null, null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     Patient patient = new Patient();

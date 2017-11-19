@@ -37,13 +37,12 @@ public class PatientListPage extends Activity {
 
     private SQLiteHelper patientsdb = null;
     private List<Patient> patients;
-    private Patient patients2;
-    private Patient patients3;
 
     //Define spinner
     Spinner sp;
-    String spname [] = {"Name", "NHI-No", "Room-No"};
+    String spname [] = {"All", "Name", "NHI-No", "Room-No"};
     ArrayAdapter <String> spadapter;
+    int index=0;
 
     ///////////////////////----ListView Function----/////////////////////////////////
     @Override
@@ -53,23 +52,21 @@ public class PatientListPage extends Activity {
 
         patientsdb = new SQLiteHelper(this);
         patients = patientsdb.getPatientsByName(null);
-        patients2 = patientsdb.getPatientByNHINo(null);
-        patients3 = patientsdb.getPatientByRoomNo(null);
 
         try{
             PatientListAdapter patientListAdapter = new PatientListAdapter();
             ListView patientList = (ListView)findViewById(R.id.Patient_List);
             patientList.setAdapter(patientListAdapter);
 
-//            patientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    Patient product = patients.get(position);
-//                    Intent intent=new Intent(getApplicationContext(),AddProduct.class);
-//                    intent.putExtra("product",patient);
-//                    startActivity(intent);
-//                }
-//            });
+            patientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Patient patient = patients.get(position);
+                    Intent intent=new Intent(getApplicationContext(),PatientAddPage.class);
+                    intent.putExtra("patient",patient);
+                    startActivity(intent);
+                }
+            });
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -84,14 +81,18 @@ public class PatientListPage extends Activity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 switch (position) {
-                    case 0://Search by Name
-                        break;
 
-                    case 1://Search by NHI-No
+                    case 1://Search by Name
+                        index=1;
                         break;
-
-                    case 2://Search by Room-No
+                    case 2://Search by NHI-No
+                        index=2;
                         break;
+                    case 3://Search by Room-No
+                        index=3;
+                        break;
+                    default://Search All
+                        index=0;
                 }
             }
             @Override
@@ -159,43 +160,30 @@ public class PatientListPage extends Activity {
     }
 
 
-
-
-    ///////////////////////----Button Function----/////////////////////////////////
-
-
-
-
-    ///////////////////////----Search Function----/////////////////////////////////
-
-    //Search by Name
-    public void searchName(View v){
+    ///////////////////////----Search Button Function----/////////////////////////////////
+    public void Search_The_Patient(View v){
         EditText searchText = (EditText) findViewById(R.id.Patient_enter);
-        patients = patientsdb.getPatientsByName(searchText.getText().toString());
-        PatientListAdapter patientListAdapter = new PatientListAdapter();
-        ListView patientList = (ListView)findViewById(R.id.Patient_List);
-        patientList.setAdapter(patientListAdapter);
-        patientList.deferNotifyDataSetChanged();
-    }
+        String searStr = searchText.getText().toString();
+        switch (index) {
+            case 1://Search by Name
+                patients = patientsdb.getPatientsByName(searStr);
+                index=0;
+                break;
 
-    //Search by NHI-No
-    public void searchNHINo(View v){
-        EditText searchText = (EditText) findViewById(R.id.Patient_enter);
-        patients2 = patientsdb.getPatientByNHINo(searchText.getText().toString());
-        PatientListAdapter patientListAdapter = new PatientListAdapter();
-        ListView patientList = (ListView)findViewById(R.id.Patient_List);
-        patientList.setAdapter(patientListAdapter);
-        patientList.deferNotifyDataSetChanged();
-    }
+                case 2://Search by NHI-No
+                patients = patientsdb.getPatientByNHINo(searStr);
+                index=0;
+                break;
 
-    //Search by Room-No
-    public void searchRoomNo(View v){
-        EditText searchText = (EditText) findViewById(R.id.Patient_enter);
-        patients3 = patientsdb.getPatientByRoomNo(searchText.getText().toString());
-        PatientListAdapter patientListAdapter = new PatientListAdapter();
-        ListView patientList = (ListView)findViewById(R.id.Patient_List);
-        patientList.setAdapter(patientListAdapter);
-        patientList.deferNotifyDataSetChanged();
+                case 3://Search by Room-No
+                patients = patientsdb.getPatientByRoomNo(searStr);
+                index=0;
+                break;
+
+                default://Search All
+                patients = patientsdb.getPatientsByName(null);
+                index=0;
+        }
     }
 
 }
