@@ -370,11 +370,12 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = null;
         Cursor cursor = null;
         List<PatientDrugs> tasks = new ArrayList<PatientDrugs>();
-        String whereClause=null;
-        whereClause=" signTime is Null";
         try{
             db = getReadableDatabase();
-            cursor = db.query("DRUGS", new String[] {"id","patientId","drugsId","dosageStart","dosageEnd","frequency","timeStamp","signTime","signImg"}, whereClause , null, null, null, null);
+            cursor = getWritableDatabase().rawQuery("select p.name, d.name" +
+                    "from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    "left join DRUGS d on pd.drugsId = d.id" +
+                    "where signTime is null",null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     PatientDrugs dr = new PatientDrugs();
@@ -401,6 +402,21 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             }
         }
         return tasks;
+    }
+
+    public void addPatientDrugs(PatientDrugs patientDrugs){
+        ContentValues values = new ContentValues();
+        values.put("patientId",patientDrugs.getPatientId());
+        values.put("drugsId",patientDrugs.getDrugsId());
+        values.put("dosageStart",patientDrugs.getDosageStart());
+        values.put("dosageEnd",patientDrugs.getDosageEnd());
+        values.put("frequency",patientDrugs.getFrequency());
+        values.put("timeStamp",patientDrugs.getTimeStamp());
+        values.put("signTime",patientDrugs.getSignTime());
+        values.put("signImg",patientDrugs.getSignImg());
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert("PATIENTDRUGS", null, values);
+        db.close();
     }
 
 

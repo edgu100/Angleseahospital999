@@ -24,10 +24,11 @@ public class Mainpage extends AppCompatActivity {
             String mStr = "You have "+num+" messages!";
             msg.setText(mStr);
         }
+
         msg.setOnClickListener(new TextView.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i= new Intent(Mainpage.this,DrugsInformation.class);
+                Intent i= new Intent(Mainpage.this,CusTask.class);
                 startActivity(i);
             }
         });
