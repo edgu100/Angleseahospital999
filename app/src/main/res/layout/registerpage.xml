@@ -4,269 +4,81 @@
     android:layout_height="match_parent"
     android:background="#eeefff">
 
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape"
-        android:layout_marginTop="60dp"
-        android:id="@+id/IDinput">
-
         <TextView
-            android:id="@+id/wtextview"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:lines="1"
-            android:padding="1dp"
-            android:text="Working ID:"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="15sp" />
-
-        <View
-            android:id="@+id/wview"
-            android:layout_width="1dip"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/wtextview"
-            android:background="#EEEFFF" />
-
-        <EditText
-            android:id="@+id/WIDinput"
+            android:id="@+id/t1"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/wview"
-            android:background="#ffffff"
-            android:ems="19"
-            android:hint="Enter your working ID,please"
-            android:padding="1dp"
-            android:textSize="12sp" >
-            <requestFocus />
-        </EditText>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape"
-        android:layout_marginTop="10dp"
-        android:id="@+id/Nameinput"
-        android:layout_below="@+id/IDinput">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="40dp"
+            android:text="Name: "
+            android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/NTextView"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:lines="1"
-            android:padding="1dp"
-            android:text="Name:"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="15sp" />
-
-        <View
-            android:id="@+id/NView"
-            android:layout_width="1dip"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/NTextView"
-            android:background="#EEEFFF" />
-
-        <EditText
-            android:id="@+id/NEditText"
+            android:id="@+id/t2"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/NView"
-            android:background="#ffffff"
-            android:ems="19"
-            android:hint="Enter your name,please"
-            android:padding="1dp"
-            android:textSize="12sp" >
-        </EditText>
-
-        <ImageView
-            android:id="@+id/del_email"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="3dp"
-            android:src="@drawable/delete"
-            android:visibility="invisible" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape"
-        android:layout_marginTop="10dp"
-        android:id="@+id/EmailInput"
-        android:layout_below="@+id/Nameinput">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="95dp"
+            android:text="Email:"
+            android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/ETextView"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:lines="1"
-            android:padding="1dp"
-            android:text="Email"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="15sp" />
-
-        <View
-            android:id="@+id/EView"
-            android:layout_width="1dip"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/ETextView"
-            android:background="#EEEFFF" />
-
-        <EditText
-            android:id="@+id/EEditText"
+            android:id="@+id/t3"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/EView"
-            android:background="#ffffff"
-            android:ems="19"
-            android:hint="Enter your email address,please"
-            android:inputType="textEmailAddress"
-            android:padding="1dp"
-            android:textSize="12sp" >
-        </EditText>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape"
-        android:layout_marginTop="10dp"
-        android:id="@+id/PasswordInput"
-        android:layout_below="@+id/EmailInput">
-
-        <TextView
-            android:id="@+id/PTextView"
-            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:lines="1"
-            android:padding="1dp"
+            android:layout_marginTop="155dp"
             android:text="Password:"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="15sp" />
-
-        <View
-            android:id="@+id/PView"
-            android:layout_width="1dip"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/PTextView"
-            android:background="#EEEFFF" />
+            android:textSize="25sp" />
 
         <EditText
-            android:id="@+id/PEditText"
+            android:id="@+id/et1"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/PView"
-            android:background="#ffffff"
-            android:ems="19"
-            android:hint="Enter your password,please"
-            android:inputType="textPassword"
-            android:padding="1dp"
-            android:textSize="12sp"
-            android:password="true">
-        </EditText>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape"
-        android:layout_marginTop="10dp"
-        android:id="@+id/PasswordConfirm"
-        android:layout_below="@+id/PasswordInput">
-
-        <TextView
-            android:id="@+id/PCTextView"
-            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:lines="1"
-            android:padding="1dp"
-            android:text="Confirm Password:"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="9sp" />
-
-        <View
-            android:id="@+id/PCView"
-            android:layout_width="1dip"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_toRightOf="@+id/PCTextView"
-            android:background="#EEEFFF" />
+            android:layout_marginLeft="120dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_marginTop="22dp"/>
 
         <EditText
-            android:id="@+id/PCEditText"
+            android:id="@+id/et2"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_marginTop="85dp"/>
+
+        <EditText
+            android:id="@+id/et3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="145dp"
+            android:ems="10"
+            android:layout_marginLeft="120dp"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/b1"
+            android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="2dp"
-            android:layout_toRightOf="@+id/PCView"
-            android:background="#ffffff"
-            android:ems="19"
-            android:hint="Enter your password again,please"
-            android:inputType="textPassword"
-            android:padding="1dp"
-            android:textSize="12sp"
-            android:password="true">
-        </EditText>
-    </RelativeLayout>
+            android:background="@drawable/buttonshape"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:text="Add"
+            android:layout_marginTop="245dp"
+            android:layout_marginLeft="60dp"
+            android:onClick="addUser"/>
 
-    <Button
-        android:layout_width="200dp"
-        android:id="@+id/Patient_Add"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/PasswordConfirm"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/buttonshape"
-        android:layout_centerHorizontal="true"
-        android:text="Create an account"
-        android:textColor="@android:color/white"
-        android:onClick="Createaccount"/>
-
-
-
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/buttonshape"
+            android:text="Cancle"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_marginTop="245dp"
+            android:layout_marginLeft="200dp"
+            android:onClick="cancleUser"/>
 
 </RelativeLayout>
