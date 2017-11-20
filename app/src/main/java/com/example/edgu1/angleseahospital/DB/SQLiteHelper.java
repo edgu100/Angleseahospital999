@@ -740,6 +740,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.execSQL(sql);
         sql = "DROP TABLE IF EXISTS PATIENTDRUGS";
         db.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS TRACKS";
+        db.execSQL(sql);
         onCreate(db);
     }
 
