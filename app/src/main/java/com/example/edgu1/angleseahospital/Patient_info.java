@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,6 +40,24 @@ public class Patient_info extends AppCompatActivity {
         patient = (Patient) getIntent().getSerializableExtra("patient");
         patientDrugs = drugdb.patientDrugs(patient.getId());
         Map<String, String> d = patientDrugs.get(0);
+        Button AddButton = (Button)findViewById(R.id.ADD);
+        Button TrackButton = (Button)findViewById(R.id.TrackButton);
+        AddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Patient_info.this, Add_drugs.class);
+                startActivity(intent);
+            }
+        });
+        TrackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Patient_info.this, track.class); ////track System
+                startActivity(intent);
+            }
+        });
+
+
 
 
         TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
@@ -108,6 +127,7 @@ public class Patient_info extends AppCompatActivity {
             return view;
         }
     }
+
 }
 
 

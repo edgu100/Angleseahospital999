@@ -9,7 +9,9 @@
 
     <RelativeLayout
         android:layout_width="400dp"
-        android:layout_height="508dp">
+        android:layout_height="508dp"
+>
+
         <ImageView
             android:id="@+id/patientinfobackbroundcolor"
             android:layout_width="385dp"
@@ -33,51 +35,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_alignStart="@+id/PatientName"
+            android:layout_below="@+id/PatientName"
             android:text="Room Number:"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/PatientName"
-            android:layout_alignStart="@+id/PatientName" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/RoomEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="text"
-            android:textSize="20sp"
             android:layout_alignBaseline="@+id/RoomTextView"
             android:layout_alignBottom="@+id/RoomTextView"
-            android:layout_alignStart="@+id/BODEdit" />
+            android:layout_alignStart="@+id/BODEdit"
+            android:text="text"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/NHITextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:layout_alignStart="@+id/Weight"
+            android:layout_below="@+id/Weight"
             android:text="NHI NUMBER"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/Weight"
-            android:layout_alignStart="@+id/Weight" />
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/DrugImView"
             android:layout_width="385dp"
             android:layout_height="40dp"
-            android:background="@color/colorAccent"
             android:layout_below="@+id/NHITextView"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorAccent" />
 
         <TextView
             android:id="@+id/DrugInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/DrugList"
+            android:layout_alignStart="@+id/NHITextView"
             android:text="Drug Details"
             android:textColor="@android:color/background_light"
             android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_above="@+id/DrugList"
-            android:layout_alignStart="@+id/NHITextView" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/PatientName"
@@ -94,60 +96,83 @@
             android:id="@+id/PatientNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_alignStart="@+id/RoomEditView"
             android:layout_alignTop="@+id/PatientName"
-            android:layout_alignStart="@+id/RoomEditView" />
+            android:text="TextView" />
 
         <TextView
             android:id="@+id/Weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weight:"
-            android:textSize="18sp"
+            android:layout_alignStart="@+id/BOD"
             android:layout_below="@+id/BOD"
-            android:layout_alignStart="@+id/BOD" />
+            android:text="Weight:"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/WIGHTEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="18sp"
             android:layout_below="@+id/BODEdit"
-            android:layout_toEndOf="@+id/RoomTextView" />
+            android:layout_toEndOf="@+id/RoomTextView"
+            android:text="TextView"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/BOD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BOD:"
+            android:layout_alignStart="@+id/RoomTextView"
 
             android:layout_below="@+id/RoomTextView"
-            android:layout_alignStart="@+id/RoomTextView" />
+            android:text="BOD:" />
 
         <TextView
             android:id="@+id/BODEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:layout_below="@+id/RoomEditView"
-            android:layout_toEndOf="@+id/DrugInfo" />
+            android:layout_toEndOf="@+id/DrugInfo"
+            android:text="TextView" />
 
         <TextView
             android:id="@+id/NHINO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:layout_alignStart="@+id/BODEdit"
             android:layout_below="@+id/WIGHTEdit"
-            android:layout_alignStart="@+id/BODEdit" />
+            android:text="TextView" />
 
         <ListView
             android:id="@+id/DrugList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignEnd="@+id/patientinfobackbroundcolor"
-            android:layout_alignParentBottom="true"
+            android:layout_height="250dp"
             android:layout_below="@+id/DrugImView" />
 
+        <Button
+            android:id="@+id/AddDrugButton"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/DrugInfo"
+            android:background="@color/colorAccent"
+            android:text="ADD"
+            android:textColor="@android:color/background_light"
+            android:onClick="gotoAdd"
+            />
+
+        <Button
+            android:id="@+id/TrackButton"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="TRACK"
+            android:textColor="@android:color/background_light"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/RoomEditView"
+            android:layout_marginStart="12dp"
+            android:onClick="editPatient"
+            />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
