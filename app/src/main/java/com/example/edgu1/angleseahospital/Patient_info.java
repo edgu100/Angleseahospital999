@@ -90,7 +90,6 @@ public class Patient_info extends AppCompatActivity {
             timestamp.setText(Drug.get("timeStamp"));
             TextView signTime = (TextView) view.findViewById(R.id.apir_SignTimeEdit);
             signTime.setText(Drug.get("signTime"));
-
             return view;
         }
     }
