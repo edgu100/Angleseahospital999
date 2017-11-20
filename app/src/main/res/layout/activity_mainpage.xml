@@ -31,7 +31,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text=""
-        android:textColor="@android:color/holo_red_dark" />
+        android:textColor="@android:color/holo_red_dark"
+        android:onClick="taskDetail"/>
 
     <ImageView
         android:layout_width="250dp"
