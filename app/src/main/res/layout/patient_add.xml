@@ -100,16 +100,17 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/pa_update"
+        android:id="@+id/pa_save"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:background="@drawable/buttonshape"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:text="Update"
-        android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/pa_RoomNo"
-        android:layout_marginBottom="27dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="27dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="pa_save_click"
+        android:text="Save"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/pa_cancle"
@@ -120,8 +121,8 @@
         android:text="Cancle"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/pa_update"
-        android:layout_alignBottom="@+id/pa_update"
+        android:layout_alignBaseline="@+id/pa_save"
+        android:layout_alignBottom="@+id/pa_save"
         android:layout_alignEnd="@+id/pa_add_RoomNo" />
 
 

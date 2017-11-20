@@ -21,7 +21,7 @@ public class PatientAddPage extends AppCompatActivity {
     private Patient oldPatient = null;
 
     //Add new patient into database
-    public void saveClick(View v){
+    public void pa_save_click(View v){
         //Create PatientInfo share information file, MODE_PRIVATE is just this device can access it
         SharedPreferences sharedPre = getSharedPreferences("info", Context.MODE_PRIVATE);
         //Give the write right

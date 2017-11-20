@@ -27,6 +27,10 @@
         <activity android:name=".drugsdetails"/>
         <activity android:name=".Add_drugs"/>
         <activity android:name=".CusTask"/>
+        <activity android:name=".Signature" />
+        <activity android:name=".DrugsInformation" />
+        <activity android:name=".drugsdetails" />
+        <activity android:name=".Add_drugs" />
         <activity android:name=".Patient_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

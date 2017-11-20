@@ -96,15 +96,16 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/AdddrugsProductionData"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_below="@+id/AdddrugsSpecification"
         android:layout_marginStart="10dp"
         android:layout_marginTop="13dp"
         android:layout_toEndOf="@+id/productionDate"
-        android:background="@drawable/edit_bg"/>
+        android:background="@drawable/edit_bg"
+        android:onClick="DatePick"/>
     <TextView
         android:id="@+id/shelfLife"
         android:layout_width="wrap_content"
@@ -116,15 +117,16 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <EditText
+    <TextView
         android:id="@+id/AdddrugsShelfLife"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
         android:layout_below="@+id/AdddrugsProductionData"
         android:layout_marginStart="10dp"
         android:layout_marginTop="13dp"
         android:layout_toEndOf="@+id/shelfLife"
-        android:background="@drawable/edit_bg"/>
+        android:background="@drawable/edit_bg"
+        android:onClick="DatePick"/>
 
     <Button
         android:layout_width="100dp"

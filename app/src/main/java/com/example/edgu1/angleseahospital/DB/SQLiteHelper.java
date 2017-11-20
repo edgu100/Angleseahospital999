@@ -505,6 +505,117 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
 
 
+    public List<Map<String,String>> patientDrugs(int pid){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname,p.roomNo pRoomNo,p.NHINo NHINo,p.weight weight,p.birthDay birthDay," +
+                    "d.name dname,pd.dosage dosage,pd.frequency frequency,pd.timeStamp timeStamp,pd.signTime signTime" +
+                    " from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    " left join DRUGS d on pd.drugsId = d.id" +
+                    " where pd.patientId = " + pid,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
+                    dr.put("NHINo",cursor.getString(cursor.getColumnIndex("NHINo")));
+                    dr.put("weight",cursor.getString(cursor.getColumnIndex("weight")));
+                    dr.put("birthDay",cursor.getString(cursor.getColumnIndex("birthDay")));
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    dr.put("dosage",cursor.getString(cursor.getColumnIndex("dosage")));
+                    dr.put("frequency",cursor.getString(cursor.getColumnIndex("frequency")));
+                    dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
+
+                    tasks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tasks;
+    }
+
+
+    public List<Map<String,String>> getPatientDrugName(){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> PGname = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
+                    " from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    " left join DRUGS d on pd.drugsId = d.id" +
+                    " where signTime is null",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    PGname.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return PGname;
+    }
+
+//    public List<PatientDrugs> getPatientDrugsBypatientId(String patientId){
+//        SQLiteDatabase db = null;
+//        Cursor cursor = null;
+//        List<PatientDrugs> pg = new ArrayList<PatientDrugs>();
+//        String whereClause=null;
+//        if(patientId!=null && !"".equals(patientId)){
+//            whereClause=" patientId like '%"+patientId+"%'";
+//        }
+//        try{
+//            db = getReadableDatabase();
+//            cursor = db.query("PATIENTDRUGS", new String[] {"id","patientId","drugsId","dosage","frequency","timeStamp","signTime","signImg"}, whereClause , null, null, null, null);
+//            if (cursor.getCount() > 0) {
+//                while (cursor.moveToNext()) {
+//                    PatientDrugs patientdrugs = new PatientDrugs();
+//                    patientdrugs.setId(cursor.getInt(cursor.getColumnIndex("id")));
+//                    patientdrugs.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+//                    patientdrugs.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+//                    patientdrugs.setDosage(cursor.getString(cursor.getColumnIndex("dosage")));
+//                    patientdrugs.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
+//                    patientdrugs.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
+//                    patientdrugs.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
+//                    patientdrugs.setSignImg(cursor.getString(cursor.getColumnIndex("signImg")));
+//                    pg.add(patientdrugs);
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (cursor != null) {
+//                cursor.close();
+//            }
+//            if (db != null) {
+//                db.close();
+//            }
+//        }
+//        return pg;
+//    }
+
     ////////////////////////////////////
     //             Database           //
     ////////////////////////////////////
