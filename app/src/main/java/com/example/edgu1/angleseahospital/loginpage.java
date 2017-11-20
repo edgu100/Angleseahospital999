@@ -88,6 +88,23 @@ public class loginpage extends Activity {
         startActivity(i);
     }
 
+    public void signIn(View v){
+        EditText emailText=(EditText)findViewById(R.id.Email);
+        email = emailText.getText().toString().trim();
+        EditText passwordText=(EditText)findViewById(R.id.password);
+        User user = sqLiteHelper.getUserByEmail(email);
+        if(user == null){
+            Toast.makeText(context,"Email or password is incorrect!", Toast.LENGTH_LONG).show();
+        }else{
+            if(!user.getPassword().equals(passwordText.getText().toString().trim())){
+                Toast.makeText(context,"Email or password is incorrect!", Toast.LENGTH_LONG).show();
+            }else{
+                Intent i= new Intent(loginpage.this,Mainpage.class);
+                startActivity(i);
+            }
+        }
+    }
+
     Session session = null;
     String email="";
     String pwd="";

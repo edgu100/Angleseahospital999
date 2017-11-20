@@ -122,13 +122,14 @@
     </RelativeLayout>
 
     <Button
-        android:layout_width="100dp"
         android:id="@+id/Signin"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/pas"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/buttonshape"
+        android:onClick="signIn"
         android:text="Sign in"
         android:textColor="@android:color/white" />
 
