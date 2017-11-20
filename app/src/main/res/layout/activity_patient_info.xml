@@ -27,110 +27,150 @@
             android:textSize="25sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/NameTextview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/PatientInfo"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Patient Name："
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/NameEditview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/PatientInfo"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/NameTextview"
-            android:text="Name"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/RoomTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/NameEditview"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+
             android:text="Room Number:"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignTop="@+id/PatientID"
+            android:layout_toEndOf="@+id/DrugInfo" />
 
         <TextView
             android:id="@+id/RoomEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/NameEditview"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+
+            android:text="NO"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/RoomTextView"
+            android:layout_alignBottom="@+id/RoomTextView"
             android:layout_toEndOf="@+id/RoomTextView"
-            android:text="NameTextView"
-            android:textSize="20sp" />
+            android:layout_marginStart="17dp" />
 
         <TextView
             android:id="@+id/NHITextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/RoomTextView"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
             android:text="NHI NUMBER"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
 
-        <TextView
-            android:id="@+id/NHIEditView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/RoomEditView"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/NHITextView"
-            android:text="NHI number"
-            android:textSize="20sp" />
+            android:layout_marginTop="28dp"
+            android:layout_below="@+id/Weight"
+            android:layout_alignStart="@+id/Weight" />
 
         <ImageView
             android:id="@+id/DrugImView"
             android:layout_width="385dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/NHITextView"
-            android:layout_marginTop="11dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent"
+            android:layout_alignTop="@+id/DrugInfo"
+            android:layout_alignStart="@+id/DrugInfo" />
 
         <TextView
             android:id="@+id/DrugInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/DrugImView"
-            android:layout_marginStart="10dp"
             android:text="Drug Details"
             android:textColor="@android:color/background_light"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/NHITextView" />
+
         <TextView
-            android:id="@+id/DrugName"
+            android:id="@+id/ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Drug Name: "
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_below="@+id/DrugImView"
-            android:layout_alignStart="@+id/DrugInfo"
-            android:layout_marginTop="10dp" />
+            android:layout_alignStart="@+id/PatientInfo"
+            android:layout_below="@+id/patientinfobackbroundcolor"
+            android:layout_marginTop="13dp"
+            android:text="ID:" />
+
         <TextView
-            android:id="@+id/DrugEditView"
+            android:id="@+id/PatientID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Drug Name"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignBaseline="@+id/DrugName"
-            android:layout_alignBottom="@+id/DrugName"
-            android:layout_toEndOf="@+id/DrugName" />
+            android:layout_alignBaseline="@+id/ID"
+            android:layout_alignBottom="@+id/ID"
+            android:layout_toEndOf="@+id/ID"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/PatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ID"
+            android:layout_below="@+id/ID"
+            android:layout_marginTop="17dp"
+            android:text="Patient Name:" />
+
+        <TextView
+            android:id="@+id/PatientNameEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/PatientName"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@+id/PatientName"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/Weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/PatientName"
+            android:layout_below="@+id/PatientName"
+            android:layout_marginTop="20dp"
+            android:text="Weight:" />
+
+        <TextView
+            android:id="@+id/WIGHTEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/Weight"
+            android:layout_alignBottom="@+id/Weight"
+            android:layout_alignEnd="@+id/NHITextView"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/BOD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BOD:"
+            android:layout_alignBaseline="@+id/WIGHTEdit"
+            android:layout_alignBottom="@+id/WIGHTEdit"
+            android:layout_toEndOf="@+id/PatientNameEdit" />
+
+        <TextView
+            android:id="@+id/BODEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:layout_alignBaseline="@+id/BOD"
+            android:layout_alignBottom="@+id/BOD"
+            android:layout_toEndOf="@+id/BOD"
+            android:layout_marginStart="12dp" />
+
+        <TextView
+            android:id="@+id/NHINO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/NHITextView"
+            android:layout_alignBottom="@+id/NHITextView"
+            android:layout_centerHorizontal="true"
+            android:text="TextView" />
+
+        <ListView
+            android:id="@+id/DrugList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/patientinfobackbroundcolor"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/DrugImView" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

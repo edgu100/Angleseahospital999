@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/apir_DrugName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:text="Drug Name:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/apir_DrugEditName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textSize="20sp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/apir_timeStamp" />
+
+    <TextView
+        android:id="@+id/apir_DosageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Dosage:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/apir_DrugName"
+        android:layout_alignStart="@+id/apir_DrugName" />
+
+    <TextView
+        android:id="@+id/apir_DosageEditView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/apir_DosageView"
+        android:layout_alignBottom="@+id/apir_DosageView"
+        android:layout_alignStart="@+id/apir_DrugEditName"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/apir_Frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/apir_DosageView"
+        android:layout_below="@+id/apir_DosageView"
+        android:layout_marginTop="15dp"
+        android:text="Frenquency:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/apir_FrequencyEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/apir_DosageEditView"
+        android:layout_alignTop="@+id/apir_Frequency"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/apir_timeStamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/apir_Frequency"
+        android:layout_below="@+id/apir_Frequency"
+        android:layout_marginTop="27dp"
+        android:text="Time Stamp:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/apir_timeStampEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/apir_FrequencyEdit"
+        android:layout_alignTop="@+id/apir_timeStamp"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/apir_SignTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/apir_timeStamp"
+        android:layout_below="@+id/apir_timeStamp"
+        android:layout_marginTop="21dp"
+        android:text="Sign Time:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/apir_SignTimeEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/apir_SignTime"
+        android:layout_alignStart="@+id/apir_timeStampEdit"
+        android:text="TextView"
+        android:textSize="20sp" />
+</RelativeLayout>
