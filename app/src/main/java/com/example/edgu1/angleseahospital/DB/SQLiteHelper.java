@@ -627,15 +627,15 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         List<Map<String,String>> tracks = new ArrayList<Map<String,String>>();
         try{
             db = getReadableDatabase();
-            cursor = getWritableDatabase().rawQuery("select p.id pid,d.name dname, p.focustime focustime, p.realtime realtime" +
+            cursor = getWritableDatabase().rawQuery("select t.id tid,d.name dname, t.focustime focustime, t.realtime realtime" +
                     " from TRACKS t left join PATIENT p on t.patientId = p.id" +
                     " left join DRUGS d on t.drugsId = d.id"+
                     " WHERE t.patientId = "+pid+
-                    " ORDER BY p.realtime",null);
+                    " ORDER BY t.realtime",null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     Map<String,String> dr=new HashMap<String,String>();
-                    dr.put("pid",cursor.getInt(cursor.getColumnIndex("pid"))+"");
+                    dr.put("tid",cursor.getInt(cursor.getColumnIndex("tid"))+"");
                     dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
                     dr.put("focustime",cursor.getString(cursor.getColumnIndex("focustime")));
                     dr.put("realtime",cursor.getString(cursor.getColumnIndex("realtime")));
