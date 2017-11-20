@@ -125,7 +125,7 @@ public class PatientDrugListPage extends Activity {
 
     }
 
-    //Patient CustomAdapter
+    //PatientDrug CustomAdapter
     class CusTaskAdapter extends BaseAdapter {
 
         @Override
@@ -152,6 +152,16 @@ public class PatientDrugListPage extends Activity {
             taskName.setText(str);
             return view;
         }
+    }
+
+    public void pdl_add_onClick(View v){
+        Intent pdl_add = new Intent(PatientDrugListPage.this, PatientDrugAddListPage.class);
+        startActivity(pdl_add);
+    }
+
+    public void pdl_cancel_onClick(View v){
+        Intent pdl_cancel = new Intent(PatientDrugListPage.this, Patient_info.class);
+        startActivity(pdl_cancel);
     }
 
 
