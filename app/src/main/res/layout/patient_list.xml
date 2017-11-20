@@ -67,6 +67,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"
+        android:onClick="Patient_Add_onClick"
         android:text="@string/patient_add"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
