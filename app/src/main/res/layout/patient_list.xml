@@ -12,11 +12,10 @@
 
         <Spinner
             android:id="@+id/Patient_spinner"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="92dp" />
+            android:layout_marginLeft="60dp" />
 
         <EditText
             android:id="@+id/Patient_enter"
@@ -46,7 +45,7 @@
     <RelativeLayout
         android:id="@+id/Patient_List_area"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/Patient_Add"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/Patient_Search_area">
@@ -70,6 +69,7 @@
         android:onClick="Patient_Add_onClick"
         android:text="@string/patient_add"
         android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:onClick="PatientAdd"/>
 
 </RelativeLayout>

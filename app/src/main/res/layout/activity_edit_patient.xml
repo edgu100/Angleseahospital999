@@ -6,4 +6,154 @@
     android:layout_height="match_parent"
     tools:context="com.example.edgu1.angleseahospital.DB.editPatient">
 
+    <RelativeLayout
+        android:layout_height="495dp"
+        android:layout_width="450dp"
+>
+        <ImageView
+            android:id="@+id/patientinfobackbroundcolor"
+            android:layout_width="385dp"
+            android:layout_height="40dp"
+            android:background="@color/colorAccent" />
+        <TextView
+            android:id="@+id/PatientInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Patient Information"
+            android:textColor="@android:color/background_light"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/e_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="94dp"
+            android:text="Name:"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/e_brithday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/e_name"
+            android:layout_below="@+id/e_name"
+            android:layout_marginTop="22dp"
+            android:text="Birthday: "
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/e_wight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/e_brithday"
+            android:layout_below="@+id/e_brithday"
+            android:layout_marginTop="25dp"
+            android:text="Wight:"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/e_NHINo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/e_wight"
+            android:layout_below="@+id/e_wight"
+            android:layout_marginTop="25dp"
+            android:text="NHI-No:"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/e_RoomNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/e_NHINo"
+            android:layout_below="@+id/e_NHINo"
+            android:layout_marginTop="25dp"
+            android:text="Room-No:"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/e_add_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:layout_above="@+id/e_add_birthday"
+            android:layout_toEndOf="@+id/e_RoomNo"
+            android:layout_marginStart="15dp" />
+
+        <EditText
+            android:id="@+id/e_add_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/e_brithday"
+            android:layout_alignEnd="@+id/e_add_name"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/e_add_wight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/e_NHINo"
+            android:layout_alignStart="@+id/e_add_birthday"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/e_add_NHINo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/e_RoomNo"
+            android:layout_alignEnd="@+id/e_add_wight"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/e_add_RoomNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/e_RoomNo"
+            android:layout_alignStart="@+id/e_add_NHINo"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/e_save"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/e_RoomNo"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="27dp"
+            android:background="@drawable/buttonshape"
+            android:onClick="e_save_click"
+            android:text="Save"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/e_cancle"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/buttonshape"
+            android:text="Cancle"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:layout_alignBaseline="@+id/e_save"
+            android:layout_alignBottom="@+id/e_save"
+            android:layout_alignEnd="@+id/e_add_RoomNo" />
+
+    </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
