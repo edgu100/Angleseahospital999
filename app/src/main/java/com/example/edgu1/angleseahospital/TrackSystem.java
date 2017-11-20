@@ -1,6 +1,7 @@
 package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -65,6 +66,12 @@ public class TrackSystem extends Activity{
             Realtime.setText("b");
             return view;
         }
+    }
+
+    public void cancle(View v){
+        Intent i=new Intent(this,Patient_info.class);
+        startActivity(i);
+
     }
 
 }
