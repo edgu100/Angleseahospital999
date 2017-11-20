@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
+import com.example.edgu1.angleseahospital.DB.editPatient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,23 +48,21 @@ public class Patient_info extends AppCompatActivity {
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Patient_info.this, Add_drugs.class);
-
-                Intent i = new Intent(Patient_info.this,TrackSystem.class);
+                Intent i = new Intent(Patient_info.this, Add_drugs.class);
                 i.putExtra("pid","");
                 startActivity(i);                                ////ADD PATIENT
-                startActivity(intent);
+
 
             }
         });
         TrackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Patient_info.this, TrackSystem.class);
+
                 Intent i = new Intent(Patient_info.this,TrackSystem.class);
                 i.putExtra("pid","");
                 startActivity(i);                                ////track System
-                startActivity(intent);
+
 
             }
         });
@@ -142,6 +143,30 @@ public class Patient_info extends AppCompatActivity {
             return view;
         }
     }
+
+   /* public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.setting, menu);
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()){
+            case R.id.quit1:
+                super.finish();
+                Intent intent = new Intent(Patient_info.this, editPatient.class);
+                    i.putExtra("pid","");
+
+                startActivity(intent);
+                return true;
+            default:
+                return false;
+        }
+    }  */
 
 }
 
