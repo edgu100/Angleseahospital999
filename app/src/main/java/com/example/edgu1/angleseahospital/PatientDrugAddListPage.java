@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.edgu1.angleseahospital.DB.Drug;
+import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 import java.util.ArrayList;
@@ -37,31 +38,37 @@ import java.util.List;
 public class PatientDrugAddListPage extends Activity {
 
     ArrayList<String> selectedItems = new ArrayList<>();
-    private SQLiteHelper sqLiteHelper=null;
+    private SQLiteHelper sqLiteHelper = null;
+    private PatientDrugs oldpatientdrug;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sqLiteHelper = new SQLiteHelper(this);
         setContentView(R.layout.patient_drug_list_add);
+
+        sqLiteHelper = new SQLiteHelper(this);
+
         ListView chl = (ListView) findViewById(R.id.pdla_list);
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
         List<Drug> drugs = sqLiteHelper.getDrugsByName(null);
         String [] items = new String[drugs.size()];
-        for(int i=0;i<items.length;i++){
-            items[i]=drugs.get(i).getName();
+        for(int i = 0;i < items.length;i++){
+            items[i] = drugs.get(i).getName();
         }
 
-        ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, R.layout.patient_drug_list_add_row, R.id.pdlar_row,items);
+        ArrayAdapter<String> adpater = new ArrayAdapter<String>(this, R.layout.patient_drug_list_add_row, R.id.pdlar_row, items);
         chl.setAdapter(adpater);
+
         chl.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String selectedItem = ((TextView)view).getText().toString();
+
                 if(selectedItems.contains(selectedItem)){
+
                     selectedItems.remove(selectedItem);//uncheck item
                 }
                 else
@@ -70,12 +77,16 @@ public class PatientDrugAddListPage extends Activity {
         });
     }
 
-    public void showSelectedItems(View view){
+    public void pdla_save_onClick(View view){
         String items = "";
         for(String item:selectedItems){
             items += "-" + items + "\n";
         }
         Toast.makeText(this, "You have selected \n"+ items, Toast.LENGTH_LONG).show();
+
+
+
+
 
     }
 }

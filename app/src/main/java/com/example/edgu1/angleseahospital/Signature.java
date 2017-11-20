@@ -140,16 +140,35 @@ public class Signature extends Activity {
             saveBitmapToJPG(signature, photo);
             scanMediaFile(photo);
             result = true;
-            PatientDrugs pd= sqLiteHelper.getPatientDrugsById(pdid);
-            pd.setSignImg(pname);
 
-            Date nowTime=new Date();
-            System.out.println(nowTime);
-            SimpleDateFormat time=new SimpleDateFormat("dd/MM/yyyy");
-            pd.setSignTime(time.format(nowTime));
-            sqLiteHelper.updatePatientDrugs(pd);
-            Intent i= new Intent(Signature.this,CusTask.class);
-            startActivity(i);
+            Date nowTime = new Date();
+            SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:ss");
+            if(track==null){
+                PatientDrugs pd = sqLiteHelper.getPatientDrugsById(pdid);
+                pd.setSignImg(pname);
+                pd.setSignTime(time.format(nowTime));
+                sqLiteHelper.updatePatientDrugs(pd);
+                Intent i = new Intent(Signature.this,CusTask.class);
+                startActivity(i);
+            }else{
+                if(track.getSignature1()==null||"".equals(track.getSignature1())){
+                    track.setSignature1(pname);
+                }else{
+                    track.setSignature2(pname);
+                    track.setRealtime(time.format(nowTime));
+                }
+                sqLiteHelper.updateTracks(track);
+                if(track.getRealtime()!=null&&!"".equals(track.getRealtime())){
+                    Track ntrack = new Track();
+                    ntrack.setPatientId(track.getPatientId());
+                    ntrack.setDrugsId(track.getDrugsId());
+                    ntrack.setFocustime(track.getFocustime());
+                    sqLiteHelper.addTracks(ntrack);
+                }
+                Intent i = new Intent(Signature.this,TrackSystem.class);
+                i.putExtra("pid",track.getPatientId());
+                startActivity(i);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
