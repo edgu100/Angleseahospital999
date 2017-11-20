@@ -52,7 +52,7 @@ public class Patient_info extends AppCompatActivity {
         TrackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Patient_info.this, track.class); ////track System
+                Intent intent = new Intent(Patient_info.this, TrackSystem.class); ////track System
                 startActivity(intent);
             }
         });
