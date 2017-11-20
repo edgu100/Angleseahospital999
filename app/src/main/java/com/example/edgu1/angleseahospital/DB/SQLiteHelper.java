@@ -617,6 +617,105 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 //    }
 
     ////////////////////////////////////
+    //      Patient Tracks Database Query       //
+    ////////////////////////////////////
+
+
+    public List<Map<String,String>> getTracks(String pid){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tracks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select t.id tid,d.name dname, t.focustime focustime, t.realtime realtime" +
+                    " from TRACKS t left join PATIENT p on t.patientId = p.id" +
+                    " left join DRUGS d on t.drugsId = d.id"+
+                    " WHERE t.patientId = "+pid+
+                    " ORDER BY t.realtime",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("tid",cursor.getInt(cursor.getColumnIndex("tid"))+"");
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    dr.put("focustime",cursor.getString(cursor.getColumnIndex("focustime")));
+                    dr.put("realtime",cursor.getString(cursor.getColumnIndex("realtime")));
+                    tracks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tracks;
+    }
+
+    public void updateTracks(Track track){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("patientId",track.getPatientId());
+            values.put("drugsId",track.getDrugsId());
+            values.put("focustime",track.getFocustime());
+            values.put("realtime",track.getRealtime());
+            values.put("signature1",track.getSignature1());
+            values.put("signature2",track.getSignature2());
+            db.update("TRACKS",values,"id="+track.getId(),null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    public void addTracks(Track track){
+        SQLiteDatabase db = getWritableDatabase();
+        try{
+            ContentValues values = new ContentValues();
+            values.put("patientId",track.getPatientId());
+            values.put("drugsId",track.getDrugsId());
+            values.put("focustime",track.getFocustime());
+            db.insert("TRACKS", null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    public Track getTrackById(String tId) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        Track track = null;
+        db = getReadableDatabase();
+        cursor = db.query("TRACKS", new String[] {"id","patientId","drugsId","focustime","realtime","signature1","signature2"}, "id" + " = "+tId , null, null, null, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                track = new Track();
+                track.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                track.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+                track.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+                track.setFocustime(cursor.getString(cursor.getColumnIndex("focustime")));
+                track.setRealtime(cursor.getString(cursor.getColumnIndex("realtime")));
+                track.setSignature1(cursor.getString(cursor.getColumnIndex("signature1")));
+                track.setSignature2(cursor.getString(cursor.getColumnIndex("signature2")));
+            }
+        }
+        return track;
+    }
+
+    ////////////////////////////////////
     //             Database           //
     ////////////////////////////////////
 
@@ -660,6 +759,18 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "CONSTRAINT fk_drugs FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
                 ")";
         db.execSQL(sql);
+        sql = "create table if not exists TRACKS(" +
+                "id integer primary key AUTOINCREMENT," +
+                "patientId integer NOT NULL," +
+                "drugsId integer NOT NULL," +
+                "focustime text," +
+                "realtime text," +
+                "signature1 text," +
+                "signature2 text," +
+                "CONSTRAINT fk_trackp FOREIGN KEY (patientId) REFERENCES PATIENT(id)," +
+                "CONSTRAINT fk_trackd FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
+                ")";
+        db.execSQL(sql);
     }
 
     @Override
@@ -671,6 +782,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         sql = "DROP TABLE IF EXISTS DRUGS";
         db.execSQL(sql);
         sql = "DROP TABLE IF EXISTS PATIENTDRUGS";
+        db.execSQL(sql);
+        sql = "DROP TABLE IF EXISTS TRACKS";
         db.execSQL(sql);
         onCreate(db);
     }
