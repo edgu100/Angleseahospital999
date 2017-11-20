@@ -139,6 +139,9 @@ public class Signature extends Activity {
             System.out.println(nowTime);
             SimpleDateFormat time=new SimpleDateFormat("dd/MM/yyyy HH mm ss");
             pd.setSignTime(time.format(nowTime));
+            sqLiteHelper.updatePatientDrugs(pd);
+            Intent i= new Intent(Signature.this,CusTask.class);
+            startActivity(i);
         } catch (IOException e) {
             e.printStackTrace();
         }
