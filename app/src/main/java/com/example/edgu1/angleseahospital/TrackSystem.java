@@ -1,10 +1,12 @@
 package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,12 +31,26 @@ public class TrackSystem extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tracksystem);
 
+        String pid = getIntent().getStringExtra("pid");
         dbHandler = new SQLiteHelper(this);
-        tracks = dbHandler.getTracks("pid");
+        tracks = dbHandler.getTracks(pid);
 
         TrackAdapter trackAdapter = new TrackAdapter();
         ListView trackList = (ListView) findViewById(R.id.trackList);
         trackList.setAdapter(trackAdapter);
+        trackList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String,String> track = tracks.get(position);
+                String tid = track.get("tid");
+                String realtime = track.get("realtime");
+                if(realtime==null||"".equals(realtime)){
+                    Intent intent=new Intent(getApplicationContext(),Signature.class);
+                    intent.putExtra("track",track.get("tid"));
+                    startActivity(intent);
+                }
+            }
+        });
 
     }
 
