@@ -189,7 +189,10 @@ public class PatientListPage extends Activity {
     public void Patient_Add_onClick(View v){
         Intent pa_add = new Intent(this, PatientAddPage.class);
         startActivity(pa_add);
+
     }
+
+
 
 }
 
