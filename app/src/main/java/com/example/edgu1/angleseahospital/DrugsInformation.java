@@ -2,20 +2,16 @@ package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.edgu1.angleseahospital.DB.Add_drugs;
 import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
@@ -30,6 +26,12 @@ public class DrugsInformation extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsinfotmation);
+
+        String msg = getIntent().getStringExtra("drug");
+        if(msg!=null&&!"".equals(msg)){
+            Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+        }
+
         dbHandler = new SQLiteHelper(this);
         drugs = dbHandler.getDrugsByName(null);
         try{
@@ -38,7 +40,6 @@ public class DrugsInformation extends Activity {
             productList.setAdapter(productListAdapter);
 
             productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Drug drug = drugs.get(position);
                     Intent intent=new Intent(getApplicationContext(),drugsdetails.class);
@@ -86,6 +87,7 @@ public class DrugsInformation extends Activity {
             return view;
         }
     }
+
     /////////////////////////////
     /////////Search/////////////
     ////////////////////////////
@@ -98,8 +100,8 @@ public class DrugsInformation extends Activity {
         productList.deferNotifyDataSetChanged();
     }
 
-    //Register
-    public void ADD(View v){
+    //ADD Drugsdetail
+    public void ADD(View view){
         Intent i= new Intent(this,Add_drugs.class);
         startActivity(i);
     }

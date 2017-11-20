@@ -20,7 +20,8 @@
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/patientdetails"
         android:layout_marginLeft="40dp"
-        android:id="@+id/drugdetails"/>
+        android:id="@+id/drugdetails"
+        android:onClick="DrugsDetails"/>
 
     <TextView
         android:id="@+id/notice"

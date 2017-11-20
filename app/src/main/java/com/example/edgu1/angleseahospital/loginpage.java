@@ -103,6 +103,8 @@ public class loginpage extends Activity {
                 startActivity(i);
             }
         }
+        Intent i= new Intent(loginpage.this,Mainpage.class);
+        startActivity(i);
     }
 
     Session session = null;

@@ -364,6 +364,25 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.close();
     }
 
+    public void deleteDrug(int uId){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            db.beginTransaction();
+            db.execSQL("DELETE FROM DRUGS WHERE id="+uId+";");
+            db.setTransactionSuccessful();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.endTransaction();
+                db.close();
+            }
+        }
+    }
+
+
+
     ////////////////////////////////////
     //      Patient Drugs Database Query       //
     ////////////////////////////////////
@@ -464,6 +483,25 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             }
         }
         return pd;
+    }
+    public void updateDrug(Drug drug){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("name",drug.getName());
+            values.put("manufacturer",drug.getManufacturer());
+            values.put("specification",drug.getSpecification());
+            values.put("productionDate",drug.getProductionDate());
+            values.put("shelfLife",drug.getShelfLife());
+            db.update("DRUGS",values,"id="+drug.getId(),null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
     }
 
 

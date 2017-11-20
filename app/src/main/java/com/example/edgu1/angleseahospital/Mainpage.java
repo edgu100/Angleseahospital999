@@ -34,4 +34,8 @@ public class Mainpage extends AppCompatActivity {
         });
     }
 
+    public void DrugsDetails(View v){
+        Intent i= new Intent(Mainpage.this,DrugsInformation.class);
+        startActivity(i);
+    }
 }

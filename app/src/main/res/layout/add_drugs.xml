@@ -40,7 +40,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/DrugsName"
-        android:background="@drawable/edit_bg"/>
+        android:background="@drawable/edit_bg">
+        <requestFocus />
+    </EditText>
 
     <TextView
         android:id="@+id/manufacturer"
@@ -126,26 +128,26 @@
 
     <Button
         android:layout_width="100dp"
-        android:id="@+id/DrugUpdate"
+        android:id="@+id/DrugsDetails_Confirm"
         android:layout_height="wrap_content"
         android:layout_below="@+id/shelfLife"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/buttonshape"
-        android:text="Update"
+        android:text="Confirm"
         android:textColor="@android:color/white"
-        android:onClick="DrugUpdate"/>
+        android:onClick="DrugsDetails_Confirm"/>
 
     <Button
         android:layout_width="100dp"
-        android:id="@+id/DrugsDelete"
-        android:layout_toRightOf="@+id/DrugUpdate"
+        android:id="@+id/cancle"
+        android:layout_toRightOf="@+id/DrugsDetails_Confirm"
         android:layout_height="wrap_content"
         android:layout_below="@+id/shelfLife"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/buttonshape"
-        android:text="DELETE"
+        android:text="Cancle"
         android:textColor="@android:color/white"
-        android:onClick="DrugsDelete"/>
+        android:onClick="cancle"/>
 </RelativeLayout>

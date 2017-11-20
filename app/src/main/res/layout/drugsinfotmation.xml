@@ -55,7 +55,8 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/buttonshape"
         android:text="Add"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:onClick="ADD"/>
 
 
 
