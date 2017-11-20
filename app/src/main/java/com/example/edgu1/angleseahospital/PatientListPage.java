@@ -186,5 +186,10 @@ public class PatientListPage extends Activity {
         }
     }
 
+
+    public void PatientAdd(View v){
+        Intent i= new Intent(this,PatientAddPage.class);
+        startActivity(i);
+    }
 }
 
