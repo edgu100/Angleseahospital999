@@ -66,6 +66,12 @@ public class Patient_info extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        //Track按钮传值病人id
+        Intent i = new Intent(Patient_info.this,TrackSystem.class);
+        i.putExtra("pid","");
+        startActivity(i);
     }
 
 
