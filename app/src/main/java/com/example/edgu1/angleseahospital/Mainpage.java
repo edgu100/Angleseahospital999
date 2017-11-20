@@ -35,4 +35,10 @@ public class Mainpage extends AppCompatActivity {
         Intent i= new Intent(Mainpage.this,DrugsInformation.class);
         startActivity(i);
     }
+
+    public void patientDetail(View v){
+        Intent i= new Intent(Mainpage.this,PatientListPage.class);
+        startActivity(i);
+    }
+
 }

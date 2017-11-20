@@ -11,7 +11,8 @@
         android:src="@drawable/patientdetails"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="50dp"
-        android:id="@+id/patientdetails"/>
+        android:id="@+id/patientdetails"
+        android:onClick="patientDetail"/>
 
     <ImageView
         android:layout_width="120dp"
