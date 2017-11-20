@@ -46,16 +46,27 @@ public class Patient_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Patient_info.this, Add_drugs.class);
+
+                Intent i = new Intent(Patient_info.this,TrackSystem.class);
+                i.putExtra("pid","");
+                startActivity(i);                                ////ADD PATIENT
                 startActivity(intent);
+
             }
         });
         TrackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Patient_info.this, TrackSystem.class); ////track System
+                Intent intent = new Intent(Patient_info.this, TrackSystem.class);
+                Intent i = new Intent(Patient_info.this,TrackSystem.class);
+                i.putExtra("pid","");
+                startActivity(i);                                ////track System
                 startActivity(intent);
+
             }
         });
+
+
 
 
 
@@ -87,10 +98,8 @@ public class Patient_info extends AppCompatActivity {
         });
 
 
-        //Track按钮传值病人id
-        Intent i = new Intent(Patient_info.this,TrackSystem.class);
-        i.putExtra("pid","");
-        startActivity(i);
+
+
     }
 
 
