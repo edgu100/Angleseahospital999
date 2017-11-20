@@ -693,6 +693,28 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 
+    public Track getTrackById(String tId) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        Track track = null;
+        db = getReadableDatabase();
+        cursor = db.query("TRACKS", new String[] {"id","patientId","drugsId","focustime","realtime","signature1","signature2"}, "id" + " = "+tId , null, null, null, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                track = new Track();
+                track.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                track.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+                track.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+                track.setFocustime(cursor.getString(cursor.getColumnIndex("focustime")));
+                track.setRealtime(cursor.getString(cursor.getColumnIndex("realtime")));
+                track.setSignature1(cursor.getString(cursor.getColumnIndex("signature1")));
+                track.setSignature2(cursor.getString(cursor.getColumnIndex("signature2")));
+            }
+        }
+        return track;
+    }
+
     ////////////////////////////////////
     //             Database           //
     ////////////////////////////////////

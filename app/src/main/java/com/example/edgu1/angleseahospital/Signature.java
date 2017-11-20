@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
+import com.example.edgu1.angleseahospital.DB.Track;
 import com.github.gcacace.signaturepad.views.SignaturePad;
 
 import java.io.File;
@@ -36,6 +37,8 @@ public class Signature extends Activity {
     private Button mSaveButton;
     private String pdid;
     private SQLiteHelper sqLiteHelper=null;
+    //Track
+    private Track track;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,11 @@ public class Signature extends Activity {
         setContentView(R.layout.activity_signature);
         pdid = getIntent().getStringExtra("pdid");
         sqLiteHelper = new SQLiteHelper(this);
+
+        String tid = getIntent().getStringExtra("track");
+        if(tid!=null&&!"".equals(tid)){
+            track = sqLiteHelper.getTrackById(tid);
+        }
 
         mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
