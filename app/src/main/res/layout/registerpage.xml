@@ -32,35 +32,37 @@
 
         <EditText
             android:id="@+id/et1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginTop="22dp"/>
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="29dp"
+            android:layout_toEndOf="@+id/t1"
+            android:background="@drawable/edit_bg"/>
 
         <EditText
             android:id="@+id/et2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="120dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginTop="85dp"/>
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="35dp"
+            android:layout_below="@+id/et1"
+            android:layout_toEndOf="@+id/t2"
+            android:background="@drawable/edit_bg"/>
 
         <EditText
             android:id="@+id/et3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="145dp"
-            android:ems="10"
-            android:layout_marginLeft="120dp"
-            android:inputType="textPassword" />
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="29dp"
+            android:layout_below="@+id/et2"
+            android:layout_toEndOf="@+id/t3"
+            android:background="@drawable/edit_bg"/>
 
         <Button
             android:id="@+id/b1"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:background="@drawable/buttonshape"
             android:textColor="@android:color/white"
             android:textSize="18sp"
@@ -72,7 +74,7 @@
         <Button
             android:id="@+id/b2"
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:background="@drawable/buttonshape"
             android:text="Cancle"
             android:textColor="@android:color/white"
