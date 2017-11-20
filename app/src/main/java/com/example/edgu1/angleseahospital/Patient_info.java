@@ -21,7 +21,7 @@ import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
-import com.example.edgu1.angleseahospital.DB.editPatient;
+
 
 import java.util.ArrayList;
 import java.util.List;

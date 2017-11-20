@@ -26,7 +26,7 @@ public class PatientAddPage extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_add);
-
+        dbHandler = new SQLiteHelper(this);
     }
 
     //Add new patient into database
@@ -72,6 +72,8 @@ public class PatientAddPage extends AppCompatActivity {
             finish();
         }
     }
+
+
 
 
     public void pa_cancle_onClick(View v){
