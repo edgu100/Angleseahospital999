@@ -28,6 +28,7 @@
         <activity android:name=".Add_drugs"/>
         <activity android:name=".CusTask"/>
         <activity android:name=".PatientListPage"/>
+        <activity android:name=".TrackSystem"/>
         <activity android:name=".Patient_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

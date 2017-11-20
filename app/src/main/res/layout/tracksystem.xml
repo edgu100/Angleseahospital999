@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/DrugName0"/>
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/DrugName0"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/foucustime00"
+        android:textSize="18dp"
+        android:text="foucustime"/>
+    <TextView
+        android:layout_width="100dp"
+        android:textStyle="bold"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/foucustime00"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/Realtime"
+        android:textSize="18dp"
+        android:text="Realtime"
+        />
+    <ListView
+        android:id="@+id/DrugsDetails"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:descendantFocusability="beforeDescendants"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="1dp" />
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/DrugsDetails_Confirm"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DrugsDetails"
+        android:layout_marginLeft="65dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttonshape"
+        android:text="Confirm"
+        android:textColor="@android:color/white"
+        android:onClick="DrugsDetails_Confirm"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:id="@+id/cancle"
+        android:layout_toRightOf="@+id/DrugsDetails_Confirm"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/DrugsDetails"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/buttonshape"
+        android:text="Cancle"
+        android:textColor="@android:color/white"
+        android:onClick="cancle"/>
+</RelativeLayout>
