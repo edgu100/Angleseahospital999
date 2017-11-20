@@ -86,4 +86,10 @@ public class TrackSystem extends Activity{
         }
     }
 
+    public void cancle(View v){
+        Intent i=new Intent(this,Patient_info.class);
+        startActivity(i);
+
+    }
+
 }
