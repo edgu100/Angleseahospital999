@@ -51,6 +51,21 @@ public class Patient_info extends AppCompatActivity {
         WIGHTEdit.setText(d.get("weight"));
         TextView NHI = (TextView) findViewById(R.id.NHINO);
         NHI.setText(d.get("NHINo"));
+
+        Patient_info.patientDrugsAdapter CusTaskAdapter = new Patient_info.patientDrugsAdapter();
+        ListView taskList = (ListView)findViewById(R.id.DrugList);
+        taskList.setAdapter(CusTaskAdapter);
+
+        taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String,String> patient = patientDrugs.get(position);
+                PatientDrugs pds= drugdb.getPatientDrugsById(patient.get("pdid"));
+                Intent intent=new Intent(getApplicationContext(),PatientAddPage.class);
+                intent.putExtra("pid",pds.getPatientId());
+                startActivity(intent);
+            }
+        });
     }
 
 
