@@ -142,12 +142,18 @@ public class Signature extends Activity {
             result = true;
 
             Date nowTime = new Date();
-            SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:ss");
+            SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             if(track==null){
                 PatientDrugs pd = sqLiteHelper.getPatientDrugsById(pdid);
                 pd.setSignImg(pname);
                 pd.setSignTime(time.format(nowTime));
                 sqLiteHelper.updatePatientDrugs(pd);
+                Track ntrack = new Track();
+                ntrack.setPatientId(pd.getPatientId());
+                ntrack.setDrugsId(pd.getDrugsId());
+                PatientDrugs patientDrugs = sqLiteHelper.getPatientDrugsByPDID(pd.getPatientId(),pd.getDrugsId());
+                ntrack.setFocustime(TaskTimeTool.culTime(patientDrugs.getFrequency()));
+                sqLiteHelper.addTracks(ntrack);
                 Intent i = new Intent(Signature.this,CusTask.class);
                 startActivity(i);
             }else{
@@ -157,14 +163,15 @@ public class Signature extends Activity {
                     track.setSignature2(pname);
                     track.setRealtime(time.format(nowTime));
                 }
-                sqLiteHelper.updateTracks(track);
                 if(track.getRealtime()!=null&&!"".equals(track.getRealtime())){
                     Track ntrack = new Track();
                     ntrack.setPatientId(track.getPatientId());
                     ntrack.setDrugsId(track.getDrugsId());
-                    ntrack.setFocustime(track.getFocustime());
+                    PatientDrugs patientDrugs = sqLiteHelper.getPatientDrugsByPDID(track.getPatientId(),track.getDrugsId());
+                    ntrack.setFocustime(TaskTimeTool.culTime(patientDrugs.getFrequency()));
                     sqLiteHelper.addTracks(ntrack);
                 }
+                sqLiteHelper.updateTracks(track);
                 Intent i = new Intent(Signature.this,TrackSystem.class);
                 i.putExtra("pid",track.getPatientId());
                 startActivity(i);

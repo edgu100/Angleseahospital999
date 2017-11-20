@@ -578,6 +578,40 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return PGname;
     }
 
+    public PatientDrugs getPatientDrugsByPDID(int patientId,int drugsId){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        PatientDrugs pd = null;
+        try {
+            db = getWritableDatabase();
+            cursor = db.rawQuery("select * from PATIENTDRUGS" +
+                    " where patientId=" + patientId + " and drugsId=" + drugsId, null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    pd = new PatientDrugs();
+                    pd.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    pd.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+                    pd.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+                    pd.setDosage(cursor.getString(cursor.getColumnIndex("dosage")));
+                    pd.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
+                    pd.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
+                    pd.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
+                    pd.setSignImg(cursor.getString(cursor.getColumnIndex("signImg")));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return pd;
+    }
+
 //    public List<PatientDrugs> getPatientDrugsBypatientId(String patientId){
 //        SQLiteDatabase db = null;
 //        Cursor cursor = null;
