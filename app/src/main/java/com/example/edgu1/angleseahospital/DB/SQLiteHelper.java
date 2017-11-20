@@ -655,6 +655,27 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return tracks;
     }
 
+    public void updateTracks(Track track){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("patientId",track.getPatientId());
+            values.put("drugsId",track.getDrugsId());
+            values.put("focustime",track.getFocustime());
+            values.put("realtime",track.getRealtime());
+            values.put("signature1",track.getSignature1());
+            values.put("signature2",track.getSignature2());
+            db.update("TRACKS",values,"id="+track.getId(),null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
     public void addTracks(Track track){
         SQLiteDatabase db = getWritableDatabase();
         try{
