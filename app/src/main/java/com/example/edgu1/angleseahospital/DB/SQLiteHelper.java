@@ -617,6 +617,62 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 //    }
 
     ////////////////////////////////////
+    //      Patient Tracks Database Query       //
+    ////////////////////////////////////
+
+
+    public List<Map<String,String>> getTracks(String pid){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tracks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select p.id pid,d.name dname, p.focustime focustime, p.realtime realtime" +
+                    " from TRACKS t left join PATIENT p on t.patientId = p.id" +
+                    " left join DRUGS d on t.drugsId = d.id"+
+                    " WHERE t.patientId = "+pid+
+                    " ORDER BY p.realtime",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pid",cursor.getInt(cursor.getColumnIndex("pid"))+"");
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    dr.put("focustime",cursor.getString(cursor.getColumnIndex("focustime")));
+                    dr.put("realtime",cursor.getString(cursor.getColumnIndex("realtime")));
+                    tracks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tracks;
+    }
+
+    public void addTracks(Track track){
+        SQLiteDatabase db = getWritableDatabase();
+        try{
+            ContentValues values = new ContentValues();
+            values.put("patientId",track.getPatientId());
+            values.put("drugsId",track.getDrugsId());
+            values.put("focustime",track.getFocustime());
+            db.insert("TRACKS", null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    ////////////////////////////////////
     //             Database           //
     ////////////////////////////////////
 
@@ -658,6 +714,18 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "signImg text," +
                 "CONSTRAINT fk_patient FOREIGN KEY (patientId) REFERENCES PATIENT(id)," +
                 "CONSTRAINT fk_drugs FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
+                ")";
+        db.execSQL(sql);
+        sql = "create table if not exists TRACKS(" +
+                "id integer primary key AUTOINCREMENT," +
+                "patientId integer NOT NULL," +
+                "drugsId integer NOT NULL," +
+                "focustime text," +
+                "realtime text," +
+                "signature1 text," +
+                "signature2 text," +
+                "CONSTRAINT fk_trackp FOREIGN KEY (patientId) REFERENCES PATIENT(id)," +
+                "CONSTRAINT fk_trackd FOREIGN KEY (drugsId) REFERENCES DRUGS(id)" +
                 ")";
         db.execSQL(sql);
     }
