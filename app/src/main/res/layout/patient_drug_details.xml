@@ -70,25 +70,14 @@
         android:layout_toEndOf="@+id/pdd_so" />
 
     <TextView
-        android:id="@+id/pdd_wight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_toEndOf="@+id/textView5"
-        android:text="50"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/pdd_wight"
-        android:layout_toEndOf="@+id/pdd_wight"
         android:text=" KG"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_toEndOf="@+id/pdd_getTm" />
 
     <TextView
         android:id="@+id/pdd_get_dosage"
@@ -114,7 +103,7 @@
 
     <EditText
         android:id="@+id/pdd_dmg"
-        android:layout_width="150dp"
+        android:layout_width="135dp"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView10"
         android:layout_alignBottom="@+id/textView10"
@@ -137,7 +126,7 @@
 
     <EditText
         android:id="@+id/pdd_dml"
-        android:layout_width="150dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/pdd_dmg"
         android:layout_toEndOf="@+id/textView12"
@@ -176,7 +165,7 @@
         android:textSize="18sp"
         android:layout_alignBaseline="@+id/pdd_confirm"
         android:layout_alignBottom="@+id/pdd_confirm"
-        android:layout_toEndOf="@+id/textView7" />
+        android:layout_alignStart="@+id/pdd_dml" />
 
     <Button
         android:id="@+id/pdd_confirm"
@@ -186,9 +175,9 @@
         android:text="Confirm"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        android:layout_marginBottom="18dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/pdd_so"
-        android:layout_marginBottom="19dp" />
+        android:layout_alignEnd="@+id/pdd_so" />
 
     <ImageView
         android:id="@+id/patientinfobackbround"
@@ -234,6 +223,51 @@
         android:layout_alignBaseline="@+id/pdd_FHours"
         android:layout_alignBottom="@+id/pdd_FHours"
         android:layout_toEndOf="@+id/pdd_FHours" />
+
+    <EditText
+        android:id="@+id/pdd_wight"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pdd_so"
+        android:layout_toEndOf="@+id/pdd_getDosage"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Weight"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/pdd_getDosage"
+        android:layout_alignBottom="@+id/pdd_getDosage"
+        android:layout_toEndOf="@+id/textView5"
+        android:text=" mg"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/pdd_calculate"
+        android:layout_width="110dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView11"
+        android:background="@drawable/buttonshape"
+        android:onClick="pdd_calculate_onClick"
+        android:text="calculate"
+        android:textColor="@android:color/white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pdd_getTm"
+        android:layout_toEndOf="@+id/pdd_wight"
+        android:text=" ml"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

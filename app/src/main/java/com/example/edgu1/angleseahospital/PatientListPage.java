@@ -134,10 +134,10 @@ public class PatientListPage extends Activity {
 
             //Set the info on screen
             PatientName.setText(patientInfo.getName());
-            PatientAge.setText(getCurrentAgeByBirthdate(patientInfo.getBirthDay()));
+            PatientAge.setText(String.valueOf(patientInfo.getBirthDay()));
             PatientWight.setText(String.valueOf(patientInfo.getWeight()));
-            PatientNHINo.setText(patientInfo.getNHINo());
-            PatientRoomNo.setText(patientInfo.getRoomNo());
+            PatientNHINo.setText(String.valueOf(patientInfo.getNHINo()));
+            PatientRoomNo.setText(String.valueOf(patientInfo.getRoomNo()));
 
             return view;
         }
@@ -185,6 +185,14 @@ public class PatientListPage extends Activity {
                 index=0;
         }
     }
+
+    public void Patient_Add_onClick(View v){
+        Intent pa_add = new Intent(this, PatientAddPage.class);
+        startActivity(pa_add);
+
+    }
+
+
 
 }
 

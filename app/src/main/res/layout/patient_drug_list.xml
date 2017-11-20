@@ -30,6 +30,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="61dp"
         android:background="@drawable/buttonshape"
+        android:onClick="pdl_add_onClick"
         android:text="Add"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
@@ -42,6 +43,7 @@
         android:layout_marginStart="56dp"
         android:layout_toEndOf="@+id/pdl_add"
         android:background="@drawable/buttonshape"
+        android:onClick="pdl_cancel_onClick"
         android:text="Cancel"
         android:textColor="@android:color/white"
         android:textSize="18sp" />

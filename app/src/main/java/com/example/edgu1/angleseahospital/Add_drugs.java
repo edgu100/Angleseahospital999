@@ -42,17 +42,6 @@ public class Add_drugs extends Activity {
 
         olddrug = (Drug) getIntent().getSerializableExtra("drug");
 
-
-
-
-
-
-
-
-
-
-
-
         if(olddrug!=null)
         {
             TextView drugName = (TextView)findViewById(R.id.AdddrugsName);
