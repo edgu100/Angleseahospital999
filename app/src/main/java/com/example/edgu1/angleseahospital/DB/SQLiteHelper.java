@@ -505,6 +505,47 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
 
 
+    public List<Map<String,String>> patientDrugs(int pid){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname,p.roomNo pRoomNo,p.NHINo NHINo,p.weight weight,p.birthDay birthDay," +
+                    "d.name dname,pd.dosage dosage,pd.frequency frequency,pd.timeStamp timeStamp,pd.signTime signTime" +
+                    " from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    " left join DRUGS d on pd.drugsId = d.id" +
+                    " where pd.patientId = " + pid,null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
+                    dr.put("NHINo",cursor.getString(cursor.getColumnIndex("NHINo")));
+                    dr.put("weight",cursor.getString(cursor.getColumnIndex("weight")));
+                    dr.put("birthDay",cursor.getString(cursor.getColumnIndex("birthDay")));
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    dr.put("dosage",cursor.getString(cursor.getColumnIndex("dosage")));
+                    dr.put("frequency",cursor.getString(cursor.getColumnIndex("frequency")));
+                    dr.put("timeStamp",cursor.getString(cursor.getColumnIndex("timeStamp")));
+                    dr.put("signTime",cursor.getString(cursor.getColumnIndex("signTime")));
+                    tasks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tasks;
+    }
+
+
     ////////////////////////////////////
     //             Database           //
     ////////////////////////////////////
