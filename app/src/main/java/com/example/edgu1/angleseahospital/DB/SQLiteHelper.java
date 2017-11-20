@@ -376,15 +376,15 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         try{
             db = getReadableDatabase();
             cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
-                    "from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
-                    "left join DRUGS d on pd.drugsId = d.id" +
-                    "where signTime is null",null);
+                    " from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
+                    " left join DRUGS d on pd.drugsId = d.id" +
+                    " where signTime is null",null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     Map<String,String> dr=new HashMap<String,String>();
                     dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
                     dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
-                    dr.put("pname",cursor.getString(cursor.getColumnIndex("dname")));
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
                     tasks.add(dr);
                 }
             }
@@ -402,18 +402,68 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
 
     public void addPatientDrugs(PatientDrugs patientDrugs){
-        ContentValues values = new ContentValues();
-        values.put("patientId",patientDrugs.getPatientId());
-        values.put("drugsId",patientDrugs.getDrugsId());
-        values.put("dosageStart",patientDrugs.getDosageStart());
-        values.put("dosageEnd",patientDrugs.getDosageEnd());
-        values.put("frequency",patientDrugs.getFrequency());
-        values.put("timeStamp",patientDrugs.getTimeStamp());
-        values.put("signTime",patientDrugs.getSignTime());
-        values.put("signImg",patientDrugs.getSignImg());
         SQLiteDatabase db = getWritableDatabase();
-        db.insert("PATIENTDRUGS", null, values);
-        db.close();
+        try{
+            ContentValues values = new ContentValues();
+            values.put("patientId",patientDrugs.getPatientId());
+            values.put("drugsId",patientDrugs.getDrugsId());
+            values.put("dosage",patientDrugs.getDosage());
+            values.put("frequency",patientDrugs.getFrequency());
+            values.put("timeStamp",patientDrugs.getTimeStamp());
+            values.put("signTime",patientDrugs.getSignTime());
+            values.put("signImg",patientDrugs.getSignImg());
+            db.insert("PATIENTDRUGS", null, values);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    public void updatePatientDrugs(PatientDrugs patientDrugs){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("patientId",patientDrugs.getPatientId());
+            values.put("drugsId",patientDrugs.getDrugsId());
+            values.put("dosage",patientDrugs.getDosage());
+            values.put("frequency",patientDrugs.getFrequency());
+            values.put("timeStamp",patientDrugs.getTimeStamp());
+            values.put("signTime",patientDrugs.getSignTime());
+            values.put("signImg",patientDrugs.getSignImg());
+            db.update("PATIENTDRUGS",values,"id="+patientDrugs.getId(),null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
+
+    public PatientDrugs getPatientDrugsById(String pdId) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        PatientDrugs pd = null;
+        db = getReadableDatabase();
+        cursor = db.query("PATIENTDRUGS", new String[] {"id","patientId","drugsId","dosage","frequency","timeStamp","signTime","signImg"}, "id" + " = "+pdId , null, null, null, null);
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                pd = new PatientDrugs();
+                pd.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                pd.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
+                pd.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
+                pd.setDosage(cursor.getString(cursor.getColumnIndex("dosage")));
+                pd.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
+                pd.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
+                pd.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
+                pd.setSignImg(cursor.getString(cursor.getColumnIndex("signImg")));
+            }
+        }
+        return pd;
     }
 
 
@@ -452,8 +502,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "id integer primary key AUTOINCREMENT," +
                 "patientId integer NOT NULL," +
                 "drugsId integer NOT NULL," +
-                "dosageStart text," +
-                "dosageEnd text," +
+                "dosage text," +
                 "frequency double," +
                 "timeStamp text," +
                 "signTime text," +

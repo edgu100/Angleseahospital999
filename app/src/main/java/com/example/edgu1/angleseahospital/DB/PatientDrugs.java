@@ -12,8 +12,7 @@ public class PatientDrugs implements Serializable {
     private Integer id;
     private Integer patientId;
     private Integer drugsId;
-    private String dosageStart;
-    private String dosageEnd;
+    private String dosage;
     private Double frequency;
     private String timeStamp;
     private String signTime;
@@ -29,14 +28,6 @@ public class PatientDrugs implements Serializable {
 
     public Integer getDrugsId() {
         return drugsId;
-    }
-
-    public String getDosageStart() {
-        return dosageStart;
-    }
-
-    public String getDosageEnd() {
-        return dosageEnd;
     }
 
     public Double getFrequency() {
@@ -59,20 +50,20 @@ public class PatientDrugs implements Serializable {
         this.id = id;
     }
 
+    public String getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
     public void setPatientId(Integer patientId) {
         this.patientId = patientId;
     }
 
     public void setDrugsId(Integer drugsId) {
         this.drugsId = drugsId;
-    }
-
-    public void setDosageStart(String dosageStart) {
-        this.dosageStart = dosageStart;
-    }
-
-    public void setDosageEnd(String dosageEnd) {
-        this.dosageEnd = dosageEnd;
     }
 
     public void setFrequency(Double frequency) {

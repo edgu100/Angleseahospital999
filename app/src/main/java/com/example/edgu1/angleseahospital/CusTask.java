@@ -36,9 +36,9 @@ public class CusTask extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Map<String,String> taskInfo = pds.get(position);
-//                Intent intent=new Intent(getApplicationContext(),PatientAddPage.class);
-//                intent.putExtra("patient",patient);
-//                startActivity(intent);
+                Intent intent=new Intent(getApplicationContext(),Signature.class);
+                intent.putExtra("pdid",taskInfo.get("pdid"));
+                startActivity(intent);
             }
         });
 
@@ -66,9 +66,9 @@ public class CusTask extends AppCompatActivity {
         public View getView(int position, View view, ViewGroup viewGroup) {
             view = getLayoutInflater().inflate(R.layout.task_row, null);
             Map<String,String> taskInfo = pds.get(position);
-            //Get Patient information
             TextView taskName = (TextView) view.findViewById(R.id.task_name);
-            taskName.setText(taskInfo.get("pdid"));
+            String str="Patient:" + taskInfo.get("pname")+"    Drug:"+taskInfo.get("dname");
+            taskName.setText(str);
             return view;
         }
     }

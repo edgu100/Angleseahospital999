@@ -17,12 +17,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.edgu1.angleseahospital.DB.PatientDrugs;
+import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 import com.github.gcacace.signaturepad.views.SignaturePad;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Signature extends Activity {
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -30,12 +34,16 @@ public class Signature extends Activity {
     private SignaturePad mSignaturePad;
     private Button mClearButton;
     private Button mSaveButton;
+    private String pdid;
+    private SQLiteHelper sqLiteHelper=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         verifyStoragePermissions(this);
         setContentView(R.layout.activity_signature);
+        pdid = getIntent().getStringExtra("pdid");
+        sqLiteHelper = new SQLiteHelper(this);
 
         mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
@@ -124,6 +132,13 @@ public class Signature extends Activity {
             saveBitmapToJPG(signature, photo);
             scanMediaFile(photo);
             result = true;
+            PatientDrugs pd= sqLiteHelper.getPatientDrugsById(pdid);
+            pd.setSignImg(pname);
+
+            Date nowTime=new Date();
+            System.out.println(nowTime);
+            SimpleDateFormat time=new SimpleDateFormat("dd/MM/yyyy HH mm ss");
+            pd.setSignTime(time.format(nowTime));
         } catch (IOException e) {
             e.printStackTrace();
         }
