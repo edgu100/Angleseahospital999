@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
+import com.example.edgu1.angleseahospital.DB.Track;
 
 import java.util.List;
 import java.util.Map;
@@ -23,27 +25,41 @@ import java.util.zip.Inflater;
 
 public class TrackSystem extends Activity{
     private SQLiteHelper dbHandler=null;
-    private List<Drug> drugstrack;
+    private List<Map<String,String>> tracks;
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tracksystem);
 
+        String pid = getIntent().getStringExtra("pid");
         dbHandler = new SQLiteHelper(this);
-        drugstrack = dbHandler.getDrugsByName(null);
+        tracks = dbHandler.getTracks(pid);
 
-        DrugListAdapter productListAdapter = new DrugListAdapter();
-        ListView DrugList = (ListView) findViewById(R.id.DrugsDetails);
-        DrugList.setAdapter(productListAdapter);
+        TrackAdapter trackAdapter = new TrackAdapter();
+        ListView trackList = (ListView) findViewById(R.id.trackList);
+        trackList.setAdapter(trackAdapter);
+        trackList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String,String> track = tracks.get(position);
+                String tid = track.get("tid");
+                String realtime = track.get("realtime");
+                if(realtime==null||"".equals(realtime)){
+                    Intent intent=new Intent(getApplicationContext(),Signature.class);
+                    intent.putExtra("track",track.get("tid"));
+                    startActivity(intent);
+                }
+            }
+        });
 
     }
 
     //Patient CustomAdapter
-    class DrugListAdapter extends BaseAdapter {
+    class TrackAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            return drugstrack.size();
+            return tracks.size();
         }
 
         @Override
@@ -58,12 +74,14 @@ public class TrackSystem extends Activity{
 
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
-            view = getLayoutInflater().inflate(R.layout.simple_track_list, null);
-            Drug taskInfo = drugstrack.get(position);
-            TextView foucustime = (TextView) view.findViewById(R.id.foucustime);
-            foucustime.setText("a");
-            TextView Realtime = (TextView) view.findViewById(R.id.Realtime);
-            Realtime.setText("b");
+            view = getLayoutInflater().inflate(R.layout.tracks_row, null);
+            Map<String,String> track = tracks.get(position);
+            TextView dName = (TextView) view.findViewById(R.id.dName);
+            dName.setText(track.get("dname"));
+            TextView focustime = (TextView) view.findViewById(R.id.focustime);
+            focustime.setText(track.get("focustime"));
+            TextView realtime = (TextView) view.findViewById(R.id.realtime);
+            realtime.setText(track.get("realtime"));
             return view;
         }
     }
