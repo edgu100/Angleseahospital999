@@ -1,12 +1,16 @@
 package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -25,6 +30,9 @@ public class Add_drugs extends Activity {
     private SQLiteHelper dbHandler=null;
     private Drug olddrug = null;
 
+    private DatePickerDialog datePickerDialog;
+    private Calendar calendar;
+
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -33,6 +41,15 @@ public class Add_drugs extends Activity {
         dbHandler = new SQLiteHelper(this);
 
         olddrug = (Drug) getIntent().getSerializableExtra("drug");
+
+
+
+
+
+
+
+
+
 
 
 
@@ -71,9 +88,9 @@ public class Add_drugs extends Activity {
             drug.setManufacturer(manufactureEdit.getText().toString());
             EditText specificationEdit=(EditText)findViewById(R.id.AdddrugsSpecification) ;
             drug.setSpecification(specificationEdit.getText().toString());
-            EditText productiondataEdit=(EditText)findViewById(R.id.AdddrugsProductionData);
+            TextView productiondataEdit=(TextView)findViewById(R.id.AdddrugsProductionData);
             drug.setProductionDate(productiondataEdit.getText().toString());
-            EditText shelflifeEdit =(EditText)findViewById(R.id.AdddrugsShelfLife) ;
+            TextView shelflifeEdit =(TextView)findViewById(R.id.AdddrugsShelfLife) ;
             drug.setShelfLife(shelflifeEdit.getText().toString());
 
 
@@ -108,4 +125,64 @@ public class Add_drugs extends Activity {
 
 
 }
+
+////////////////choose date////////////////
+    public void DatePick(View v){
+        switch (v.getId()) {
+            case R.id.AdddrugsProductionData:
+                showDailog();
+                break;
+            case R.id.AdddrugsShelfLife:
+                showDailog2();
+                break;
+        }
+    }
+
+
+    private void showDailog() {
+        calendar =  Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //monthOfYear 得到的月份会减1所以我们要加1
+                String time =Integer.toString(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1) + "/" +  String.valueOf(year);
+                TextView tx=(TextView)findViewById(R.id.AdddrugsProductionData) ;
+                tx.setText(time);
+            }
+        },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+        //自动弹出键盘问题解决
+        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+
+    }
+
+
+    private void showDailog2() {
+        calendar =  Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //monthOfYear 得到的月份会减1所以我们要加1
+                String time =Integer.toString(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1) + "/" +  String.valueOf(year);
+                TextView tx=(TextView)findViewById(R.id.AdddrugsShelfLife) ;
+                tx.setText(time);
+            }
+        },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+        //自动弹出键盘问题解决
+        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+
+    }
 }
