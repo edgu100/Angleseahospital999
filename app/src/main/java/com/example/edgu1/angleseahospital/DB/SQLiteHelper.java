@@ -23,23 +23,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     ////////////////////////////////////
     //      User Database Query       //
     ////////////////////////////////////
-    public User getUserById(Integer uId) {
-        SQLiteDatabase db = null;
-        Cursor cursor = null;
-        User user = null;
-        db = getReadableDatabase();
-        cursor = db.query("USERS", new String[] {"id","name","email","password"}, "id" + " = "+uId , null, null, null, null);
-        if (cursor.getCount() > 0) {
-            while (cursor.moveToNext()) {
-                user = new User();
-                user.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                user.setName(cursor.getString(cursor.getColumnIndex("name")));
-                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-            }
-        }
-        return user;
-    }
 
     public User getUserByEmail(String email) {
         SQLiteDatabase db = null;
@@ -59,40 +42,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return user;
     }
 
-    public List<User> getUsersByName(String name){
-        SQLiteDatabase db = null;
-        Cursor cursor = null;
-        List<User> users = new ArrayList<User>();
-        String whereClause=null;
-        if(name!=null && !"".equals(name)){
-            whereClause=" name like '%"+name+"%'";
-        }
-        try{
-            db = getReadableDatabase();
-            cursor = db.query("USERS", new String[] {"id","name","email","password"}, whereClause , null, null, null, null);
-            if (cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
-                    User user = new User();
-                    user.setId(cursor.getInt(cursor.getColumnIndex("id")));
-                    user.setName(cursor.getString(cursor.getColumnIndex("name")));
-                    user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-                    user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-                    users.add(user);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return users;
-    }
-
     public void addUser(User user){
         ContentValues values = new ContentValues();
         values.put("name",user.getName());
@@ -101,23 +50,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         SQLiteDatabase db = getWritableDatabase();
         db.insert("USERS", null, values);
         db.close();
-    }
-
-    public void deleteUser(int uId){
-        SQLiteDatabase db = null;
-        try {
-            db = getWritableDatabase();
-            db.beginTransaction();
-            db.execSQL("DELETE FROM USERS WHERE id="+uId+";");
-            db.setTransactionSuccessful();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (db != null) {
-                db.endTransaction();
-                db.close();
-            }
-        }
     }
 
     public void updateUser(User user){
@@ -299,6 +231,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             db = getWritableDatabase();
             db.beginTransaction();
             db.execSQL("DELETE FROM PATIENT WHERE id="+pId+";");
+            db.execSQL("DELETE FROM TRACKS WHERE patientId="+pId+";");
+            db.execSQL("DELETE FROM PATIENTDRUGS WHERE patientId="+pId+";");
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -421,6 +355,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             db = getWritableDatabase();
             db.beginTransaction();
             db.execSQL("DELETE FROM DRUGS WHERE id="+uId+";");
+            db.execSQL("DELETE FROM TRACKS WHERE drugsId="+uId+";");
+            db.execSQL("DELETE FROM PATIENTDRUGS WHERE drugsId="+uId+";");
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
