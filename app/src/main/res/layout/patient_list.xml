@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/dl">
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/Patient_Search_area"
@@ -18,15 +29,16 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp" />
+
         <EditText
             android:id="@+id/Patient_enter"
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:ems="10"
-            android:background="@drawable/edit_bg"
             android:layout_centerVertical="true"
+            android:layout_marginStart="17dp"
             android:layout_toEndOf="@+id/Patient_spinner"
-            android:layout_marginStart="17dp" />
+            android:background="@drawable/edit_bg"
+            android:ems="10" />
 
 
         <ImageView
@@ -71,5 +83,16 @@
         android:text="@string/patient_add"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
-
 </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/nav_view"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/activity_main_drawer">
+
+    </android.support.design.widget.NavigationView>
+
+</android.support.v4.widget.DrawerLayout>

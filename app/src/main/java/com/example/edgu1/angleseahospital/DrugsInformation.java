@@ -3,6 +3,12 @@ package com.example.edgu1.angleseahospital;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -17,7 +23,10 @@ import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 import java.util.List;
 
-public class DrugsInformation extends Activity {
+public class DrugsInformation extends AppCompatActivity {
+
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle abdt;
 
     private SQLiteHelper dbHandler=null;
     private List<Drug> drugs;
@@ -26,6 +35,42 @@ public class DrugsInformation extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drugsinfotmation);
+
+        dl = (DrawerLayout)findViewById(R.id.drug_list);
+        abdt = new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
+        abdt.setDrawerIndicatorEnabled(true);
+
+        dl.addDrawerListener(abdt);
+        abdt.syncState();
+
+        final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id){
+                    case R.id.nav_home:
+                        Intent h = new Intent(DrugsInformation.this, Mainpage.class);
+                        startActivity(h);
+                        break;
+                    case R.id.nav_patient:
+                        Intent p = new Intent(DrugsInformation.this, PatientListPage.class);
+                        startActivity(p);
+                        break;
+                    case R.id.nav_drug:
+//                        Intent d = new Intent(DrugsInformation.this, DrugsInformation.class);
+//                        startActivity(d);
+                        break;
+                    case R.id.nav_task:
+                        Intent t = new Intent(DrugsInformation.this, CusTask.class);
+                        startActivity(t);
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         String msg = getIntent().getStringExtra("drug");
         if(msg!=null&&!"".equals(msg)){
@@ -104,6 +149,11 @@ public class DrugsInformation extends Activity {
     public void ADD(View view){
         Intent i= new Intent(this,Add_drugs.class);
         startActivity(i);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
 }
