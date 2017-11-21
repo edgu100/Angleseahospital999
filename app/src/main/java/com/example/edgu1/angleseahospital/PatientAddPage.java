@@ -4,6 +4,7 @@ package com.example.edgu1.angleseahospital;
  * Created by WX on 2017/11/17.
  */
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,16 +12,24 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
+
+import java.util.Calendar;
 
 
 public class PatientAddPage extends AppCompatActivity {
 
     private SQLiteHelper dbHandler = null;
     private Patient oldPatient = null;
+
+    private DatePickerDialog datePickerDialog;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +52,7 @@ public class PatientAddPage extends AppCompatActivity {
             EditText pa_add_name= (EditText)findViewById(R.id.pa_add_name);
             patient.setName(pa_add_name.getText().toString());
             //Add birthday
-            EditText pa_add_birthday= (EditText)findViewById(R.id.pa_add_birthday);
+            TextView pa_add_birthday= (TextView)findViewById(R.id.pa_add_birthday);
             patient.setBirthDay(pa_add_birthday.getText().toString());
             //Add wight
             EditText pa_add_wight= (EditText)findViewById(R.id.pa_add_wight);
@@ -82,4 +91,40 @@ public class PatientAddPage extends AppCompatActivity {
     }
 
 
+    ////////////////choose date////////////////
+    public void Birthday(View v){
+                showDailog();
+        }
+
+
+
+    private void showDailog() {
+        calendar =  Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //monthOfYear 得到的月份会减1所以我们要加1
+                String time = Integer.toString(year) + "/" + String.valueOf(monthOfYear + 1) + "/" +String.valueOf(dayOfMonth) ;
+                TextView tx=(TextView)findViewById(R.id.pa_add_birthday) ;
+                tx.setText(time);
+            }
+        },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+        //自动弹出键盘问题解决
+        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+
+    }
+
+
+
+
 }
+
+
+

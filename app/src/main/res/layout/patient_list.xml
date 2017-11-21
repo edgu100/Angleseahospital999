@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/Patient_Search_area"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true">
 
         <Spinner
@@ -15,29 +15,27 @@
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="60dp" />
-
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"/>
         <EditText
             android:id="@+id/Patient_enter"
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@+id/Patient_spinner"
-            android:layout_toEndOf="@+id/Patient_spinner"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/Patient_spinner"
+            android:layout_marginTop="10dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            tools:ignore="LabelFor" />
+            android:background="@drawable/edit_bg"/>
+
 
         <ImageView
+            android:src="@drawable/ic_search_black_24dp"
             android:id="@+id/Patient_Search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/Patient_enter"
-            android:contentDescription=""
-            android:onClick="Search_The_Patient"
-            app:srcCompat="@drawable/ic_search_black_24dp"
-            tools:ignore="ContentDescription" />
+            android:layout_marginTop="10dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@+id/Patient_enter"
+            android:onClick="Search_The_Patient" />
+
 
     </RelativeLayout>
 

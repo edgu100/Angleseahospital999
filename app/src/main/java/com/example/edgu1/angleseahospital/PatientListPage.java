@@ -62,7 +62,7 @@ public class PatientListPage extends Activity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Patient patient = patients.get(position);
-                    Intent intent=new Intent(getApplicationContext(),PatientAddPage.class);
+                    Intent intent=new Intent(getApplicationContext(),Patient_info.class);
                     intent.putExtra("patient",patient);
                     startActivity(intent);
                 }
@@ -166,24 +166,40 @@ public class PatientListPage extends Activity {
         String searStr = searchText.getText().toString();
         switch (index) {
             case 1://Search by Name
-                patients = patientsdb.getPatientsByName(searStr);
+                patients = patientsdb.getPatientsByName(searStr.toString());
                 index=0;
+
+                PatientListAdapter patientListAdapter = new PatientListAdapter();
+                ListView patientList =(ListView)findViewById(R.id.Patient_List);
+                patientList.setAdapter(patientListAdapter);
+                patientList.deferNotifyDataSetChanged();
                 break;
 
                 case 2://Search by NHI-No
                 patients = patientsdb.getPatientByNHINo(searStr);
                 index=0;
+                    PatientListAdapter patientListAdapter01 = new PatientListAdapter();
+                    ListView patientList01 =(ListView)findViewById(R.id.Patient_List);
+                    patientList01.setAdapter(patientListAdapter01);
+                    patientList01.deferNotifyDataSetChanged();
                 break;
 
                 case 3://Search by Room-No
                 patients = patientsdb.getPatientByRoomNo(searStr);
                 index=0;
+                    PatientListAdapter patientListAdapter02 = new PatientListAdapter();
+                    ListView patientList02 =(ListView)findViewById(R.id.Patient_List);
+                    patientList02.setAdapter(patientListAdapter02);
+                    patientList02.deferNotifyDataSetChanged();
                 break;
 
                 default://Search All
                 patients = patientsdb.getPatientsByName(null);
                 index=0;
         }
+
+
+
     }
 
     public void Patient_Add_onClick(View v){
