@@ -109,7 +109,7 @@ public class Patient_info extends AppCompatActivity {
             Map<String,String> Drug = patientDrugs.get(position);
 
             TextView drugName = (TextView) view.findViewById(R.id.apir_DrugEditName);
-            drugName.setText(Drug.get("pName"));
+            drugName.setText(Drug.get("pname"));
             TextView drugDosage = (TextView) view.findViewById(R.id.apir_DosageEditView);
             drugDosage.setText(Drug.get("dosage"));
             TextView Frequency = (TextView) view.findViewById(R.id.apir_FrequencyEdit);

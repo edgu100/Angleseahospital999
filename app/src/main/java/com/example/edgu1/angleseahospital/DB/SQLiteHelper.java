@@ -562,13 +562,16 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 while (cursor.moveToNext()) {
                     Map<String,String> dr=new HashMap<String,String>();
                     dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
+                    dr.put("dosage",cursor.getString(cursor.getColumnIndex("dosage")));
+                    dr.put("frequency",cursor.getString(cursor.getColumnIndex("frequency")));
+                    dr.put("timeStamp",cursor.getString(cursor.getColumnIndex("timeStamp")));
+                    dr.put("signTime",cursor.getString(cursor.getColumnIndex("signTime")));
                     dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
                     dr.put("NHINo",cursor.getString(cursor.getColumnIndex("NHINo")));
                     dr.put("weight",cursor.getString(cursor.getColumnIndex("weight")));
                     dr.put("birthDay",cursor.getString(cursor.getColumnIndex("birthDay")));
                     dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
-                    dr.put("dosage",cursor.getString(cursor.getColumnIndex("dosage")));
-                    dr.put("frequency",cursor.getString(cursor.getColumnIndex("frequency")));
                     dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
                     tasks.add(dr);
                 }
