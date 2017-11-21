@@ -115,7 +115,7 @@ public class Patient_info extends AppCompatActivity {
             TextView Frequency = (TextView) view.findViewById(R.id.apir_FrequencyEdit);
             Frequency.setText(Drug.get("frequency"));
             TextView timestamp = (TextView) view.findViewById(R.id.apir_timeStampEdit);
-            timestamp.setText(Drug.get("timeStamp"));
+            timestamp.setText(Drug.get("signTime"));
             TextView signTime = (TextView) view.findViewById(R.id.apir_SignTimeEdit);
             signTime.setText(Drug.get("signTime"));
             return view;
