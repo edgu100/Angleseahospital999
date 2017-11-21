@@ -160,6 +160,7 @@ public class Patient_info extends AppCompatActivity {
             pid=patient.getId();
             drugdb.deletePatient(pid);
             info = "Delete successfully!";
+            editor.putString("msg", info);
             Intent intent = new Intent(Patient_info.this, PatientListPage.class);
             startActivity(intent);
             return true;
