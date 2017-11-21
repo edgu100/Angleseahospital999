@@ -49,9 +49,6 @@ public class editPatient extends AppCompatActivity {
     }
 
 
-
-
-
 // save button
     public void e_save_click(View v) {
 
