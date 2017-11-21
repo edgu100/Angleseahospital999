@@ -98,6 +98,7 @@ public class editPatient extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
     }
 //cancle button
 
