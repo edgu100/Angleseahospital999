@@ -39,7 +39,7 @@ public class Patient_info extends AppCompatActivity {
         patient = (Patient) getIntent().getSerializableExtra("patient");
         patientDrugs = drugdb.patientDrugs(patient.getId());
         Map<String, String> d = patientDrugs.get(0);
-        Button AddButton = (Button)findViewById(R.id.ADD);
+        Button AddButton = (Button)findViewById(R.id.AddButton);
         Button TrackButton = (Button)findViewById(R.id.TrackButton);
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
