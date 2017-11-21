@@ -81,7 +81,8 @@
         android:layout_below="@+id/AdddrugsManufacture"
         android:layout_marginStart="160dp"
         android:layout_marginTop="13dp"
-        android:background="@drawable/edit_bg"/>
+        android:background="@drawable/edit_bg"
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/Milliliters"
@@ -101,7 +102,8 @@
         android:layout_below="@+id/AdddrugsMilligrams"
         android:layout_marginStart="160dp"
         android:layout_marginTop="13dp"
-        android:background="@drawable/edit_bg"/>
+        android:background="@drawable/edit_bg"
+        android:inputType="number"/>
 
 
 
