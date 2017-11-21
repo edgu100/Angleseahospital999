@@ -1,6 +1,7 @@
 package com.example.edgu1.angleseahospital;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.ViewGroup;
@@ -31,8 +32,8 @@ public class PatientDrugDetialPage extends Activity {
     private List<Map<String,String>> patientDrugs;
     private List<Drug> drugs;
     private int age=0;
-
-
+    private String DrugID;
+    private String PatientID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,9 +44,9 @@ public class PatientDrugDetialPage extends Activity {
         //Get Patient ID & Drug ID
         String ids = getIntent().getStringExtra("ids");
         String[] idsarr = ids.split(",");
+        DrugID = String.valueOf(idsarr[0]);
+        PatientID = String.valueOf(idsarr[1]);
 
-        String DrugID = String.valueOf(idsarr[0]);
-        String PatientID = String.valueOf(idsarr[1]);
         dbHandler = new SQLiteHelper(this);
 
         oldDrug =dbHandler.getDrugById(DrugID);
@@ -67,21 +68,6 @@ public class PatientDrugDetialPage extends Activity {
         }
 
         if(age<16){
-            //textView3//pdd_getDosage/textView6/pdd_so/textView5/pdd_wight/textView7
-//            TextView textView3 = (TextView)findViewById(R.id.textView3);
-//            textView3.setVisibility(View.INVISIBLE);
-//            TextView pdd_getDosage = (TextView)findViewById(R.id.pdd_getDosage);
-//            pdd_getDosage.setVisibility(View.INVISIBLE);
-//            TextView textView6 = (TextView)findViewById(R.id.textView6);
-//            textView6.setVisibility(View.INVISIBLE);
-//            EditText pdd_so = (EditText)findViewById(R.id.pdd_so);
-//            pdd_so.setVisibility(View.INVISIBLE);
-//            TextView textView5 = (TextView)findViewById(R.id.textView5);
-//            textView5.setVisibility(View.INVISIBLE);
-//            EditText pddWight = (EditText)findViewById(R.id.pdd_wight);
-//            pddWight.setVisibility(View.INVISIBLE);
-//            TextView textView7 = (TextView)findViewById(R.id.textView7);
-//            textView7.setVisibility(View.INVISIBLE);
             EditText pdd_so = (EditText)findViewById(R.id.pdd_so);
             pdd_so.setEnabled(false);
             EditText pddWight = (EditText)findViewById(R.id.pdd_wight);
@@ -144,45 +130,24 @@ public class PatientDrugDetialPage extends Activity {
            }
        }
    }
+   public void comfirm(View v){
+        Intent i= new Intent(this,Signature.class);
+        PatientDrugs pd = setPatientDrugsDetail();
+        i.putExtra("pd",pd);
+        startActivity(i);
+   }
 
-//    class ProductListAdapter extends BaseAdapter {
-//
-//        @Override
-//        public int getCount() {
-//            return drugs.size();
-//        }
-//
-//        @Override
-//        public Object getItem(int i) {
-//            return null;
-//        }
-//
-//        @Override
-//        public long getItemId(int i) {
-//            return 0;
-//        }
-//
-//        @Override
-//        public View getView(int position, View view, ViewGroup viewGroup) {
-//            view = getLayoutInflater().inflate(R.layout.simple_drugs_list, null);
-//            Drug drug = drugs.get(position);
-//
-//            EditText pdd_dmg = (EditText)findViewById(R.id.pdd_dmg);
-//            EditText pdd_dml = (EditText)findViewById(R.id.pdd_dml);
-//
-//            pdd_dmg.setText(drug.getMilligrams());
-//            pdd_dml.setText(drug.getMilliliters());
-//
-//
-//            return view;
-//        }
-//    }
-
-//   public void pdd_cancle_onClick(View v){
-//
-//
-//   }
-
-
+   private PatientDrugs setPatientDrugsDetail(){
+       PatientDrugs p = new PatientDrugs();
+       p.setPatientId(Integer.parseInt(PatientID));
+       p.setDrugsId(Integer.parseInt(DrugID));
+       TextView dosageText = (TextView) findViewById(R.id.pdd_getDosage);
+       p.setDosage(dosageText.getText().toString());
+       TextView pdd_getTm = (TextView) findViewById(R.id.pdd_getTm);
+       p.setMedication(pdd_getTm.getText().toString());
+       EditText pdd_FHours = (EditText) findViewById(R.id.pdd_FHours);
+       p.setFrequency(Double.parseDouble(pdd_FHours.getText().toString()));
+       return p;
+   }
 
 }

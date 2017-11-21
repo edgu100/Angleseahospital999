@@ -35,18 +35,19 @@ public class Signature extends Activity {
     private SignaturePad mSignaturePad;
     private Button mClearButton;
     private Button mSaveButton;
-    private String pdid;
     private SQLiteHelper sqLiteHelper=null;
     //Track
     private Track track;
+
+    private PatientDrugs pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         verifyStoragePermissions(this);
         setContentView(R.layout.activity_signature);
-        pdid = getIntent().getStringExtra("pdid");
         sqLiteHelper = new SQLiteHelper(this);
+        pd = (PatientDrugs) getIntent().getSerializableExtra("pd");
 
         String tid = getIntent().getStringExtra("track");
         if(tid!=null&&!"".equals(tid)){
@@ -144,10 +145,9 @@ public class Signature extends Activity {
             Date nowTime = new Date();
             SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             if(track==null){
-                PatientDrugs pd = sqLiteHelper.getPatientDrugsById(pdid);
                 pd.setSignImg(pname);
                 pd.setSignTime(time.format(nowTime));
-                sqLiteHelper.updatePatientDrugs(pd);
+                sqLiteHelper.addPatientDrugs(pd);
                 Track ntrack = new Track();
                 ntrack.setPatientId(pd.getPatientId());
                 ntrack.setDrugsId(pd.getDrugsId());
