@@ -66,7 +66,7 @@ public class PatientDrugDetialPage extends Activity {
             e.printStackTrace();
         }
 
-        if(age>16){
+        if(age<16){
             //textView3//pdd_getDosage/textView6/pdd_so/textView5/pdd_wight/textView7
 //            TextView textView3 = (TextView)findViewById(R.id.textView3);
 //            textView3.setVisibility(View.INVISIBLE);
@@ -85,80 +85,98 @@ public class PatientDrugDetialPage extends Activity {
             EditText pdd_so = (EditText)findViewById(R.id.pdd_so);
             pdd_so.setEnabled(false);
             EditText pddWight = (EditText)findViewById(R.id.pdd_wight);
+            pddWight.setText("0");
             pddWight.setEnabled(false);
         }
     }
 
 
-   public void pdd_calculate_onClick(View v){
-       EditText standing_order = (EditText)findViewById(R.id.pdd_so);
+   public void pdd_calculate_onClick(View v) {
+       EditText standing_order = (EditText) findViewById(R.id.pdd_so);
        String getsOrder = standing_order.getText().toString();
 
-       EditText weight = (EditText)findViewById(R.id.pdd_wight);
+       EditText weight = (EditText) findViewById(R.id.pdd_wight);
        String getweight = weight.getText().toString();
 
-       EditText pdd_get_dosage = (EditText)findViewById(R.id.pdd_get_dosage);
-       String getdosage = weight.getText().toString();
+       EditText pdd_get_dosage = (EditText) findViewById(R.id.pdd_get_dosage);
+       String getdosage = pdd_get_dosage.getText().toString();
 
 
-       EditText pdd_dmg = (EditText)findViewById(R.id.pdd_dmg);
+       EditText pdd_dmg = (EditText) findViewById(R.id.pdd_dmg);
 
-       EditText pdd_dml = (EditText)findViewById(R.id.pdd_dml);
+       EditText pdd_dml = (EditText) findViewById(R.id.pdd_dml);
        //
        Double dosage;
        Double total_medication;
 
-       if(getsOrder!=null&&!"".equals(getsOrder)&&getweight!=null&&!"".equals(getweight)){
-           try{
-               // it means it is double & calculate dosage
-               dosage = Double.parseDouble(getsOrder) * Double.parseDouble(getweight);
-               TextView dosageText = (TextView) findViewById(R.id.pdd_getDosage);
-               dosageText.setText(String.valueOf(dosage));
+       if (age > 16) {
+           if (getsOrder != null && !"".equals(getsOrder) && getweight != null && !"".equals(getweight)) {
+               try {
+                   // it means it is double & calculate dosage
+                   dosage = Double.parseDouble(getsOrder) * Double.parseDouble(getweight);
+                   TextView dosageText = (TextView) findViewById(R.id.pdd_getDosage);
+                   dosageText.setText(String.valueOf(dosage));
+                   pdd_get_dosage.setText(String.valueOf(dosage));
 
-               //calculate Total Medication
-               total_medication = (dosage / Double.parseDouble(pdd_dmg.getText().toString())) * Double.parseDouble(pdd_dml.getText().toString());
-               TextView total_medicationText = (TextView) findViewById(R.id.pdd_getTm);
-               total_medicationText.setText(String.valueOf(total_medication));
+                   //calculate Total Medication
+                   total_medication = (dosage / Double.parseDouble(pdd_dmg.getText().toString())) * Double.parseDouble(pdd_dml.getText().toString());
+                   TextView total_medicationText = (TextView) findViewById(R.id.pdd_getTm);
+                   total_medicationText.setText(String.valueOf(total_medication));
 
-           } catch (Exception e1) {
-               // this means it is not double
-               e1.printStackTrace();
+               } catch (Exception e1) {
+                   // this means it is not double
+                   e1.printStackTrace();
+               }
+           }
+       }else{
+           String dmgStr=pdd_dmg.getText().toString();
+           String dmlStr=pdd_dml.getText().toString();
+           if (!"".equals(dmgStr) && !"".equals(getdosage)&& !"".equals(dmlStr)) {
+               try {
+                   //calculate Total Medication
+                   total_medication = (Double.parseDouble(getdosage) / Double.parseDouble(pdd_dmg.getText().toString())) * Double.parseDouble(pdd_dml.getText().toString());
+                   TextView total_medicationText = (TextView) findViewById(R.id.pdd_getTm);
+                   total_medicationText.setText(String.valueOf(total_medication));
+               } catch (Exception e1) {
+                   // this means it is not double
+                   e1.printStackTrace();
+               }
            }
        }
    }
 
-    class ProductListAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return drugs.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-            view = getLayoutInflater().inflate(R.layout.simple_drugs_list, null);
-            Drug drug = drugs.get(position);
-
-            EditText pdd_dmg = (EditText)findViewById(R.id.pdd_dmg);
-            EditText pdd_dml = (EditText)findViewById(R.id.pdd_dml);
-
-            pdd_dmg.setText(drug.getMilligrams());
-            pdd_dml.setText(drug.getMilliliters());
-
-
-            return view;
-        }
-    }
+//    class ProductListAdapter extends BaseAdapter {
+//
+//        @Override
+//        public int getCount() {
+//            return drugs.size();
+//        }
+//
+//        @Override
+//        public Object getItem(int i) {
+//            return null;
+//        }
+//
+//        @Override
+//        public long getItemId(int i) {
+//            return 0;
+//        }
+//
+//        @Override
+//        public View getView(int position, View view, ViewGroup viewGroup) {
+//            view = getLayoutInflater().inflate(R.layout.simple_drugs_list, null);
+//            Drug drug = drugs.get(position);
+//
+//            EditText pdd_dmg = (EditText)findViewById(R.id.pdd_dmg);
+//            EditText pdd_dml = (EditText)findViewById(R.id.pdd_dml);
+//
+//            pdd_dmg.setText(drug.getMilligrams());
+//            pdd_dml.setText(drug.getMilliliters());
+//
+//
+//            return view;
+//        }
+//    }
 
 //   public void pdd_cancle_onClick(View v){
 //
