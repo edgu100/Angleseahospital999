@@ -33,27 +33,28 @@
             android:id="@+id/RoomTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/PatientName"
-            android:layout_below="@+id/PatientName"
             android:text="Room Number:"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/PatientName"
+            android:layout_alignStart="@+id/PatientName" />
 
         <TextView
             android:id="@+id/RoomEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="text"
+            android:textSize="20sp"
             android:layout_alignBaseline="@+id/RoomTextView"
             android:layout_alignBottom="@+id/RoomTextView"
-            android:layout_alignStart="@+id/BODEdit"
-            android:text="text"
-            android:textSize="20sp" />
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/NHITextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginTop="10dp"
             android:layout_alignStart="@+id/Weight"
             android:layout_below="@+id/Weight"
             android:text="NHI NUMBER"
@@ -64,6 +65,7 @@
             android:id="@+id/DrugImView"
             android:layout_width="385dp"
             android:layout_height="40dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@+id/NHITextView"
             android:layout_centerHorizontal="true"
             android:background="@color/colorAccent" />
@@ -75,6 +77,7 @@
             android:layout_above="@+id/DrugList"
             android:layout_alignStart="@+id/NHITextView"
             android:text="Drug Details"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/background_light"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -84,7 +87,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/patientinfobackbroundcolor"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
             android:text="Patient Name:"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -93,9 +97,11 @@
             android:id="@+id/PatientNameEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/RoomEditView"
-            android:layout_alignTop="@+id/PatientName"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/PatientName"
+            android:layout_alignBottom="@+id/PatientName"
+            android:layout_alignStart="@+id/RoomEditView" />
 
         <TextView
             android:id="@+id/Weight"
@@ -104,16 +110,19 @@
             android:layout_alignStart="@+id/BOD"
             android:layout_below="@+id/BOD"
             android:text="Weight:"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/WIGHTEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/BODEdit"
-            android:layout_toEndOf="@+id/RoomTextView"
             android:text="TextView"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/Weight"
+            android:layout_alignBottom="@+id/Weight"
+            android:layout_alignStart="@+id/BODEdit" />
 
         <TextView
             android:id="@+id/BOD"
@@ -121,15 +130,20 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/RoomTextView"
             android:layout_below="@+id/RoomTextView"
-            android:text="BOD:" />
+            android:text="BOD:"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/BODEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/RoomEditView"
-            android:layout_toEndOf="@+id/DrugInfo"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp"
+            android:layout_alignBaseline="@+id/BOD"
+            android:layout_alignBottom="@+id/BOD"
+            android:layout_alignStart="@+id/RoomEditView" />
 
         <TextView
             android:id="@+id/NHINO"
@@ -137,7 +151,9 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/BODEdit"
             android:layout_below="@+id/WIGHTEdit"
-            android:text="TextView" />
+            android:text="TextView"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp" />
 
         <ListView
             android:id="@+id/DrugList"
