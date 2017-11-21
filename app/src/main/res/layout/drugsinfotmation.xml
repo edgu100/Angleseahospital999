@@ -65,7 +65,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/DrugsDetails"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/but_shape_drug"
         android:text="Add"
         android:textColor="@android:color/white"
         android:onClick="ADD"/>
