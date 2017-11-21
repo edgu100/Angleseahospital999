@@ -35,9 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_toEndOf="@+id/textView3"
         android:text="0"
-        android:layout_marginLeft="140px"
+        android:layout_marginLeft="200px"
         android:textSize="20sp" />
 
     <TextView
