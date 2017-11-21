@@ -71,7 +71,6 @@ public class PatientListPage extends Activity {
             e.printStackTrace();
         }
 
-
         //Set Spinner Function
         sp = (Spinner)findViewById(R.id.Patient_spinner);
         spadapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, spname);
