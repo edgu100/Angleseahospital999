@@ -38,19 +38,18 @@ public class Patient_info extends AppCompatActivity {
         drugdb = new SQLiteHelper(this);
         patient = (Patient) getIntent().getSerializableExtra("patient");
         patientDrugs = drugdb.patientDrugs(patient.getId());
-        if(patientDrugs.size()>0){
-            Map<String, String> d = patientDrugs.get(0);
-            TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
-            RoomNo.setText(d.get("pRoomNo"));
-            TextView PatientName = (TextView) findViewById(R.id.PatientNameEdit);
-            PatientName.setText(d.get("pName"));
-            TextView BOD = (TextView) findViewById(R.id.BODEdit);
-            BOD.setText(d.get("birthDay"));
-            TextView WIGHTEdit = (TextView) findViewById(R.id.WIGHTEdit);
-            WIGHTEdit.setText(d.get("weight"));
-            TextView NHI = (TextView) findViewById(R.id.NHINO);
-            NHI.setText(d.get("NHINo"));
-        }
+
+
+        TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
+        RoomNo.setText(patient.getRoomNo());
+        TextView PatientName = (TextView) findViewById(R.id.PatientNameEdit);
+        PatientName.setText(patient.getName());
+        TextView BOD = (TextView) findViewById(R.id.BODEdit);
+        BOD.setText(patient.getBirthDay());
+        TextView WIGHTEdit = (TextView) findViewById(R.id.WIGHTEdit);
+        WIGHTEdit.setText(patient.getWeight()+"");
+        TextView NHI = (TextView) findViewById(R.id.NHINO);
+        NHI.setText(patient.getNHINo());
 
         Button AddButton = (Button)findViewById(R.id.AddButton);
         Button TrackButton = (Button)findViewById(R.id.TrackButton);
