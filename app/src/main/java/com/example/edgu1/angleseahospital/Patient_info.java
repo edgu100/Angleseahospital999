@@ -134,30 +134,24 @@ public class Patient_info extends AppCompatActivity {
             return view;
         }
     }
+
+
  public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.setting, menu);
-
-
+        getMenuInflater().inflate(R.menu.setting,menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch(item.getItemId()){
-            case R.id.quit1:
-                super.finish();
-                Intent intent = new Intent(Patient_info.this, editPatient.class);
-                    intent.putExtra("pid",patient.getId());
-
-                startActivity(intent);
-                return true;
-            default:
-                return false;
+        int id=item.getItemId();
+       if(id==R.id.setting){
+            Intent intent = new Intent(Patient_info.this, editPatient.class);
+            Parameters.pid=patient.getId();
+            startActivity(intent);
+           return true;
         }
+        return super.onOptionsItemSelected(item);
     }
-
 }
 
 

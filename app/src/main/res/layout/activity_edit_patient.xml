@@ -153,7 +153,8 @@
             android:textSize="18sp"
             android:layout_alignBaseline="@+id/e_save"
             android:layout_alignBottom="@+id/e_save"
-            android:layout_alignEnd="@+id/e_add_RoomNo" />
+            android:layout_alignEnd="@+id/e_add_RoomNo"
+            android:onClick="Patient_Information_Cancle"/>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

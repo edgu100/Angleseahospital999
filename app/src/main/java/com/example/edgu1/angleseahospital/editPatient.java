@@ -26,8 +26,7 @@ public class editPatient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_patient);
         pdb = new SQLiteHelper(this);
-        String pid = getIntent().getStringExtra("pid");
-        patient  =  pdb.getPatientById(Integer.parseInt(pid));
+        patient  =  pdb.getPatientById(Parameters.pid);
 
 
         //set the patient information
@@ -95,7 +94,7 @@ public class editPatient extends AppCompatActivity {
     }
 //cancle button
 
-    public void e_cancle_onClick(View v) {
+    public void Patient_Information_Cancle(View v) {
         Intent e_cancle = new Intent(editPatient.this, PatientListPage.class);
         startActivity(e_cancle);
     }
