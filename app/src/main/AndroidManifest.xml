@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.edgu1.angleseahospital">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,20 +23,20 @@
         <activity android:name=".loginpage" />
         <activity android:name=".Mainpage" />
         <activity android:name=".registerpage" />
-        <activity android:name=".Signature"/>
-        <activity android:name=".DrugsInformation"/>
-        <activity android:name=".drugsdetails"/>
-        <activity android:name=".Add_drugs"/>
-        <activity android:name=".CusTask"/>
-        <activity android:name=".PatientAddPage"/>
-        <activity android:name=".PatientListPage"/>
-        <activity android:name=".TrackSystem"/>
-        <activity android:name=".TrackSignature"/>
-        <activity android:name=".PatientDrugAddListPage"/>
-        <activity android:name=".PatientDrugListPage"/>
-        <activity android:name=".editPatient"/>
-        <activity android:name=".PatientDrugDetialPage"/>
-        <activity android:name=".Patient_info"/>
+        <activity android:name=".Signature" />
+        <activity android:name=".DrugsInformation" />
+        <activity android:name=".drugsdetails" />
+        <activity android:name=".Add_drugs" />
+        <activity android:name=".CusTask" />
+        <activity android:name=".PatientAddPage" />
+        <activity android:name=".PatientListPage" />
+        <activity android:name=".TrackSystem" />
+        <activity android:name=".TrackSignature" />
+        <activity android:name=".PatientDrugAddListPage" />
+        <activity android:name=".PatientDrugListPage" />
+        <activity android:name=".editPatient" />
+        <activity android:name=".PatientDrugDetialPage" />
+        <activity android:name=".Patient_info" />
     </application>
 
 </manifest>

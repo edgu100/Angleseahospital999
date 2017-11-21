@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_home_black_24dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_patient"
+            android:icon="@mipmap/ic_airline_seat_flat"
+            android:title="Patient List" />
+        <item
+            android:id="@+id/nav_drug"
+            android:icon="@mipmap/ic_local_hospital_black_24dp"
+            android:title="Drug List" />
+        <item
+            android:id="@+id/nav_task"
+            android:icon="@mipmap/ic_local_hospital_black_24dp"
+            android:title="Task List" />
+
+    </group>
+
+
+</menu>

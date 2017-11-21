@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -24,6 +27,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ArrayAdapter;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
@@ -33,7 +48,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class PatientListPage extends Activity {
+public class PatientListPage extends AppCompatActivity {
+
+    private DrawerLayout dl;
+    private ActionBarDrawerToggle abdt;
 
     private SQLiteHelper patientsdb = null;
     private List<Patient> patients;
@@ -51,6 +69,43 @@ public class PatientListPage extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_list);
+
+        dl = (DrawerLayout)findViewById(R.id.dl);
+        abdt = new ActionBarDrawerToggle(this,dl,R.string.Open,R.string.Close);
+        abdt.setDrawerIndicatorEnabled(true);
+
+        dl.addDrawerListener(abdt);
+        abdt.syncState();
+
+        final NavigationView nav_view = (NavigationView)findViewById(R.id.nav_view);
+        nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id){
+                    case R.id.nav_home:
+                        Intent h = new Intent(PatientListPage.this, Mainpage.class);
+                        startActivity(h);
+                        break;
+                    case R.id.nav_patient:
+//                        Intent p = new Intent(PatientListPage.this, PatientListPage.class);
+//                        startActivity(p);
+                        break;
+                    case R.id.nav_drug:
+                        Intent d = new Intent(PatientListPage.this, DrugsInformation.class);
+                        startActivity(d);
+                        break;
+                    case R.id.nav_task:
+                        Intent t = new Intent(PatientListPage.this, CusTask.class);
+                        startActivity(t);
+                        break;
+                }
+
+                return true;
+            }
+        });
+
 
         String msg = getIntent().getStringExtra("drug");
         if(msg!=null&&!"".equals(msg)){
@@ -101,6 +156,7 @@ public class PatientListPage extends Activity {
             }
         });
     }
+
 
 
     //Patient CustomAdapter
@@ -195,7 +251,9 @@ public class PatientListPage extends Activity {
 
     }
 
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return abdt.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
 }
 
