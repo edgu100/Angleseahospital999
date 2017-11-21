@@ -1,4 +1,4 @@
-package com.example.edgu1.angleseahospital.DB;
+package com.example.edgu1.angleseahospital;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +9,8 @@ import android.view.View;
 import android.widget.EditText;
 
 
-import com.example.edgu1.angleseahospital.PatientListPage;
-import com.example.edgu1.angleseahospital.Patient_info;
-import com.example.edgu1.angleseahospital.R;
+import com.example.edgu1.angleseahospital.DB.Patient;
+import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 
 import java.util.List;
