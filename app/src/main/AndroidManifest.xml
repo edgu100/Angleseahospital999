@@ -29,8 +29,8 @@
         <activity android:name=".CusTask"/>
         <activity android:name=".PatientAddPage"/>
         <activity android:name=".PatientListPage"/>
-        <activity android:name=".PatientAddPage"/>
         <activity android:name=".TrackSystem"/>
+        <activity android:name=".TrackSignature"/>
         <activity android:name=".Patient_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

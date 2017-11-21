@@ -30,7 +30,7 @@ public class TrackSystem extends Activity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tracksystem);
-
+        //PatientId
         String pid = getIntent().getStringExtra("pid");
         dbHandler = new SQLiteHelper(this);
         tracks = dbHandler.getTracks(pid);
@@ -46,7 +46,12 @@ public class TrackSystem extends Activity{
                 String realtime = track.get("realtime");
                 if(realtime==null||"".equals(realtime)){
                     Intent intent=new Intent(getApplicationContext(),Signature.class);
-                    intent.putExtra("track",track.get("tid"));
+                    intent.putExtra("track",tid);
+                    startActivity(intent);
+                }else{
+                    Track t = dbHandler.getTrackById(tid);
+                    Intent intent=new Intent(getApplicationContext(),TrackSignature.class);
+                    intent.putExtra("track",t);
                     startActivity(intent);
                 }
             }
