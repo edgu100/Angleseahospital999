@@ -69,7 +69,7 @@ public class Patient_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Patient_info.this,TrackSystem.class);
-                i.putExtra("pid",patient.getId());
+                pid = patient.getId();
                 startActivity(i);                                ////track System
             }
         });
@@ -79,7 +79,7 @@ public class Patient_info extends AppCompatActivity {
         Patient_info.patientDrugsAdapter CusTaskAdapter = new Patient_info.patientDrugsAdapter();
         ListView taskList = (ListView)findViewById(R.id.DrugList);
         taskList.setAdapter(CusTaskAdapter);
-        
+
     }
 
 

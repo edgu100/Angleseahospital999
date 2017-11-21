@@ -31,7 +31,7 @@ public class TrackSystem extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tracksystem);
         //PatientId
-        String pid = getIntent().getStringExtra("pid");
+        String pid = String.valueOf(Parameters.pid);
         dbHandler = new SQLiteHelper(this);
         tracks = dbHandler.getTracks(pid);
 
