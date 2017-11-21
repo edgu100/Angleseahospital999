@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.edgu1.angleseahospital.DB.Drug;
+import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 import com.example.edgu1.angleseahospital.DB.Track;
 
@@ -34,6 +35,11 @@ public class TrackSystem extends Activity{
         String pid = String.valueOf(Parameters.pid);
         dbHandler = new SQLiteHelper(this);
         tracks = dbHandler.getTracks(pid);
+
+        Patient patient = dbHandler.getPatientById(Parameters.pid);
+        TextView pname = (TextView)findViewById(R.id.pname);
+        pname.setText(patient.getName());
+
 
         TrackAdapter trackAdapter = new TrackAdapter();
         ListView trackList = (ListView) findViewById(R.id.trackList);
