@@ -57,7 +57,7 @@ public class Patient_info extends AppCompatActivity {
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Patient_info.this, PatientDrugListPage.class);
+                Intent i = new Intent(Patient_info.this, PatientDrugAddListPage.class);
                 i.putExtra("pid",patient.getId());
                 startActivity(i);
             }

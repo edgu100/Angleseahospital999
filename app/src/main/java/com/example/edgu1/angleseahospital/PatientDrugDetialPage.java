@@ -18,6 +18,9 @@ public class PatientDrugDetialPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_drug_details);
 
+        String did = getIntent().getStringExtra("did");
+        String pid = getIntent().getStringExtra("pid");
+
     }
 
 

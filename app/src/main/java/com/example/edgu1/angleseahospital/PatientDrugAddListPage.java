@@ -39,7 +39,8 @@ public class PatientDrugAddListPage extends Activity {
 
     ArrayList<String> selectedItems = new ArrayList<>();
     private SQLiteHelper sqLiteHelper = null;
-    private PatientDrugs oldpatientdrug;
+    private String pid;
+    private List<Drug> drugs;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +48,13 @@ public class PatientDrugAddListPage extends Activity {
         setContentView(R.layout.patient_drug_list_add);
 
         sqLiteHelper = new SQLiteHelper(this);
+        pid =   getIntent().getStringExtra("pid");
 
         ListView chl = (ListView) findViewById(R.id.pdla_list);
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-        List<Drug> drugs = sqLiteHelper.getDrugsByName(null);
+        drugs = sqLiteHelper.getDrugsByName(null);
         String [] items = new String[drugs.size()];
         for(int i = 0;i < items.length;i++){
             items[i] = drugs.get(i).getName();
@@ -64,15 +66,20 @@ public class PatientDrugAddListPage extends Activity {
         chl.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(PatientDrugAddListPage.this, PatientDrugDetialPage.class);
+                Drug d = drugs.get(position);
+                i.putExtra("did",d.getId());
+                i.putExtra("pid",pid);
+                startActivity(i);
 
-                String selectedItem = ((TextView)view).getText().toString();
-
-                if(selectedItems.contains(selectedItem)){
-
-                    selectedItems.remove(selectedItem);//uncheck item
-                }
-                else
-                    selectedItems.add(selectedItem);
+//                String selectedItem = ((TextView)view).getText().toString();
+//
+//                if(selectedItems.contains(selectedItem)){
+//
+//                    selectedItems.remove(selectedItem);//uncheck item
+//                }
+//                else
+//                    selectedItems.add(selectedItem);
             }
         });
     }
@@ -83,10 +90,5 @@ public class PatientDrugAddListPage extends Activity {
             items += "-" + items + "\n";
         }
         Toast.makeText(this, "You have selected \n"+ items, Toast.LENGTH_LONG).show();
-
-
-
-
-
     }
 }
