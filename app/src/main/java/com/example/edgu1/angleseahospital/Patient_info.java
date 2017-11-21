@@ -1,6 +1,8 @@
 package com.example.edgu1.angleseahospital;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -23,6 +25,8 @@ import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 import java.util.List;
 import java.util.Map;
+
+import static com.example.edgu1.angleseahospital.Parameters.pid;
 
 
 public class Patient_info extends AppCompatActivity {
@@ -57,7 +61,7 @@ public class Patient_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Patient_info.this, PatientDrugAddListPage.class);
-                Parameters.pid = patient.getId();
+                pid = patient.getId();
                 startActivity(i);
             }
         });
@@ -140,10 +144,25 @@ public class Patient_info extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //Create PatientInfo share information file, MODE_PRIVATE is just this device can access it
+        SharedPreferences sharedPre = getSharedPreferences("info", Context.MODE_PRIVATE);
+        //Give the write right
+        SharedPreferences.Editor editor = sharedPre.edit();
+        String info = "";
         int id=item.getItemId();
         if(id==R.id.setting){
             Intent intent = new Intent(Patient_info.this, editPatient.class);
-            Parameters.pid=patient.getId();
+            pid=patient.getId();
+            startActivity(intent);
+            return true;
+        }
+        if(id==R.id.delete) {
+            pid=patient.getId();
+            drugdb.deletePatient(pid);
+
+
+            Intent intent = new Intent(Patient_info.this, PatientListPage.class);
+            intent.putExtra("drug","Delete successfully");
             startActivity(intent);
             return true;
         }
