@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.widget.EditText;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by WX on 2017/11/21.
@@ -18,8 +19,11 @@ public class PatientDrugDetialPage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_drug_details);
 
-        String did = getIntent().getStringExtra("did");
-        String pid = getIntent().getStringExtra("pid");
+        String ids = getIntent().getStringExtra("ids");
+
+        Toast.makeText(PatientDrugDetialPage.this, ids, Toast.LENGTH_LONG).show();
+        //Toast.makeText(PatientDrugDetialPage.this, pid, Toast.LENGTH_LONG).show();
+
 
     }
 
@@ -64,6 +68,10 @@ public class PatientDrugDetialPage extends Activity {
 
    }
 
+//   public void pdd_cancle_onClick(View v){
+//
+//
+//   }
 
 
 
