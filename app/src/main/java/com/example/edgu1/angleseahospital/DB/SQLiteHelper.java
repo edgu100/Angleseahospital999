@@ -238,7 +238,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         return patients;
     }
 
-    
+
     //Search patient by Name
     public List<Patient> getPatientsByName(String name){
         SQLiteDatabase db = null;
