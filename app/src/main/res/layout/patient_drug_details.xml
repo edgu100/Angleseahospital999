@@ -36,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="0"
-        android:layout_marginLeft="200px"
+        android:layout_marginLeft="280px"
+        android:inputType="number"
         android:textSize="20sp" />
 
     <TextView
@@ -57,9 +58,9 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:inputType="textPersonName"
         android:hint="Standing Order"
         android:textSize="18sp"
+        android:inputType="number"
         android:textStyle="bold" />
 
     <TextView
@@ -78,11 +79,11 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Weight"
         android:layout_marginTop="80dp"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:inputType="number"
         android:layout_marginLeft="180dp"/>
 
     <TextView
@@ -131,6 +132,7 @@
         android:layout_marginTop="200dp"
         android:hint="Dosage"
         android:textSize="18sp"
+        android:inputType="number"
         android:textStyle="bold" />
 
     <TextView
@@ -150,7 +152,7 @@
         android:layout_marginTop="200dp"
         android:layout_marginLeft="80dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Drug Milligrams"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -172,7 +174,7 @@
         android:layout_marginTop="200dp"
         android:layout_marginLeft="230dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Drug Milliliters"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -214,7 +216,7 @@
         android:id="@+id/pdd_FHours"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Hours"
         android:textSize="18sp"
         android:textStyle="bold"
