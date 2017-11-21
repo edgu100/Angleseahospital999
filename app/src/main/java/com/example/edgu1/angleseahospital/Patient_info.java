@@ -16,18 +16,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.example.edgu1.angleseahospital.DB.Drug;
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.edgu1.angleseahospital.PatientListPage.getCurrentAgeByBirthdate;
 
 public class Patient_info extends AppCompatActivity {
     private SQLiteHelper drugdb = null;
@@ -49,28 +45,18 @@ public class Patient_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Patient_info.this, Add_drugs.class);
-                i.putExtra("pid","");
-                startActivity(i);                                ////ADD PATIENT
-
-
+                i.putExtra("pid",patient.getId());
+                startActivity(i);
             }
         });
         TrackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(Patient_info.this,TrackSystem.class);
-                i.putExtra("pid","");
+                i.putExtra("pid",patient.getId());
                 startActivity(i);                                ////track System
-
-
             }
         });
-
-
-
-
-
 
         TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
         RoomNo.setText(d.get("pRoomNo"));
@@ -132,6 +118,7 @@ public class Patient_info extends AppCompatActivity {
             TextView drugName = (TextView) view.findViewById(R.id.apir_DrugEditName);
             drugName.setText(Drug.get("pName"));
 
+
             TextView drugDosage = (TextView) view.findViewById(R.id.apir_DosageEditView);
             drugDosage.setText(Drug.get("dosage"));
             TextView Frequency = (TextView) view.findViewById(R.id.apir_FrequencyEdit);
@@ -143,8 +130,7 @@ public class Patient_info extends AppCompatActivity {
             return view;
         }
     }
-
-   /* public boolean onCreateOptionsMenu(Menu menu) {
+ public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.setting, menu);
 
@@ -159,14 +145,14 @@ public class Patient_info extends AppCompatActivity {
             case R.id.quit1:
                 super.finish();
                 Intent intent = new Intent(Patient_info.this, editPatient.class);
-                    i.putExtra("pid","");
+                    intent.putExtra("pid",patient.getId());
 
                 startActivity(intent);
                 return true;
             default:
                 return false;
         }
-    }  */
+    }
 
 }
 

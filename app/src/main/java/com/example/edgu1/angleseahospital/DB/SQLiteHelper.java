@@ -310,6 +310,25 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 
+    public void updatePatient(Patient patient){
+        SQLiteDatabase db = null;
+        try {
+            db = getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("name",patient.getName());
+            values.put("roomNo",patient.getRoomNo());
+            values.put("NHINo",patient.getNHINo());
+            values.put("birthDay",patient.getBirthDay());
+            values.put("weight",patient.getWeight());
+            db.update("PATIENT",values,"id="+patient.getId(),null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+    }
 
     ////////////////////////////////////
     //      Drugs Database Query       //
