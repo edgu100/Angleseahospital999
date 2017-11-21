@@ -48,7 +48,9 @@ public class PatientDrugAddListPage extends Activity {
         setContentView(R.layout.patient_drug_list_add);
 
         sqLiteHelper = new SQLiteHelper(this);
-        pid =   getIntent().getStringExtra("pid");
+        pid =   getIntent().getStringExtra("pid")+"";
+
+        //Toast.makeText(PatientDrugAddListPage.this, pid, Toast.LENGTH_LONG).show();
 
         ListView chl = (ListView) findViewById(R.id.pdla_list);
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -68,8 +70,7 @@ public class PatientDrugAddListPage extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(PatientDrugAddListPage.this, PatientDrugDetialPage.class);
                 Drug d = drugs.get(position);
-                i.putExtra("did",d.getId());
-                i.putExtra("pid",pid);
+                i.putExtra("ids",d.getId()+","+pid);
                 startActivity(i);
 
 //                String selectedItem = ((TextView)view).getText().toString();

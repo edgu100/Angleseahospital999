@@ -33,6 +33,7 @@
         <activity android:name=".TrackSignature"/>
         <activity android:name=".PatientDrugAddListPage"/>
         <activity android:name=".PatientDrugListPage"/>
+        <activity android:name=".PatientDrugDetialPage"/>
         <activity android:name=".Patient_info">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

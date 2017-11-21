@@ -159,13 +159,14 @@
         android:id="@+id/pdd_cancle"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:background="@drawable/buttonshape"
-        android:text="Cancel"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
         android:layout_alignBaseline="@+id/pdd_confirm"
         android:layout_alignBottom="@+id/pdd_confirm"
-        android:layout_alignStart="@+id/pdd_dml" />
+        android:layout_alignStart="@+id/pdd_dml"
+        android:background="@drawable/buttonshape"
+        android:onClick="pdd_cancle_onClick"
+        android:text="Cancel"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/pdd_confirm"
