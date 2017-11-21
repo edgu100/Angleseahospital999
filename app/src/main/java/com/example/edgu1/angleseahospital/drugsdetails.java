@@ -40,13 +40,16 @@ public class drugsdetails extends Activity {
         TextView drugName = (TextView)findViewById(R.id.Drugname01);
         TextView drugproductionDate = (TextView)findViewById(R.id.productionDate01);
         TextView drugshelfLife = (TextView)findViewById(R.id.shelfLife01);
-        TextView drugspecification = (TextView)findViewById(R.id.specification01);
+        TextView milliliters = (TextView)findViewById(R.id.milliliters01);
         TextView drugsManufacturer = (TextView)findViewById(R.id.Manufacturer01);
+        TextView drugsmilligrams = (TextView)findViewById(R.id.drugsmilligrams01);
+
         drugName.setText(String.valueOf(drug.getName()));
         drugproductionDate.setText(String.valueOf(drug.getProductionDate()));
         drugshelfLife.setText(String.valueOf(drug.getShelfLife()));
-        drugspecification.setText(String.valueOf(drug.getSpecification()));
+        milliliters.setText(String.valueOf(drug.getMilliliters()));
         drugsManufacturer.setText(String.valueOf(drug.getManufacturer()));
+        drugsmilligrams.setText(String.valueOf(drug.getMilligrams()));
     }
 
     public void DrugUpdate(View view){

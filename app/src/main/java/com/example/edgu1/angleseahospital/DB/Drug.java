@@ -12,7 +12,7 @@ public class Drug implements Serializable {
     private Integer id;
     private String name;
     private String manufacturer;
-    private String specification;
+    private String milliliters;
     private String productionDate;
     private String shelfLife;
     private String milligrams;
@@ -27,10 +27,6 @@ public class Drug implements Serializable {
 
     public String getManufacturer() {
         return manufacturer;
-    }
-
-    public String getSpecification() {
-        return specification;
     }
 
     public String getProductionDate() {
@@ -53,10 +49,6 @@ public class Drug implements Serializable {
         this.manufacturer = manufacturer;
     }
 
-    public void setSpecification(String specification) {
-        this.specification = specification;
-    }
-
     public void setProductionDate(String productionDate) {
         this.productionDate = productionDate;
     }
@@ -71,5 +63,13 @@ public class Drug implements Serializable {
 
     public void setMilligrams(String milligrams) {
         this.milligrams = milligrams;
+    }
+
+    public String getMilliliters() {
+        return milliliters;
+    }
+
+    public void setMilliliters(String milliliters) {
+        this.milliliters = milliliters;
     }
 }

@@ -83,7 +83,7 @@ public class DrugsInformation extends Activity {
             drugName.setText(drug.getName());
             drugproductionDate.setText(String.valueOf(drug.getProductionDate()));
             drugshelfLife.setText(String.valueOf(drug.getShelfLife()));
-            drugspecification.setText(String.valueOf(drug.getSpecification()));
+            drugspecification.setText(String.valueOf(drug.getMilliliters()));
             return view;
         }
     }
