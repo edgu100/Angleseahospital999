@@ -345,7 +345,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
         try{
             db = getReadableDatabase();
-            cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","specification"}, whereClause , null, null, null, null);
+            cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","specification","milligrams"}, whereClause , null, null, null, null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     Drug drugs = new Drug();
@@ -355,6 +355,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                     drugs.setProductionDate(cursor.getString(cursor.getColumnIndex("productionDate")));
                     drugs.setShelfLife(cursor.getString(cursor.getColumnIndex("shelfLife")));
                     drugs.setSpecification(cursor.getString(cursor.getColumnIndex("specification")));
+                    drugs.setMilligrams(cursor.getString(cursor.getColumnIndex("milligrams")));
                     users.add(drugs);
                 }
             }
@@ -378,6 +379,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         values.put("specification",drug.getSpecification());
         values.put("productionDate",drug.getProductionDate());
         values.put("shelfLife",drug.getShelfLife());
+        values.put("milligrams",drug.getMilligrams());
         SQLiteDatabase db = getWritableDatabase();
         db.insert("DRUGS", null, values);
         db.close();
@@ -796,7 +798,8 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "manufacturer text NOT NULL," +
                 "productionDate text NOT NULL," +
                 "shelfLife text NOT NULL," +
-                "specification text NOT NULL" +
+                "specification text NOT NULL," +
+                "milligrams text NOT NULL" +
                 ")";
         db.execSQL(sql);
         sql = "create table if not exists PATIENTDRUGS(" +

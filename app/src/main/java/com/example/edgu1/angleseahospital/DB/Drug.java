@@ -15,6 +15,7 @@ public class Drug implements Serializable {
     private String specification;
     private String productionDate;
     private String shelfLife;
+    private String milligrams;
 
     public Integer getId() {
         return id;
@@ -62,5 +63,13 @@ public class Drug implements Serializable {
 
     public void setShelfLife(String shelfLife) {
         this.shelfLife = shelfLife;
+    }
+
+    public String getMilligrams() {
+        return milligrams;
+    }
+
+    public void setMilligrams(String milligrams) {
+        this.milligrams = milligrams;
     }
 }
