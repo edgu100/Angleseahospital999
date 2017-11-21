@@ -153,8 +153,6 @@ public class Signature extends Activity {
                 ntrack.setDrugsId(pd.getDrugsId());
                 ntrack.setFocustime(TaskTimeTool.culTime(pd.getFrequency()));
                 sqLiteHelper.addTracks(ntrack);
-                Intent i = new Intent(Signature.this,CusTask.class);
-                startActivity(i);
             }else{
                 if(track.getSignature1()==null||"".equals(track.getSignature1())){
                     track.setSignature1(pname);
@@ -171,10 +169,9 @@ public class Signature extends Activity {
                     sqLiteHelper.addTracks(ntrack);
                 }
                 sqLiteHelper.updateTracks(track);
-                Intent i = new Intent(Signature.this,TrackSystem.class);
-                i.putExtra("pid",track.getPatientId());
-                startActivity(i);
             }
+            Intent i = new Intent(Signature.this,PatientListPage.class);
+            startActivity(i);
         } catch (IOException e) {
             e.printStackTrace();
         }
