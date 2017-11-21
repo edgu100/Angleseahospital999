@@ -7,7 +7,7 @@
         android:id="@+id/patientinfobackbroundcolor"
         android:layout_width="385dp"
         android:layout_height="40dp"
-        android:background="@color/colorAccent" />
+        android:background="@android:color/darker_gray" />
 
     <TextView
         android:id="@+id/DrugsInformation"
@@ -156,10 +156,11 @@
         android:layout_below="@+id/shelfLife"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="180dp"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/but_shape_drug"
         android:text="Update"
         android:textColor="@android:color/white"
-        android:onClick="DrugUpdate"/>
+        android:onClick="DrugUpdate"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="100dp"
@@ -169,8 +170,9 @@
         android:layout_below="@+id/shelfLife"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="180dp"
-        android:background="@drawable/buttonshape"
+        android:background="@drawable/but_shape_drug"
         android:text="DELETE"
         android:textColor="@android:color/white"
-        android:onClick="DrugsDelete"/>
+        android:onClick="DrugsDelete"
+        android:textStyle="bold" />
 </RelativeLayout>
