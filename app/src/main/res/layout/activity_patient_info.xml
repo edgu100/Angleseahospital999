@@ -33,7 +33,6 @@
             android:id="@+id/RoomTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignStart="@+id/PatientName"
             android:layout_below="@+id/PatientName"
             android:text="Room Number:"
@@ -84,7 +83,6 @@
             android:id="@+id/PatientName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/PatientInfo"
             android:layout_below="@+id/patientinfobackbroundcolor"
             android:layout_marginTop="13dp"
             android:text="Patient Name:"
@@ -122,7 +120,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/RoomTextView"
-
             android:layout_below="@+id/RoomTextView"
             android:text="BOD:" />
 

@@ -27,23 +27,24 @@ public class editPatient extends AppCompatActivity {
         setContentView(R.layout.activity_edit_patient);
         pdb = new SQLiteHelper(this);
         patient  =  pdb.getPatientById(Parameters.pid);
+        oldPatient=patient;
 
 
         //set the patient information
+        if(oldPatient!=null) {
+            EditText RoomNo = (EditText) findViewById(R.id.e_add_RoomNo);
+            EditText PatientName = (EditText) findViewById(R.id.e_add_name);
+            EditText BOD = (EditText) findViewById(R.id.e_add_birthday);
+            EditText WIGHTEdit = (EditText) findViewById(R.id.e_add_wight);
+            EditText NHI = (EditText) findViewById(R.id.e_add_NHINo);
 
-        EditText RoomNo = (EditText) findViewById(R.id.e_add_RoomNo);
-        EditText PatientName = (EditText) findViewById(R.id.e_add_name);
-        EditText BOD = (EditText) findViewById(R.id.e_add_birthday);
-        EditText WIGHTEdit = (EditText) findViewById(R.id.e_add_wight);
-        EditText NHI = (EditText) findViewById(R.id.e_add_NHINo);
+            RoomNo.setText(patient.getRoomNo());
 
-        RoomNo.setText(patient.getRoomNo());
-
-        PatientName.setText(patient.getName());
-        BOD.setText(patient.getBirthDay());
-        WIGHTEdit.setText(String.valueOf(patient.getWeight()));
-        NHI.setText(patient.getNHINo());
-
+            PatientName.setText(patient.getName());
+            BOD.setText(patient.getBirthDay());
+            WIGHTEdit.setText(String.valueOf(patient.getWeight()));
+            NHI.setText(patient.getNHINo());
+        }
     }
 
 
@@ -73,21 +74,27 @@ public class editPatient extends AppCompatActivity {
             EditText e_add_RoomNo = (EditText) findViewById(R.id.e_add_RoomNo);
             patient.setRoomNo(e_add_RoomNo.getText().toString());
 
-            pdb.updatePatient(patient);
+            //pdb.updatePatient(patient);
             //sent it to database
             if (oldPatient == null) {
-                pdb.addPatient(patient);
+                pdb.updatePatient(patient);
                 info = "Save it successfully!";
+            }else{
+                patient.setId(oldPatient.getId());
+                pdb.updatePatient(patient);
+                info="Update successfully!";
             }
         } catch (Exception e) {
             if (oldPatient == null) {
                 info = "Save failed!";
+            }else{
+                info = "Update failed!";
             }
             e.printStackTrace();
         } finally {
             editor.putString("msg", info);
             editor.apply();
-            Intent intent = new Intent(getApplicationContext(), Patient_info.class);
+            Intent intent = new Intent(getApplicationContext(), PatientListPage.class);
             startActivity(intent);
             finish();
         }

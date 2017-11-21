@@ -121,8 +121,6 @@ public class Patient_info extends AppCompatActivity {
 
             TextView drugName = (TextView) view.findViewById(R.id.apir_DrugEditName);
             drugName.setText(Drug.get("pName"));
-
-
             TextView drugDosage = (TextView) view.findViewById(R.id.apir_DosageEditView);
             drugDosage.setText(Drug.get("dosage"));
             TextView Frequency = (TextView) view.findViewById(R.id.apir_FrequencyEdit);

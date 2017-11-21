@@ -548,7 +548,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                     dr.put("dosage",cursor.getString(cursor.getColumnIndex("dosage")));
                     dr.put("frequency",cursor.getString(cursor.getColumnIndex("frequency")));
                     dr.put("pRoomNo",cursor.getString(cursor.getColumnIndex("pRoomNo")));
-
                     tasks.add(dr);
                 }
             }
