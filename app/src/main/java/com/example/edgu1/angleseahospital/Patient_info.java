@@ -38,7 +38,20 @@ public class Patient_info extends AppCompatActivity {
         drugdb = new SQLiteHelper(this);
         patient = (Patient) getIntent().getSerializableExtra("patient");
         patientDrugs = drugdb.patientDrugs(patient.getId());
-        Map<String, String> d = patientDrugs.get(0);
+        if(patientDrugs.size()>0){
+            Map<String, String> d = patientDrugs.get(0);
+            TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
+            RoomNo.setText(d.get("pRoomNo"));
+            TextView PatientName = (TextView) findViewById(R.id.PatientNameEdit);
+            PatientName.setText(d.get("pName"));
+            TextView BOD = (TextView) findViewById(R.id.BODEdit);
+            BOD.setText(d.get("birthDay"));
+            TextView WIGHTEdit = (TextView) findViewById(R.id.WIGHTEdit);
+            WIGHTEdit.setText(d.get("weight"));
+            TextView NHI = (TextView) findViewById(R.id.NHINO);
+            NHI.setText(d.get("NHINo"));
+        }
+
         Button AddButton = (Button)findViewById(R.id.AddButton);
         Button TrackButton = (Button)findViewById(R.id.TrackButton);
         AddButton.setOnClickListener(new View.OnClickListener() {
@@ -58,16 +71,7 @@ public class Patient_info extends AppCompatActivity {
             }
         });
 
-        TextView RoomNo = (TextView) findViewById(R.id.RoomEditView);
-        RoomNo.setText(d.get("pRoomNo"));
-        TextView PatientName = (TextView) findViewById(R.id.PatientNameEdit);
-        PatientName.setText(d.get("pName"));
-        TextView BOD = (TextView) findViewById(R.id.BODEdit);
-        BOD.setText(d.get("birthDay"));
-        TextView WIGHTEdit = (TextView) findViewById(R.id.WIGHTEdit);
-        WIGHTEdit.setText(d.get("weight"));
-        TextView NHI = (TextView) findViewById(R.id.NHINO);
-        NHI.setText(d.get("NHINo"));
+
 
         Patient_info.patientDrugsAdapter CusTaskAdapter = new Patient_info.patientDrugsAdapter();
         ListView taskList = (ListView)findViewById(R.id.DrugList);
