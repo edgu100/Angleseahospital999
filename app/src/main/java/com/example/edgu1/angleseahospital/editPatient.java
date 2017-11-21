@@ -1,18 +1,23 @@
 package com.example.edgu1.angleseahospital;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 
 
+import java.util.Calendar;
 import java.util.List;
 
 public class editPatient extends AppCompatActivity {
@@ -20,6 +25,9 @@ public class editPatient extends AppCompatActivity {
     private List<Patient> patients;
     private Patient oldPatient = null;
     private Patient patient;
+
+    private DatePickerDialog datePickerDialog;
+    private Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,7 @@ public class editPatient extends AppCompatActivity {
         if(oldPatient!=null) {
             EditText RoomNo = (EditText) findViewById(R.id.e_add_RoomNo);
             EditText PatientName = (EditText) findViewById(R.id.e_add_name);
-            EditText BOD = (EditText) findViewById(R.id.e_add_birthday);
+            TextView BOD = (TextView) findViewById(R.id.e_add_birthday);
             EditText WIGHTEdit = (EditText) findViewById(R.id.e_add_wight);
             EditText NHI = (EditText) findViewById(R.id.e_add_NHINo);
 
@@ -62,7 +70,7 @@ public class editPatient extends AppCompatActivity {
             EditText e_add_name = (EditText) findViewById(R.id.e_add_name);
             patient.setName(e_add_name.getText().toString());
             //Add birthday
-            EditText e_add_birthday = (EditText) findViewById(R.id.e_add_birthday);
+            TextView e_add_birthday = (TextView) findViewById(R.id.e_add_birthday);
             patient.setBirthDay(e_add_birthday.getText().toString());
             //Add wight
             EditText e_add_wight = (EditText) findViewById(R.id.e_add_wight);
@@ -107,6 +115,43 @@ public class editPatient extends AppCompatActivity {
         startActivity(e_cancle);
     }
 
-}
 
+    ////////////////choose date////////////////
+    public void DatePick(View v){
+        switch (v.getId()) {
+            case R.id.e_add_birthday:
+                showDailog();
+                break;
+
+        }
+    }
+
+
+    private void showDailog() {
+        calendar =  Calendar.getInstance();
+
+        datePickerDialog = new DatePickerDialog(
+                this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                //monthOfYear 得到的月份会减1所以我们要加1
+                String time =Integer.toString(year) + "/" + String.valueOf(monthOfYear + 1) + "/" +  String.valueOf(dayOfMonth);
+                TextView tx=(TextView)findViewById(R.id.e_add_birthday) ;
+                tx.setText(time);
+            }
+        },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+        //自动弹出键盘问题解决
+        datePickerDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+
+    }
+
+
+
+
+}
 
