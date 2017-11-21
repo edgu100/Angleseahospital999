@@ -33,23 +33,22 @@
         android:id="@+id/Patient_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
-        android:textSize="18sp"
         android:layout_below="@+id/Patient_name"
         android:layout_toEndOf="@+id/Age_p"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:text=" textview"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/Wight_p"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:text="@string/wight"
+        android:layout_below="@+id/Patient_name"
+        android:layout_marginLeft="200dp"
+        android:text="weight:"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_below="@+id/Patient_name"
-        android:layout_toEndOf="@+id/Patient_ID" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/Patient_wight"
@@ -57,9 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Wight_p"
         android:layout_toEndOf="@+id/Wight_p"
-        android:text="@string/textview2"
-        android:textSize="18sp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:text=" textview2"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/NHI_No_p"
@@ -77,12 +76,12 @@
         android:id="@+id/Patient_ID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textview3"
-        android:textSize="18sp"
         android:layout_alignBaseline="@+id/Room_No_p"
         android:layout_alignBottom="@+id/Room_No_p"
         android:layout_toEndOf="@+id/NHI_No_p"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:text=" textview3"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/Room_No_p"
@@ -101,7 +100,19 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/Room_No_p"
         android:layout_toEndOf="@+id/Room_No_p"
-        android:text="@string/textview4"
+        android:text=" textview4"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Patient_wight"
+        android:layout_alignBottom="@+id/Patient_wight"
+        android:layout_toEndOf="@+id/Patient_wight"
+        android:text=" KG"
+        android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
-        android:textColor="@android:color/holo_blue_dark"/>
+        android:textStyle="bold" />
 </RelativeLayout>
