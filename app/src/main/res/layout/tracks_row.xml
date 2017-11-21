@@ -11,7 +11,8 @@
         android:textSize="18dp"
         android:textStyle="bold"
         android:layout_marginLeft="10dp"
-        android:id="@+id/dName"/>
+        android:id="@+id/dName"
+        android:textColor="@android:color/holo_blue_dark"/>
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
@@ -20,7 +21,8 @@
         android:id="@+id/focustime"
         android:layout_toEndOf="@+id/dName"
         android:textSize="18dp"
-        android:text="Focustime"/>
+        android:text="Focustime"
+        android:textColor="@android:color/holo_blue_dark"/>
     <TextView
         android:layout_width="100dp"
         android:textStyle="bold"
@@ -30,5 +32,6 @@
         android:id="@+id/realtime"
         android:textSize="18dp"
         android:text="Realtime"
+        android:textColor="@android:color/holo_blue_dark"
         />
 </RelativeLayout>

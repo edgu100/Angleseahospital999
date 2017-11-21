@@ -40,7 +40,7 @@ public class PatientListPage extends Activity {
 
     //Define spinner
     Spinner sp;
-    String spname [] = {"All", "Name", "NHI-No", "Room-No"};
+    String spname [] = {"Name", "NHI-No", "Room-No"};
     ArrayAdapter <String> spadapter;
     int index=0;
 
@@ -90,8 +90,8 @@ public class PatientListPage extends Activity {
                     case 3://Search by Room-No
                         index=3;
                         break;
-                    default://Search All
-                        index=0;
+//                    default://Search All
+//                        index=0;
                 }
             }
             @Override
@@ -192,9 +192,9 @@ public class PatientListPage extends Activity {
                     patientList02.deferNotifyDataSetChanged();
                 break;
 
-                default://Search All
-                patients = patientsdb.getPatientsByName(null);
-                index=0;
+//                default://Search All
+//                patients = patientsdb.getPatientsByName(null);
+//                index=0;
         }
 
 

@@ -13,7 +13,8 @@
         android:layout_marginStart="23dp"
         android:text="Drug Name:"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_DrugEditName"
@@ -23,7 +24,8 @@
         android:text="TextView"
         android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/apir_timeStamp" />
+        android:layout_toEndOf="@+id/apir_timeStamp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_DosageView"
@@ -34,7 +36,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_below="@+id/apir_DrugName"
-        android:layout_alignStart="@+id/apir_DrugName" />
+        android:layout_alignStart="@+id/apir_DrugName"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_DosageEditView"
@@ -44,18 +47,20 @@
         android:layout_alignBottom="@+id/apir_DosageView"
         android:layout_alignStart="@+id/apir_DrugEditName"
         android:text="TextView"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_Frequency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/apir_DosageView"
-        android:layout_below="@+id/apir_DosageView"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="11dp"
         android:text="Frenquency:"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_below="@+id/apir_DosageView"
+        android:layout_alignStart="@+id/apir_DosageView" />
 
     <TextView
         android:id="@+id/apir_FrequencyEdit"
@@ -64,18 +69,20 @@
         android:layout_alignStart="@+id/apir_DosageEditView"
         android:layout_alignTop="@+id/apir_Frequency"
         android:text="TextView"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_timeStamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/apir_Frequency"
-        android:layout_below="@+id/apir_Frequency"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="13dp"
         android:text="Time Stamp:"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_below="@+id/apir_Frequency"
+        android:layout_alignStart="@+id/apir_Frequency" />
 
     <TextView
         android:id="@+id/apir_timeStampEdit"
@@ -84,18 +91,20 @@
         android:layout_alignStart="@+id/apir_FrequencyEdit"
         android:layout_alignTop="@+id/apir_timeStamp"
         android:text="TextView"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <TextView
         android:id="@+id/apir_SignTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/apir_timeStamp"
-        android:layout_below="@+id/apir_timeStamp"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="12dp"
         android:text="Sign Time:"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_below="@+id/apir_timeStamp"
+        android:layout_alignStart="@+id/apir_timeStamp" />
 
     <TextView
         android:id="@+id/apir_SignTimeEdit"
@@ -104,5 +113,6 @@
         android:layout_alignBottom="@+id/apir_SignTime"
         android:layout_alignStart="@+id/apir_timeStampEdit"
         android:text="TextView"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 </RelativeLayout>
