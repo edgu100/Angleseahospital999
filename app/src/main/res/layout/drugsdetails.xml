@@ -174,5 +174,5 @@
         android:text="DELETE"
         android:textColor="@android:color/white"
         android:onClick="DrugsDelete"
-        android:textStyle="bold" />
+ />
 </RelativeLayout>
