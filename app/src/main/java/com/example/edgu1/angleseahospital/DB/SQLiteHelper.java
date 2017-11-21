@@ -402,7 +402,26 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
     }
 
-
+    public Drug getDrugById(String dId) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        Drug drugs = null;
+        db = getReadableDatabase();
+        cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","milliliters","milligrams"}, "id" + " = "+dId , null, null, null, null);
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                drugs = new Drug();
+                drugs.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                drugs.setName(cursor.getString(cursor.getColumnIndex("name")));
+                drugs.setManufacturer(cursor.getString(cursor.getColumnIndex("manufacturer")));
+                drugs.setProductionDate(cursor.getString(cursor.getColumnIndex("productionDate")));
+                drugs.setShelfLife(cursor.getString(cursor.getColumnIndex("shelfLife")));
+                drugs.setMilliliters(cursor.getString(cursor.getColumnIndex("milliliters")));
+                drugs.setMilligrams(cursor.getString(cursor.getColumnIndex("milligrams")));
+            }
+        }
+        return drugs;
+    }
 
     ////////////////////////////////////
     //      Patient Drugs Database Query       //
