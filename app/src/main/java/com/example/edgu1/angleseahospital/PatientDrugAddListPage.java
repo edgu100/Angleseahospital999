@@ -56,7 +56,7 @@ public class PatientDrugAddListPage extends Activity {
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
 
-        drugs = sqLiteHelper.getDrugsByName(null);
+        drugs = sqLiteHelper.getSelectDrugs(pid);
         String [] items = new String[drugs.size()];
         for(int i = 0;i < items.length;i++){
             items[i] = drugs.get(i).getName();
