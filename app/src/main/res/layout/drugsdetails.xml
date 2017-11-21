@@ -65,31 +65,31 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/specification"
+        android:id="@+id/milliliters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/manufacturer"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:text="Specification:"
+        android:text="Milliliters:"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/specification01"
+        android:id="@+id/milliliters01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/manufacturer"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/specification"
+        android:layout_toEndOf="@+id/milliliters"
         android:text=""
         android:textSize="20sp" />
     <TextView
         android:id="@+id/productionDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/specification"
+        android:layout_below="@+id/milliliters"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:text="ProductionDate:"
@@ -100,7 +100,7 @@
         android:id="@+id/productionDate01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/specification"
+        android:layout_below="@+id/milliliters01"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/productionDate"
@@ -125,6 +125,27 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/shelfLife"
+        android:text=""
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/drugsmilligrams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shelfLife"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Milligrams:"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/drugsmilligrams01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shelfLife"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/drugsmilligrams"
         android:text=""
         android:textSize="20sp" />
 

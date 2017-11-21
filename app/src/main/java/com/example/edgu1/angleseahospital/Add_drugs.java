@@ -47,13 +47,15 @@ public class Add_drugs extends Activity {
             TextView drugName = (TextView)findViewById(R.id.AdddrugsName);
             TextView drugproductionDate = (TextView)findViewById(R.id.AdddrugsProductionData);
             TextView drugshelfLife = (TextView)findViewById(R.id.AdddrugsShelfLife);
-            TextView drugspecification = (TextView)findViewById(R.id.AdddrugsSpecification);
+            TextView milligrams = (TextView)findViewById(R.id.AdddrugsMilligrams);
             TextView drugsManufacturer = (TextView)findViewById(R.id.AdddrugsManufacture);
+            TextView milliliters = (TextView)findViewById(R.id.AdddrugsMilliliters);
             drugName.setText(String.valueOf(olddrug.getName()));
             drugproductionDate.setText(String.valueOf(olddrug.getProductionDate()));
             drugshelfLife.setText(String.valueOf(olddrug.getShelfLife()));
-            drugspecification.setText(String.valueOf(olddrug.getSpecification()));
+            milliliters.setText(String.valueOf(olddrug.getMilliliters()));
             drugsManufacturer.setText(String.valueOf(olddrug.getManufacturer()));
+            milligrams.setText(String.valueOf(olddrug.getMilligrams()));
         }
     }
 
@@ -75,12 +77,14 @@ public class Add_drugs extends Activity {
             drug.setName(nameEdit.getText().toString());
             EditText manufactureEdit=(EditText)findViewById(R.id.AdddrugsManufacture) ;
             drug.setManufacturer(manufactureEdit.getText().toString());
-            EditText specificationEdit=(EditText)findViewById(R.id.AdddrugsSpecification) ;
-            drug.setSpecification(specificationEdit.getText().toString());
+            EditText specificationEdit=(EditText)findViewById(R.id.AdddrugsMilliliters) ;
+            drug.setMilliliters(specificationEdit.getText().toString());
             TextView productiondataEdit=(TextView)findViewById(R.id.AdddrugsProductionData);
             drug.setProductionDate(productiondataEdit.getText().toString());
             TextView shelflifeEdit =(TextView)findViewById(R.id.AdddrugsShelfLife) ;
             drug.setShelfLife(shelflifeEdit.getText().toString());
+            TextView addrugsMilligrams =(TextView)findViewById(R.id.AdddrugsMilligrams) ;
+            drug.setMilligrams(addrugsMilligrams.getText().toString());
 
 
             Intent intent=new Intent(getApplicationContext(),DrugsInformation.class);

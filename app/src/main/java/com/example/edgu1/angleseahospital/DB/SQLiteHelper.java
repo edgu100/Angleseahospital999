@@ -345,7 +345,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
         try{
             db = getReadableDatabase();
-            cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","specification","milligrams"}, whereClause , null, null, null, null);
+            cursor = db.query("DRUGS", new String[] {"id","name","manufacturer","productionDate","shelfLife","milliliters","milligrams"}, whereClause , null, null, null, null);
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     Drug drugs = new Drug();
@@ -354,7 +354,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                     drugs.setManufacturer(cursor.getString(cursor.getColumnIndex("manufacturer")));
                     drugs.setProductionDate(cursor.getString(cursor.getColumnIndex("productionDate")));
                     drugs.setShelfLife(cursor.getString(cursor.getColumnIndex("shelfLife")));
-                    drugs.setSpecification(cursor.getString(cursor.getColumnIndex("specification")));
+                    drugs.setMilliliters(cursor.getString(cursor.getColumnIndex("milliliters")));
                     drugs.setMilligrams(cursor.getString(cursor.getColumnIndex("milligrams")));
                     users.add(drugs);
                 }
@@ -376,7 +376,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put("name",drug.getName());
         values.put("manufacturer",drug.getManufacturer());
-        values.put("specification",drug.getSpecification());
+        values.put("milliliters",drug.getMilliliters());
         values.put("productionDate",drug.getProductionDate());
         values.put("shelfLife",drug.getShelfLife());
         values.put("milligrams",drug.getMilligrams());
@@ -513,9 +513,10 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             ContentValues values = new ContentValues();
             values.put("name",drug.getName());
             values.put("manufacturer",drug.getManufacturer());
-            values.put("specification",drug.getSpecification());
+            values.put("milliliters",drug.getMilliliters());
             values.put("productionDate",drug.getProductionDate());
             values.put("shelfLife",drug.getShelfLife());
+            values.put("milligrams",drug.getMilligrams());
             db.update("DRUGS",values,"id="+drug.getId(),null);
         } catch (Exception e) {
             e.printStackTrace();
@@ -798,7 +799,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "manufacturer text NOT NULL," +
                 "productionDate text NOT NULL," +
                 "shelfLife text NOT NULL," +
-                "specification text NOT NULL," +
+                "milliliters text NOT NULL," +
                 "milligrams text NOT NULL" +
                 ")";
         db.execSQL(sql);
