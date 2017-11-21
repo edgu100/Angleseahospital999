@@ -334,6 +334,36 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     //      Drugs Database Query       //
     ////////////////////////////////////
 
+    public List<Drug> getSelectDrugs(String pid){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Drug> drugs = new ArrayList<Drug>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select * from DRUGS where id not in (" +
+                    "select drugsId from PATIENTDRUGS pd where pd.patientId=" +pid+
+                    ")",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Drug drug=new Drug();
+                    drug.setId(cursor.getInt(cursor.getColumnIndex("id")));
+                    drug.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    drugs.add(drug);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return drugs;
+    }
+
 
     public List<Drug> getDrugsByName(String name){
         SQLiteDatabase db = null;
