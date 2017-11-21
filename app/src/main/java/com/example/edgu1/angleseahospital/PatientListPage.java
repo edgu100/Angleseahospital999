@@ -45,10 +45,17 @@ public class PatientListPage extends Activity {
     int index=0;
 
     ///////////////////////----ListView Function----/////////////////////////////////
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_list);
+
+        String msg = getIntent().getStringExtra("drug");
+        if(msg!=null&&!"".equals(msg)){
+            Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
+        }
 
         patientsdb = new SQLiteHelper(this);
         patients = patientsdb.getPatientsByName(null);
