@@ -30,14 +30,14 @@
 
 
         <ImageView
-            android:src="@drawable/ic_search_black_24dp"
             android:id="@+id/Patient_Search_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:onClick="Search_The_Patient"
             android:layout_alignTop="@+id/Patient_enter"
+            android:layout_marginStart="13dp"
             android:layout_toEndOf="@+id/Patient_enter"
-            android:layout_marginStart="13dp" />
+            android:onClick="Search_The_Patient"
+            android:src="@drawable/ic_search_black_24dp" />
 
 
     </RelativeLayout>
