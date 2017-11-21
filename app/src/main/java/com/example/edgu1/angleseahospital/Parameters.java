@@ -6,4 +6,5 @@ package com.example.edgu1.angleseahospital;
 
 public class Parameters {
     public static int pid=0;
+
 }
