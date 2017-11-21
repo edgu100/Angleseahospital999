@@ -32,6 +32,18 @@ public class registerpage extends Activity {
         EditText name=(EditText)findViewById(R.id.et1);
         EditText pwd=(EditText)findViewById(R.id.et3);
         EditText email=(EditText)findViewById(R.id.et2);
+        if("".equals(name.getText().toString().trim())){
+            Toast.makeText(this,"Name can not be empty!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if("".equals(email.getText().toString().trim())){
+            Toast.makeText(this,"Email can not be empty!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if("".equals(pwd.getText().toString().trim())){
+            Toast.makeText(this,"Password can not be empty!", Toast.LENGTH_LONG).show();
+            return;
+        }
         User u=sqLiteHelper.getUserByEmail(email.getText().toString());
         if(u != null){
             Toast.makeText(this,"This email already exists!", Toast.LENGTH_LONG).show();
