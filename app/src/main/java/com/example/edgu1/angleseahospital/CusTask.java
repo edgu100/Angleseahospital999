@@ -37,7 +37,7 @@ public class CusTask extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Map<String,String> taskInfo = pds.get(position);
                 Intent intent=new Intent(getApplicationContext(),Signature.class);
-                intent.putExtra("pdid",taskInfo.get("pdid"));
+                intent.putExtra("track",taskInfo.get("pdid"));
                 startActivity(intent);
             }
         });

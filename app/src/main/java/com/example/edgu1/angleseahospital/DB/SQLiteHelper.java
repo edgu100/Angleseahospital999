@@ -427,39 +427,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     //      Patient Drugs Database Query       //
     ////////////////////////////////////
 
-
-    public List<Map<String,String>> getTasks(){
-        SQLiteDatabase db = null;
-        Cursor cursor = null;
-        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
-        try{
-            db = getReadableDatabase();
-            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
-                    " from PATIENTDRUGS pd left join PATIENT p on pd.patientId = p.id" +
-                    " left join DRUGS d on pd.drugsId = d.id" +
-                    " where signTime is null",null);
-            if (cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
-                    Map<String,String> dr=new HashMap<String,String>();
-                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
-                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
-                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
-                    tasks.add(dr);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
-        return tasks;
-    }
-
     public void addPatientDrugs(PatientDrugs patientDrugs){
         SQLiteDatabase db = getWritableDatabase();
         try{
@@ -791,6 +758,38 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             }
         }
         return track;
+    }
+
+    public List<Map<String,String>> getTasks(){
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        List<Map<String,String>> tasks = new ArrayList<Map<String,String>>();
+        try{
+            db = getReadableDatabase();
+            cursor = getWritableDatabase().rawQuery("select pd.id pdid, p.name pname, d.name dname" +
+                    " from TRACKS pd left join PATIENT p on pd.patientId = p.id" +
+                    " left join DRUGS d on pd.drugsId = d.id" +
+                    " where realtime is null",null);
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    Map<String,String> dr=new HashMap<String,String>();
+                    dr.put("pdid",cursor.getInt(cursor.getColumnIndex("pdid"))+"");
+                    dr.put("pname",cursor.getString(cursor.getColumnIndex("pname")));
+                    dr.put("dname",cursor.getString(cursor.getColumnIndex("dname")));
+                    tasks.add(dr);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return tasks;
     }
 
     ////////////////////////////////////
