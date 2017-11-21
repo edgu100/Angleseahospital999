@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#eeefff"
     android:id="@+id/tomainpage">
 
 <RelativeLayout
@@ -16,24 +17,29 @@
     android:layout_height="match_parent"
     tools:context="com.example.edgu1.angleseahospital.Mainpage">
 
-    <ImageView
+    <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/patientdetails"
+        android:src="@drawable/button_select_patient"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="50dp"
         android:id="@+id/patientdetails"
-        android:onClick="patientDetail"/>
+        android:onClick="patientDetail"
+        android:background="#eeefff"
+        />
 
-    <ImageView
+    <ImageButton
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/drugdetails"
+        android:src="@drawable/button_select_drug"
         android:layout_marginTop="30dp"
         android:layout_toRightOf="@+id/patientdetails"
         android:layout_marginLeft="40dp"
         android:id="@+id/drugdetails"
-        android:onClick="DrugsDetails"/>
+        android:onClick="DrugsDetails"
+        android:background="#eeefff"
+        android:scaleType="fitXY"
+        />
 
     <TextView
         android:id="@+id/notice"
