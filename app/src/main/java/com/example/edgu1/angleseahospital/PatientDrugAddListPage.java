@@ -48,7 +48,7 @@ public class PatientDrugAddListPage extends Activity {
         setContentView(R.layout.patient_drug_list_add);
 
         sqLiteHelper = new SQLiteHelper(this);
-        pid =   getIntent().getStringExtra("pid")+"";
+        pid =   Parameters.pid +"";
 
         //Toast.makeText(PatientDrugAddListPage.this, pid, Toast.LENGTH_LONG).show();
 

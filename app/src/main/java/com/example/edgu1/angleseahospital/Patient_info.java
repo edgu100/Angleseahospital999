@@ -58,7 +58,7 @@ public class Patient_info extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Patient_info.this, PatientDrugAddListPage.class);
-                i.putExtra("pid",patient.getId());
+                Parameters.pid = patient.getId();
                 startActivity(i);
             }
         });
@@ -134,7 +134,7 @@ public class Patient_info extends AppCompatActivity {
     }
 
 
- public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.setting,menu);
         return true;
     }
@@ -142,11 +142,11 @@ public class Patient_info extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
-       if(id==R.id.setting){
+        if(id==R.id.setting){
             Intent intent = new Intent(Patient_info.this, editPatient.class);
             Parameters.pid=patient.getId();
             startActivity(intent);
-           return true;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
