@@ -151,8 +151,7 @@ public class Signature extends Activity {
                 Track ntrack = new Track();
                 ntrack.setPatientId(pd.getPatientId());
                 ntrack.setDrugsId(pd.getDrugsId());
-                PatientDrugs patientDrugs = sqLiteHelper.getPatientDrugsByPDID(pd.getPatientId(),pd.getDrugsId());
-                ntrack.setFocustime(TaskTimeTool.culTime(patientDrugs.getFrequency()));
+                ntrack.setFocustime(TaskTimeTool.culTime(pd.getFrequency()));
                 sqLiteHelper.addTracks(ntrack);
                 Intent i = new Intent(Signature.this,CusTask.class);
                 startActivity(i);
