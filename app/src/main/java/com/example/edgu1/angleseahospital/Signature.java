@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.edgu1.angleseahospital.DB.Patient;
 import com.example.edgu1.angleseahospital.DB.PatientDrugs;
 import com.example.edgu1.angleseahospital.DB.SQLiteHelper;
 import com.example.edgu1.angleseahospital.DB.Track;
@@ -142,6 +143,7 @@ public class Signature extends Activity {
             scanMediaFile(photo);
             result = true;
 
+            Patient patient =new Patient();
             Date nowTime = new Date();
             SimpleDateFormat time = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             if(track==null){
@@ -153,6 +155,7 @@ public class Signature extends Activity {
                 ntrack.setDrugsId(pd.getDrugsId());
                 ntrack.setFocustime(TaskTimeTool.culTime(pd.getFrequency()));
                 sqLiteHelper.addTracks(ntrack);
+                patient = sqLiteHelper.getPatientById(pd.getPatientId());
             }else{
                 if(track.getSignature1()==null||"".equals(track.getSignature1())){
                     track.setSignature1(pname);
@@ -169,8 +172,10 @@ public class Signature extends Activity {
                     sqLiteHelper.addTracks(ntrack);
                 }
                 sqLiteHelper.updateTracks(track);
+                patient = sqLiteHelper.getPatientById(track.getPatientId());
             }
-            Intent i = new Intent(Signature.this,PatientListPage.class);
+            Intent i = new Intent(Signature.this,Patient_info.class);
+            i.putExtra("patient",patient);
             startActivity(i);
         } catch (IOException e) {
             e.printStackTrace();
