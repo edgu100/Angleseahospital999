@@ -184,34 +184,33 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/colorAccent"
-        android:layout_below="@+id/pdd_dmg"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="19dp" />
+        android:layout_above="@+id/pdd_FHours"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/patientinfobackbround"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/patientinfobackbround"
         android:text="Frequency"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="27sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/patientinfobackbround"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/pdd_FHours"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/patientinfobackbround"
-        android:layout_toEndOf="@+id/pdd_get_dosage"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Hours"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_above="@+id/pdd_cancle"
+        android:layout_alignStart="@+id/pdd_confirm"
+        android:layout_marginBottom="31dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -251,13 +250,13 @@
         android:id="@+id/pdd_calculate"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView11"
         android:background="@drawable/buttonshape"
         android:onClick="pdd_calculate_onClick"
         android:text="calculate"
         android:textColor="@android:color/white"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:layout_above="@+id/patientinfobackbround"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/textView8"

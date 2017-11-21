@@ -503,6 +503,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         }
         return pd;
     }
+
     public void updateDrug(Drug drug){
         SQLiteDatabase db = null;
         try {
