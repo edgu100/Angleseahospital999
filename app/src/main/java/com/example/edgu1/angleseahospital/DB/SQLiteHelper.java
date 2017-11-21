@@ -467,6 +467,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             values.put("patientId",patientDrugs.getPatientId());
             values.put("drugsId",patientDrugs.getDrugsId());
             values.put("dosage",patientDrugs.getDosage());
+            values.put("medication",patientDrugs.getMedication());
             values.put("frequency",patientDrugs.getFrequency());
             values.put("timeStamp",patientDrugs.getTimeStamp());
             values.put("signTime",patientDrugs.getSignTime());
@@ -489,6 +490,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
             values.put("patientId",patientDrugs.getPatientId());
             values.put("drugsId",patientDrugs.getDrugsId());
             values.put("dosage",patientDrugs.getDosage());
+            values.put("medication",patientDrugs.getMedication());
             values.put("frequency",patientDrugs.getFrequency());
             values.put("timeStamp",patientDrugs.getTimeStamp());
             values.put("signTime",patientDrugs.getSignTime());
@@ -508,7 +510,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         Cursor cursor = null;
         PatientDrugs pd = null;
         db = getReadableDatabase();
-        cursor = db.query("PATIENTDRUGS", new String[] {"id","patientId","drugsId","dosage","frequency","timeStamp","signTime","signImg"}, "id" + " = "+pdId , null, null, null, null);
+        cursor = db.query("PATIENTDRUGS", new String[] {"id","patientId","drugsId","dosage","medication","frequency","timeStamp","signTime","signImg"}, "id" + " = "+pdId , null, null, null, null);
         if (cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 pd = new PatientDrugs();
@@ -516,6 +518,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 pd.setPatientId(cursor.getInt(cursor.getColumnIndex("patientId")));
                 pd.setDrugsId(cursor.getInt(cursor.getColumnIndex("drugsId")));
                 pd.setDosage(cursor.getString(cursor.getColumnIndex("dosage")));
+                pd.setMedication(cursor.getString(cursor.getColumnIndex("medication")));
                 pd.setFrequency(cursor.getDouble(cursor.getColumnIndex("frequency")));
                 pd.setTimeStamp(cursor.getString(cursor.getColumnIndex("timeStamp")));
                 pd.setSignTime(cursor.getString(cursor.getColumnIndex("signTime")));
@@ -827,6 +830,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
                 "patientId integer NOT NULL," +
                 "drugsId integer NOT NULL," +
                 "dosage text," +
+                "medication text," +
                 "frequency double," +
                 "timeStamp text," +
                 "signTime text," +

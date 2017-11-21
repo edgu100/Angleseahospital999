@@ -17,6 +17,7 @@ public class PatientDrugs implements Serializable {
     private String timeStamp;
     private String signTime;
     private String signImg;
+    private String medication;
 
     public Integer getId() {
         return id;
@@ -80,5 +81,13 @@ public class PatientDrugs implements Serializable {
 
     public void setSignImg(String signImg) {
         this.signImg = signImg;
+    }
+
+    public String getMedication() {
+        return medication;
+    }
+
+    public void setMedication(String medication) {
+        this.medication = medication;
     }
 }
